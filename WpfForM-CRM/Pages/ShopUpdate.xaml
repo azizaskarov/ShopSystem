@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfForM_CRM.Pages.ShopUpdate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfForM_CRM.Pages"
+        mc:Ignorable="d"
+        Title="ShopUpdate" Height="300" Width="250">
+    <Grid Margin="5,2,0,2">
+        <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Shop name" />
+        <TextBox x:Name="shopname" FontSize="20" Height="35" Margin="4,80,4,86" />
+        <Button Height="30" Width="150" Background="green" Margin="0 150 0 0" Click="Button_Click" FontFamily="Arial" FontSize="18">Update</Button>
+    </Grid>
+</Window>

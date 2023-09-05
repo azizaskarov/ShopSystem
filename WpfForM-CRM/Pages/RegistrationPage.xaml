@@ -1,0 +1,41 @@
+﻿<Page  x:Name="RegisterPage" x:Class="WpfForM_CRM.Pages.RegistrationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfForM_CRM.Pages"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="RegistrationPage" Height="457" >
+
+    <Grid>
+        <Border Background="#FF4282D8" Margin="-1,0,0,0">
+            <Label FontSize="24" Background="#FF4282D8" Foreground="Black"  Height="42" Content="Already have an account?" Margin="369,413,121,0" VerticalAlignment="Top" BorderBrush="#FF4282D8"/>
+        </Border>
+
+        <TextBox x:Name="con_pass2" Width="500" Height="50" HorizontalAlignment="Left"  Margin="156,264,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Times New Roman" TextChanged="con_pass2_TextChanged" MaxLength="20" PreviewTextInput="con_pass2_PreviewTextInput"/>
+        <TextBox x:Name="pass2" Width="500" Height="50" HorizontalAlignment="Left" Margin="158,169,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Times New Roman" TextChanged="pass2_TextChanged" MaxLength="20" PreviewTextInput="pass2_PreviewTextInput"/>
+        <PasswordBox x:Name="con_pass" Width="500" Height="50" HorizontalAlignment="Left"  Margin="156,263,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Sitka Text Semibold" IsVisibleChanged="con_pass_IsVisibleChanged" MaxLength="20" PreviewTextInput="con_pass_PreviewTextInput"/>
+        <PasswordBox x:Name="pass" Width="500" Height="50" HorizontalAlignment="Left" Margin="158,168,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Times New Roman" IsVisibleChanged="pass_IsVisibleChanged" MaxLength="20" PreviewTextInput="pass_PreviewTextInput"/>
+        <Label Name="valid_lbl" Width="500" Height="22" Margin="116,240,105,0" VerticalAlignment="Top" FontWeight="Heavy" Foreground="#FFE51E1E" FontSize="10"/>
+        <Label Name="login_lbl" Width="200" Height="33" Content="Username *" HorizontalAlignment="Left" Margin="173,45,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>
+        <Label Name="parol_lbl" Width="200" Height="33" Content="Password *" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>
+        <Label Name="conf_parol_lbl" Width="274" Height="35" Content="Enter Password again *" HorizontalAlignment="Left" Margin="172,232,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>
+        <TextBox x:Name="login_txt" Width="500" Height="50" Margin="156,78,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" PreviewTextInput="login_txt_PreviewTextInput" TextChanged="login_txt_TextChanged"/>
+        <Button  x:Name="reg_btn" Width="506" Height="46" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="155,0,0,81" Content="Register" FontSize="36" Click="reg_btn_Click" FontFamily="Arial" BorderBrush="Black" Foreground="White"/>
+        <Button Content="Login" FontSize="24" BorderBrush="#FF4282D8" Background="#FF4282D8" Margin="0,420,41,0" VerticalAlignment="Top" Height="34" Width="81" Click="Button_Click" FontFamily="Arial" Foreground="#FFEDEAEA" HorizontalAlignment="Right" MinWidth="0" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Button.FocusVisualStyle>
+                <Style/>
+            </Button.FocusVisualStyle>
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-2"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Image x:Name="pass_name" HorizontalAlignment="Left" Height="35" Margin="616,177,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="pass_name_MouseLeftButtonDown" RenderTransformOrigin="0.42,0.646" />
+        <Image x:Name="conpassname" HorizontalAlignment="Left" Height="35" Margin="618,272,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="conpassname_MouseLeftButtonDown"/>
+    </Grid>
+</Page>
