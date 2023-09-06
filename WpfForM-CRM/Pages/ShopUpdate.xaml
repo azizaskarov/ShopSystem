@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="ShopUpdate" Height="300" Width="250">
     <Grid Margin="5,2,0,2">
-        <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Shop name" />
+        <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Название магазина" />
         <TextBox x:Name="shopname" FontSize="20" Height="35" Margin="4,80,4,86" />
-        <Button Height="30" Width="150" Background="#FF4282D8" Margin="0 150 0 0" Click="Button_Click" FontFamily="Arial" FontSize="18">Update</Button>
+        <Button Height="30" Width="150" Background="#FF4282D8" Margin="0 150 0 0" Click="Button_Click" FontFamily="Arial" FontSize="18" Content="Обновить"/>
     </Grid>
 </Window>

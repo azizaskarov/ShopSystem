@@ -40,25 +40,25 @@ namespace WpfForM_CRM.Pages
 
             if (username.Length == 0 || (password.Length == 0 && pass2.Text.Length == 0) || (confirm_password.Length == 0 && con_pass2.Text.Length == 0))
             {
-                MessageBox.Show("fill in the required fields");
+                MessageBox.Show("Заполните необходимые поля");
                 return;
             }
 
             if (dbContext.Users.Any(u => u.UserName == username))
             {
-                MessageBox.Show("User already exist");
+                MessageBox.Show("Пользователь уже существует");
                 return;
             }
 
             if (!IsValidPassword(password))
             {
-                valid_lbl.Content = "Minimum 8 characters, at least one uppercase letter, one lowercase letter and one number";
+                valid_lbl.Content = "Минимум 8 символов, хотя бы одна заглавная буква, одна строчная буква и одна цифра.";
                 return;
             }
 
             if ((password != confirm_password))
             {
-                MessageBox.Show("Password not same");
+                MessageBox.Show("Пароль неправильный");
                 return;
             }
 
@@ -215,9 +215,6 @@ namespace WpfForM_CRM.Pages
         }
 
 
-        private void login_txt_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

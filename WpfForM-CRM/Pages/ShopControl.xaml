@@ -9,8 +9,8 @@
     <Grid Background="GhostWhite" Margin="0,0,-21,-19">
 
         <Label Name="shopName" Height="26" Background="Azure" VerticalAlignment="Top" Margin="1,6,1,0" />
-        <Button Content="Update" HorizontalAlignment="Left" Width="43" Height="27"  VerticalAlignment="Top" Margin="179,37,0,0" Click="Button_Click_1"/>
-        <Button Content="Delete" HorizontalAlignment="Right" Width="43" Height="26"  VerticalAlignment="Top" Margin="0,37,42,0" Click="Button_Click"/>
+        <Button Content="Обновить" HorizontalAlignment="Left" Width="50" Height="27"  VerticalAlignment="Top" Margin="172,37,0,0" Click="Button_Click_1" FontSize="10"/>
+        <Button Content="Удалить" HorizontalAlignment="Right" Width="47" Height="26"  VerticalAlignment="Top" Margin="0,37,48,0" Click="Button_Click" FontSize="10"/>
     </Grid>
 
 

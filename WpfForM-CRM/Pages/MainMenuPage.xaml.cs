@@ -52,7 +52,7 @@ public partial class MainMenuPage : Page
 
         if (username.Length == 0 || password.Length == 0)
         {
-            MessageBox.Show("Enter your login and password");
+            MessageBox.Show("Введите логин и пароль");
             return;
         }
 
@@ -85,7 +85,7 @@ public partial class MainMenuPage : Page
                 }
                 else
                 {
-                    MessageBox.Show("Invalid password");
+                    MessageBox.Show("");
                 }
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ public partial class MainMenuPage : Page
         }
         else
         {
-            MessageBox.Show("User not found");
+            MessageBox.Show("Пользователь не найден");
         }
     }
 

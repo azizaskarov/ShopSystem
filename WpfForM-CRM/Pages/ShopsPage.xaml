@@ -16,8 +16,8 @@
 
         <Border Background= "White">
             <StackPanel Margin="0,0,-2,0">
-                <Button Height="50" Background="White" Content="Add shop" Click="Button_Click_1"></Button>
-                <Button Height="50" Background="White" Content="Shops view" Click="Button_Click" BorderBrush="White"/>
+                <Button Height="50" Background="White" Content="Добавить магазин" Click="Button_Click_1"></Button>
+                <Button Height="50" Background="White" Content="Магазины" Click="Button_Click" BorderBrush="White"/>
             </StackPanel>
         </Border>
 
