@@ -5,11 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfForM_CRM.Pages"
              mc:Ignorable="d" d:DesignWidth="200" Margin="20" Height="40">
+
     <Grid Background="GhostWhite" Margin="0,0,-21,-19">
 
         <Label Name="shopName" Height="26" Background="Azure" VerticalAlignment="Top" Margin="1,6,1,0" />
         <Button Content="Update" HorizontalAlignment="Left" Width="43" Height="27"  VerticalAlignment="Top" Margin="179,37,0,0" Click="Button_Click_1"/>
         <Button Content="Delete" HorizontalAlignment="Right" Width="43" Height="26"  VerticalAlignment="Top" Margin="0,37,42,0" Click="Button_Click"/>
     </Grid>
+
+
 
 </UserControl>
