@@ -26,7 +26,7 @@ namespace WpfForM_CRM.Pages
             {
                 var model = new ShopControl(this);
                 model.Width = 200;
-                model.Height = 50;
+                model.Height = 40;
                 model.Name = shop.Name;
                 list.Add(model);
             }
@@ -36,7 +36,7 @@ namespace WpfForM_CRM.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           Load();
+            Load();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -44,5 +44,32 @@ namespace WpfForM_CRM.Pages
             Add add = new Add(this);
             add.ShowDialog();
         }
+
+        private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var searchTxt = SearchText.Text;
+
+            var dbContext = new AppDbContext();
+
+            var matchingShops = dbContext.Shops
+                .Where(shop => shop.Name.Contains(searchTxt))
+                .ToList();
+
+
+            var list = new List<ShopControl>();
+
+            foreach (var shop in matchingShops)
+            {
+                var model = new ShopControl(this);
+                model.Width = 200;
+                model.Height = 40;
+                model.Name = shop.Name;
+                list.Add(model);
+            }
+
+            shopsFrame.ItemsSource = list;
+        }
+
     }
 }
+

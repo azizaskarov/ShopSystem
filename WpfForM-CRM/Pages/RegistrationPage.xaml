@@ -22,7 +22,7 @@
         <Label Name="conf_parol_lbl" Width="274" Height="35" Content="Enter Password again *" HorizontalAlignment="Left" Margin="172,232,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>
         <TextBox x:Name="login_txt" Width="500" Height="50" Margin="156,78,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" PreviewTextInput="login_txt_PreviewTextInput" TextChanged="login_txt_TextChanged"/>
         <Button  x:Name="reg_btn" Width="506" Height="46" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="155,0,0,81" Content="Register" FontSize="36" Click="reg_btn_Click" FontFamily="Arial" BorderBrush="Black" Foreground="White"/>
-        <Button Content="Login" FontSize="24" BorderBrush="#FF4282D8" Background="#FF4282D8" Margin="0,420,41,0" VerticalAlignment="Top" Height="34" Width="81" Click="Button_Click" FontFamily="Arial" Foreground="#FFEDEAEA" HorizontalAlignment="Right" MinWidth="0" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Login" FontSize="24" BorderBrush="#FF4282D8" Background="#FF4282D8" Margin="0,420,41,0" VerticalAlignment="Top" Height="34" Width="110" Click="Button_Click" FontFamily="Arial" Foreground="#FFEDEAEA" HorizontalAlignment="Right" MinWidth="0" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5">
             <Button.FocusVisualStyle>
                 <Style/>
             </Button.FocusVisualStyle>
