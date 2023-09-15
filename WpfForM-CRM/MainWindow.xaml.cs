@@ -18,9 +18,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         mainframe.Navigate(new MainMenuPage());
-        DispatcherTimer timer = new DispatcherTimer();
-        timer.Interval += TimeSpan.FromSeconds(1);
-        timer.Start();
         exit_btn.Background = Brushes.Blue;
     }
 

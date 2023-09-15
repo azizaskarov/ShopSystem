@@ -22,12 +22,13 @@ namespace WpfForM_CRM.Pages
     public partial class ShopUpdate : Window
     {
         ShopsPage shopsPage;
-        private AppDbContext appDbContext = new AppDbContext();
+        private readonly AppDbContext appDbContext;
         Guid shopId;
         public ShopUpdate(ShopsPage shopsPage, Guid shopId)
         {
             InitializeComponent();
             this.shopId = shopId;
+            this.appDbContext = new AppDbContext();
             this.shopsPage = shopsPage;
         }
 
@@ -35,8 +36,13 @@ namespace WpfForM_CRM.Pages
         {
             var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Id == shopId);
 
-            shop.Name = shopname.Text;
+            if (appDbContext.Shops.Any(sh => sh.Name == shopname.Text))
+            {
+                MessageBox.Show("This name already exists");
+                return;
+            }
 
+            shop.Name = shopname.Text;
             appDbContext.Shops.Update(shop);
             appDbContext.SaveChanges();
             shopsPage.Load();

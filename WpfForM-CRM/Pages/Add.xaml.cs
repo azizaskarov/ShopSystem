@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Entities;
 
@@ -17,6 +19,7 @@ public partial class Add : Window
         shopsPage = model;
     }
 
+    
     private void Button_Click(object sender, RoutedEventArgs e)
     {
 
@@ -38,5 +41,16 @@ public partial class Add : Window
         db.SaveChanges();
         shopsPage.Load();
         Close();
+    }
+
+    private void shopNamePreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        var pattern = @"^[а-яА-Яa-zA-Z0-9]+$";
+        var regex = new Regex(pattern);
+
+        if (!regex.IsMatch(e.Text))
+        {
+            e.Handled = true;
+        }
     }
 }

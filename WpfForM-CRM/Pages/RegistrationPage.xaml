@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfForM_CRM.Pages"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="RegistrationPage" Height="486" >
+      mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegistrationPage"  >
 
+    
     <Grid>
         <Border Background="#FF4282D8" Margin="-1,0,0,0">
             <Label FontSize="24" Background="#FF4282D8" Foreground="Black"  Height="42" Content="У вас уже есть аккаунт?" Margin="369,413,121,0" VerticalAlignment="Top" BorderBrush="#FF4282D8"/>
@@ -36,6 +37,6 @@
             </Button.RenderTransform>
         </Button>
         <Image x:Name="pass_name" HorizontalAlignment="Left" Height="35" Margin="623,201,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="pass_name_MouseLeftButtonDown" RenderTransformOrigin="0.42,0.646" />
-        <Image x:Name="conpassname" HorizontalAlignment="Left" Height="35" Margin="622,297,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="conpassname_MouseLeftButtonDown"/>
+        <Image x:Name="conpassname" HorizontalAlignment="Left" Height="35" Margin="623,293,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="conpassname_MouseLeftButtonDown" RenderTransformOrigin="0.567,0.086"/>
     </Grid>
 </Page>

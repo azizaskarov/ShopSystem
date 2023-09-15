@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="535" Width="800" Background="#FF4282D8" WindowStyle="None">
+        x:Name="Window"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow"  Background="#FF4282D8" WindowStyle="None" Width="800" Height="535">
     <Grid>
         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Top" Background="Blue" Height="30" Width="800" MouseDown="DockPanel_MouseDown">
-            <Image Width="34" Height="26" Margin="350,0,0,0" Source="/Pages/timer4.png" Stretch="Fill"/>
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
             <Button x:Name="exit_btn" Content="X" Click="Page1_Click" Height="30" Width="40" HorizontalAlignment="Right" Background="Blue" FontSize="20" FontFamily="Arial" FontWeight="Bold" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" BorderBrush="Blue"/>
         </DockPanel>
