@@ -13,10 +13,10 @@ namespace WpfForM_CRM.Pages;
 public partial class Add : Window
 {
     ShopsPage shopsPage;
-    public Add(ShopsPage model)
+    public Add(ShopsPage shopsPage)
     {
         InitializeComponent();
-        shopsPage = model;
+        this.shopsPage = shopsPage;
     }
 
     

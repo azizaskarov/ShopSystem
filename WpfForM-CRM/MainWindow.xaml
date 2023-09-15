@@ -13,6 +13,6 @@
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
             <Button x:Name="exit_btn" Content="X" Click="Page1_Click" Height="30" Width="40" HorizontalAlignment="Right" Background="Blue" FontSize="20" FontFamily="Arial" FontWeight="Bold" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" BorderBrush="Blue"/>
         </DockPanel>
-        <Frame x:Name="mainframe" Margin="-8,30,0,0" NavigationUIVisibility="Hidden" Height="505" VerticalAlignment="Top"/>
+        <Frame x:Name="mainframe" Margin="-8,30,0,0" NavigationUIVisibility="Hidden" Height="505" VerticalAlignment="Center"/>
     </Grid>
 </Window>

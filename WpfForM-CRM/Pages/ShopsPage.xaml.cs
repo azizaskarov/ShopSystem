@@ -30,7 +30,7 @@ namespace WpfForM_CRM.Pages
                 model.Name = shop.Name;
                 list.Add(model);
             }
-
+            
             shopsFrame.ItemsSource = list;
         }
 
@@ -71,4 +71,6 @@ namespace WpfForM_CRM.Pages
         }
 
     }
+
+
 }
