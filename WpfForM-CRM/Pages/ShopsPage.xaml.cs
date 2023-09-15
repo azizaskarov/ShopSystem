@@ -34,12 +34,12 @@ namespace WpfForM_CRM.Pages
             shopsFrame.ItemsSource = list;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ReadShops(object sender, RoutedEventArgs e)
         {
             Load();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_AddShop(object sender, RoutedEventArgs e)
         {
             Add add = new Add(this);
             add.ShowDialog();

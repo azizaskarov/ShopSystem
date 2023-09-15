@@ -16,12 +16,12 @@
 
         <Border Background= "White">
             <StackPanel Margin="0,0,-2,0">
-                <Button Height="50" Background="White" Content="Добавить магазин" Click="Button_Click_1"/>
-                <Button Height="50" Background="White" Content="Магазины" Click="Button_Click" BorderBrush="White"/>
+                <Button Height="50" Background="White" Content="Добавить магазин" Click="Button_AddShop"/>
+                <Button Height="50" Background="White" Content="Магазины" Click="Button_ReadShops" BorderBrush="White"/>
             </StackPanel>
         </Border>
 
-        <ItemsControl Name="shopsFrame" Background="#FF4282D8" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="1" Margin="1,-2,0,0" Grid.Column="1">
+        <ItemsControl x:Name="shopsFrame" Background="#FF4282D8" ScrollViewer.HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="1" Margin="1,-2,0,0" Grid.Column="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel />
@@ -29,7 +29,7 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
 
-        <Image x:Name="poisk" HorizontalAlignment="Left" Height="16" Margin="140,1,0,0" VerticalAlignment="Top" Width="23" Source="pack://application:,,,/Pages/poisk.png" Grid.Column="1" RenderTransformOrigin="0.5,0.5" >
+        <Image x:Name="poisk" HorizontalAlignment="Left" Height="14" Margin="140,1,0,0" VerticalAlignment="Top" Width="22" Source="pack://application:,,,/Pages/poisk.png" Grid.Column="1" RenderTransformOrigin="0.5,0.5" >
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,7 +40,6 @@
             </Image.RenderTransform>
         </Image>
 
-        <TextBox Name="SearchText" 
-                 Grid.Column="1" TextWrapping="Wrap" Height="20" Width="320" VerticalAlignment="Top" Background="FloralWhite" Margin="164,-2,165,0" TextChanged="search_txt_TextChanged" />
+        <TextBox x:Name="SearchText" Grid.Column="1" TextWrapping="Wrap" Height="20" Width="320" VerticalAlignment="Top" Background="FloralWhite" Margin="164,-2,165,0" TextChanged="search_txt_TextChanged" />
     </Grid>
 </Page>
