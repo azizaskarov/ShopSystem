@@ -48,6 +48,12 @@ namespace WpfForM_CRM.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Shops_Name",
+                table: "Shops",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_UserName",
                 table: "Users",
                 column: "UserName",

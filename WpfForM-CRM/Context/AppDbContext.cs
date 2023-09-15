@@ -13,7 +13,7 @@ namespace WpfForM_CRM.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=localhost;Port=3306; Database=mydb; User=root; Password=5432;",
+            optionsBuilder.UseMySql("server=localhost;database=mcrmshopDb;user=root;",
                 ServerVersion.Parse("8.0.24-mysql"));
         }
 
@@ -39,6 +39,8 @@ namespace WpfForM_CRM.Context
                 entity.Property(e => e.Name)
                     .HasMaxLength(50);
 
+                entity.HasIndex(sh => sh.Name)
+                     .IsUnique();
             });
         }
     }

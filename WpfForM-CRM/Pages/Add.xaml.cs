@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Entities;
 
@@ -20,6 +21,12 @@ public partial class Add : Window
     {
 
         var db = new AppDbContext();
+
+        if ((db.Shops.Any(sh => sh.Name == shopname.Text)))
+        {
+            MessageBox.Show("Shop name already exists");
+                return;
+        }
 
         var shop = new Shop()
         {

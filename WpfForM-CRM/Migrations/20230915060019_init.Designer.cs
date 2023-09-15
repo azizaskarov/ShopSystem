@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230828102318_init")]
+    [Migration("20230915060019_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -37,6 +37,9 @@ namespace WpfForM_CRM.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Shops");
                 });

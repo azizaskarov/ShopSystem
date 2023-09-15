@@ -35,6 +35,9 @@ namespace WpfForM_CRM.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Shops");
                 });
 
