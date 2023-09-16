@@ -7,7 +7,7 @@ namespace WpfForM_CRM.Pages;
 
 public partial class ShopControl : UserControl
 {
-    private AppDbContext appDbContext;
+    private  AppDbContext appDbContext;
     public object Name
     {
         get
@@ -19,7 +19,7 @@ public partial class ShopControl : UserControl
             shopName.Content = value;
         }
     }
-
+    
     ShopsPage shopsPage;
     public ShopControl(ShopsPage shopsPage)
     {
@@ -34,12 +34,22 @@ public partial class ShopControl : UserControl
 
 
         var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Name == shopNameContent);
-        if (shop != null)
+
+        var deleteResultButton = MessageBox.Show("Вы уверены, что хотите удалить магазин?",
+            "Удалит", 
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+        if (deleteResultButton == MessageBoxResult.Yes)
         {
-            appDbContext.Shops.Remove(shop);
-            appDbContext.SaveChanges();
-            MessageBox.Show("Success");
-            shopsPage.Load();
+            if (shop != null)
+            {
+                appDbContext.Shops.Remove(shop);
+                appDbContext.SaveChanges();
+                shopsPage.Load();
+            }
+            else
+                return;
         }
     }
 
