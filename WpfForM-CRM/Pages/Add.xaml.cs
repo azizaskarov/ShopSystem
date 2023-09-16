@@ -23,7 +23,8 @@ public partial class Add : Window
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-
+        
+        
         var db = new AppDbContext();
 
         if ((db.Shops.Any(sh => sh.Name == shopname.Text)))
@@ -60,6 +61,14 @@ public partial class Add : Window
         if (!regex.IsMatch(e.Text))
         {
             e.Handled = true;
+        }
+    }
+
+    private void CreateShopWithEnterButton(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            Button_Click(sender,e);
         }
     }
 }

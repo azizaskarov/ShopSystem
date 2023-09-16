@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WpfForM_CRM.Context;
 
 namespace WpfForM_CRM.Pages;
@@ -63,5 +64,16 @@ public partial class ShopControl : UserControl
             update.ShowDialog();
         }
 
+    }
+
+    private void DeleteImageIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        Button_Delete(sender,e);
+    }
+
+
+    private void UpdateImageIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        Button_Update(sender,e);
     }
 }

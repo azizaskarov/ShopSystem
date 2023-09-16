@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfForM_CRM.Context;
 
@@ -85,7 +86,7 @@ public partial class MainMenuPage : Page
                 }
                 else
                 {
-                    MessageBox.Show("");
+                    MessageBox.Show("Неправильный пароль", "Ошибка" , MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
@@ -95,7 +96,7 @@ public partial class MainMenuPage : Page
         }
         else
         {
-            MessageBox.Show("Пользователь не найден");
+            MessageBox.Show("Пользователь не найден","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -133,6 +134,18 @@ public partial class MainMenuPage : Page
         if (!parol_txt.IsVisible)
         {
             parol_tx.Text = parol_txt.Password;
+        }
+    }
+
+    private void MainMenuPage_OnKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            enter_btn_Click(sender,e);
+        }
+        else if (e.Key == Key.Escape)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
