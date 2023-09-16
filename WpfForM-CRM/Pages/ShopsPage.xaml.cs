@@ -55,7 +55,6 @@ namespace WpfForM_CRM.Pages
                 .Where(shop => shop.Name.Contains(searchTxt))
                 .ToList();
 
-
             var list = new List<ShopControl>();
 
             foreach (var shop in matchingShops)
