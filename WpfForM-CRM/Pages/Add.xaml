@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfForM_CRM.Pages"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" KeyDown="CreateShopWithEnterButton"
         Title="Добавить магазин" VerticalAlignment="Center" Height="300" Width="400">
     <Grid Margin="5,2,0,2"  >
         <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Название магазина" />

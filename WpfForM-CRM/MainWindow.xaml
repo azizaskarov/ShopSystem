@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow"  Background="#FF4282D8" WindowStyle="None" Width="800" Height="535">
+        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#FF4282D8" WindowStyle="None" Width="800" Height="535">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>

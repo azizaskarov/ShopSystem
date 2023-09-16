@@ -215,6 +215,12 @@ namespace WpfForM_CRM.Pages
         }
 
 
-        
+        private void RegistrationPage_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                reg_btn_Click(sender, e);
+            }
+        }
     }
 }

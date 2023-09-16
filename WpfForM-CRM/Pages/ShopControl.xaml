@@ -7,11 +7,11 @@
              mc:Ignorable="d" d:DesignWidth="200" Margin="20" Height="40">
 
     <Grid Name="Grid" Background="LightSkyBlue"  Margin="0,0,-21,-19" RenderTransformOrigin="0,1.5" >
-        
 
-        <Label Name="shopName" Height="26" Background="LightSkyBlue" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="1,6,1,0" />
-        <Button Content="Обновить" HorizontalAlignment="Left" Width="50" Height="27"  VerticalAlignment="Top" Margin="172,37,0,0" Click="Button_Update" FontSize="10"/>
-        <Button Content="Удалить" HorizontalAlignment="Right" Width="47" Height="26"  VerticalAlignment="Top" Margin="0,37,48,0" Click="Button_Delete" FontSize="10"/>
+        <Image Name="DeleteImageIcon" VerticalAlignment="Top" Height="21" Source="../IconImages/del.png" Margin="163,38,16,0"   MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
+
+        <Image Name="UpdateImageIcon" VerticalAlignment="Top" Height="18" Source="../IconImages/update.png" Margin="190,40,-9,0"  MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
+        <Label Name="shopName" Height="21" Background="LightSkyBlue" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,3,2,0" />
     </Grid>
 
 
