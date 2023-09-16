@@ -4,11 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM.Pages"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Добавить магазин" VerticalAlignment="Center" Height="300" Width="250">
+        Title="Добавить магазин" VerticalAlignment="Center" Height="300" Width="400">
     <Grid Margin="5,2,0,2"  >
         <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Название магазина" />
+
+        <Label Name="EmptyName" FontWeight="Heavy" Content="" Foreground="Firebrick" Margin="19,155,136,92" RenderTransformOrigin="0.488,0.758"/>
+
         <TextBox x:Name="shopname" FontSize="20" Height="35" Margin="4,80,4,86" PreviewTextInput="shopNamePreviewTextInput"  />
         <Button Height="30" Width="150" Background="#FF4282D8" Margin="0 150 0 0" Click="Button_Click" FontFamily="Arial" FontSize="18">Добавить</Button>
     </Grid>

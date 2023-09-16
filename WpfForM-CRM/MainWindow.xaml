@@ -9,10 +9,14 @@
         WindowStartupLocation="CenterScreen"
         Title="MainWindow"  Background="#FF4282D8" WindowStyle="None" Width="800" Height="535">
     <Grid>
-        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Top" Background="Blue" Height="30" Width="800" MouseDown="DockPanel_MouseDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Top" Background="Blue" Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1">
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
             <Button x:Name="exit_btn" Content="X" Click="Page1_Click" Height="30" Width="40" HorizontalAlignment="Right" Background="Blue" FontSize="20" FontFamily="Arial" FontWeight="Bold" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" BorderBrush="Blue"/>
         </DockPanel>
-        <Frame x:Name="mainframe" Margin="-8,30,0,0" NavigationUIVisibility="Hidden" Height="505" VerticalAlignment="Center"/>
+        <Frame x:Name="mainframe" Margin="-8,30,0,0" NavigationUIVisibility="Hidden" Height="505" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

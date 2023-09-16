@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM.Pages"
         mc:Ignorable="d"
-        Title="ShopUpdate" Height="300" Width="250">
+        Title="ShopUpdate" Height="300" Width="300" 
+        WindowStartupLocation="CenterScreen">
+
     <Grid Margin="5,2,0,2">
         <Label Margin="3,62,1,161" Height="25" Background="White" Foreground="#FF060000" FontSize="14" FontFamily="Arial" Content="  Название магазина" />
         <TextBox x:Name="shopname" FontSize="20" Height="35" Margin="4,80,4,86" />

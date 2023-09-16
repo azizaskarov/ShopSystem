@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -19,7 +20,7 @@ public partial class Add : Window
         this.shopsPage = shopsPage;
     }
 
-    
+
     private void Button_Click(object sender, RoutedEventArgs e)
     {
 
@@ -27,8 +28,16 @@ public partial class Add : Window
 
         if ((db.Shops.Any(sh => sh.Name == shopname.Text)))
         {
-            MessageBox.Show("Shop name already exists");
-                return;
+            MessageBox.Show("Название магазина уже существует");
+            return;
+        }
+
+        if (shopname.Text.Length == 0)
+        {
+
+            MessageBox.Show("Значение не указано", "", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+
         }
 
         var shop = new Shop()

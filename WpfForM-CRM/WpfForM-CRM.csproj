@@ -13,13 +13,12 @@
     <None Remove="Pages\eye close.png" />
     <None Remove="Pages\eye open.png" />
     <None Remove="Pages\poisk.png" />
+    <None Remove="Pages\ShopPage.txt" />
+    <None Remove="Pages\ShopPage.xaml.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="Pages\ShopsPage.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -36,7 +35,6 @@
     <Resource Include="Pages\eye close.png" />
     <Resource Include="Pages\eye open.png" />
     <Resource Include="Pages\poisk.png" />
-    <Resource Include="Pages\ShopsPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>

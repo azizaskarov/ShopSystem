@@ -25,6 +25,12 @@ public partial class MainWindow : Window
 
     private void Page1_Click(object sender, RoutedEventArgs e)
     {
+        var xButton = MessageBox.Show("Вы хотите выйти из приложения?", "Выйти", MessageBoxButton.YesNo, MessageBoxImage.Question);
+        if (xButton == MessageBoxResult.Yes)
+        {
+            Application.Current.Shutdown();
+        }
+
         this.Close();
     }
 
