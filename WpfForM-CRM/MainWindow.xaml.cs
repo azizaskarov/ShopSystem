@@ -33,7 +33,6 @@ public partial class MainWindow : Window
             Application.Current.Shutdown();
         }
 
-        this.Close();
     }
 
     private void exit_btn_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -59,4 +58,6 @@ public partial class MainWindow : Window
             Page1_Click(sender,e);
         }
     }
+
+   
 }

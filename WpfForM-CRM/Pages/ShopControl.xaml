@@ -4,14 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfForM_CRM.Pages"
-             mc:Ignorable="d" d:DesignWidth="200" Margin="20" Height="40">
+             mc:Ignorable="d" d:DesignWidth="200" Margin="20" Height="40" >
 
     <Grid Name="Grid" Background="LightSkyBlue"  Margin="0,0,-21,-19" RenderTransformOrigin="0,1.5" >
 
-        <Image Name="DeleteImageIcon" VerticalAlignment="Top" Height="21" Source="../IconImages/del.png" Margin="163,38,16,0"   MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
-
-        <Image Name="UpdateImageIcon" VerticalAlignment="Top" Height="18" Source="../IconImages/update.png" Margin="190,40,-9,0"  MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
-        <Label Name="shopName" Height="21" Background="LightSkyBlue" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="0,3,2,0" />
+        <Image Name="DeleteImageIcon" VerticalAlignment="Top" Height="21" Source="../IconImages/del.png" Cursor="Hand" Margin="163,38,16,0"   MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
+            <Image Name="UpdateImageIcon" VerticalAlignment="Top" Height="18" Source="../IconImages/update.png" Margin="190,40,-9,0" Cursor="Hand"  MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
+            <Label Name="shopName" Background="LightSkyBlue" Content="Shop name" HorizontalAlignment="Center"  VerticalContentAlignment="Top" Margin="16,10,0,23" Width="173" />
     </Grid>
 
 

@@ -148,4 +148,6 @@ public partial class MainMenuPage : Page
             Application.Current.Shutdown();
         }
     }
+
+  
 }

@@ -4,19 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         x:Name="Window"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#FF4282D8" WindowStyle="None" Width="800" Height="535">
+        Title="MainWindow" KeyDown="MainWindow_OnKeyDown"  WindowStyle="None" MaxWidth="800" MaxHeight="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="365*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="387*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Top" Background="Blue" Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1">
+        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="Blue" Margin="0 0 5 5 " Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1" Grid.ColumnSpan="3">
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
-            <Button x:Name="exit_btn" Content="X" Click="Page1_Click" Height="30" Width="40" HorizontalAlignment="Right" Background="Blue" FontSize="20" FontFamily="Arial" FontWeight="Bold" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" BorderBrush="Blue"/>
+
+            <Button x:Name="exit_btn" Height="30" Background="Blue" FontSize="12" Click="Page1_Click" HorizontalAlignment="Right" Content="X" FontWeight="Bold" Width="40" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" />
         </DockPanel>
-        <Frame x:Name="mainframe" Margin="-8,30,0,0" NavigationUIVisibility="Hidden" Height="505" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Frame x:Name="mainframe" Margin="-8,25,0,0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
     </Grid>
 </Window>
