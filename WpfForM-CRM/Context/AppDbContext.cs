@@ -8,6 +8,8 @@ namespace WpfForM_CRM.Context
         
         public DbSet<User> Users => Set<User>();
         public DbSet<Shop> Shops => Set<Shop>();
+        public DbSet<Category> Categories => Set<Category>();
+            
 
         //public AppDbContext(DbContextOptions<AppDbContext>  options) : base(options) { }
 

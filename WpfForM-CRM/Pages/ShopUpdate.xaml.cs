@@ -50,6 +50,13 @@ namespace WpfForM_CRM.Pages
             Close();
         }
 
-       
+
+        private void ShopUpdate_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(sender,e);
+            }
+        }
     }
 }

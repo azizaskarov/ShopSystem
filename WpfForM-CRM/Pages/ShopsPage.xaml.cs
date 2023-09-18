@@ -35,8 +35,8 @@ public partial class ShopsPage : Page
         foreach (var shop in shops)
         {
             var model = new ShopControl(this);
-            model.Width = 200;
-            model.Height = 40;
+            //model.Width = 200;
+            //model.Height = 40;
             model.Name = shop.Name;
             list.Add(model);
         }
@@ -75,7 +75,7 @@ public partial class ShopsPage : Page
             model.Name = shop.Name;
             list.Add(model);
         }
-
+        
         shopsFrame.ItemsSource = list;
     }
 }
