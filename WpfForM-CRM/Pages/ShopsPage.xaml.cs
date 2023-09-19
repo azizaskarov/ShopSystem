@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,10 +13,15 @@ namespace WpfForM_CRM.Pages;
 /// </summary>
 public partial class ShopsPage : Page
 {
-    public ShopsPage()
+    private MainWindow window;
+    public ShopsPage(MainWindow window)
     {
+        this.window = window;
         InitializeComponent();
     }
+
+    public Guid ShopId { get; set; }
+    public Guid? CategoryId { get; set; }
 
     public void Load()
     {
@@ -28,6 +34,7 @@ public partial class ShopsPage : Page
             var model = new ShopControl(this);
             //model.Width = 200;
             //model.Height = 40;
+            ShopId = shop.Id;
             model.Name = shop.Name;
             list.Add(model);
         }
@@ -37,32 +44,52 @@ public partial class ShopsPage : Page
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
+        AddButton.Visibility = Visibility.Collapsed;
+        SearchText.Visibility = Visibility.Visible;
+        poisk.Visibility = Visibility.Visible;
         Load();
     }
 
     private void Button_AddShop(object sender, RoutedEventArgs e)
     {
-        Add add = new Add(this);
+        Add add = new Add(mainWindow:window, this);
         add.ShowDialog();
     }
 
-    public void ReadCategories()
+    public void ReadCategories(Guid shopId)
     {
+        SearchText.Visibility = Visibility.Collapsed;
+        poisk.Visibility = Visibility.Collapsed;
+
+        AddButton.Visibility = Visibility.Visible;
+        
         var db = new AppDbContext();
-        var shops = db.Categories.ToList();
+        var categories = db.Categories.ToList();
         var list = new List<ShopControl>();
 
-        foreach (var shop in shops)
+        foreach (var category in categories)
         {
             var model = new ShopControl(this);
             //model.Width = 200;
             //model.Height = 40;
-            model.Name = shop.Title;
-            list.Add(model);
+            model.Name = category.Title;
+
+            if (shopId == category.ShopId)
+            {
+                  list.Add(model);
+            }
+          
         }
 
         shopsFrame.ItemsSource = list;
     }
+
+    public void AddCategoryButton(object sender, RoutedEventArgs e)
+    {
+        var category = new AddCategory(window, this, ShopId);
+        category.ShowDialog();
+    }
+
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {
         var searchTxt = SearchText.Text;
@@ -78,12 +105,13 @@ public partial class ShopsPage : Page
         foreach (var shop in matchingShops)
         {
             var model = new ShopControl(this);
-            model.Width = 200;
-            model.Height = 40;
+            //model.Width = 200;
+            //model.Height = 40;
             model.Name = shop.Name;
             list.Add(model);
         }
         
         shopsFrame.ItemsSource = list;
+
     }
 }

@@ -16,9 +16,10 @@ public partial class MainMenuPage : Page
 {
     private int eye_counter = 0;
     private string password_change = string.Empty;
-
-    public MainMenuPage(bool enter = false, string login = "", string parol = "")
+    private MainWindow mainWindow;
+    public MainMenuPage(MainWindow mainWindow, bool enter = false, string login = "", string parol = "")
     {
+        this.mainWindow = mainWindow;
         InitializeComponent();
         EnterTextBox(enter, login, parol);
     }
@@ -42,7 +43,7 @@ public partial class MainMenuPage : Page
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        MainPage.NavigationService.Navigate(new RegistrationPage());
+        MainPage.NavigationService.Navigate(new RegistrationPage(mainWindow));
     }
 
     private void enter_btn_Click(object sender, RoutedEventArgs e)
@@ -64,7 +65,7 @@ public partial class MainMenuPage : Page
             try
             {
                 var user = dbContext.Users.FirstOrDefault(u => u.UserName == username);
-                var page = new RegistrationPage();
+                var page = new RegistrationPage(mainWindow);
                 var hash = page.GenerateHash(password);
                 var invisibleHash = page.GenerateHash(invisiblePassword);
 
@@ -82,7 +83,7 @@ public partial class MainMenuPage : Page
                     {
                         Properties.Settings.Default.Name = username;
                     }
-                    MainPage.NavigationService.Navigate(new ShopsPage());
+                    MainPage.NavigationService.Navigate(new ShopsPage(mainWindow));
                 }
                 else
                 {

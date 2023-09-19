@@ -16,26 +16,12 @@ namespace WpfForM_CRM;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private int second = 0;
-    private int hour = 0;
-    private int minut = 0;
+    
     public MainWindow()
     {
-        var db = new AppDbContext();
-        var category = new Category()
-        {
-            Title = "nom"
-        };
-        var category1 = new Category()
-        {
-            Title = "nom1"
-        };
-
-        db.Categories.Add(category);
-        db.Categories.Add(category1);
-        db.SaveChanges();
+        
         InitializeComponent();
-        mainframe.Navigate(new MainMenuPage());
+        mainframe.Navigate(new MainMenuPage(this));
         exit_btn.Background = Brushes.Blue;
     }
 
@@ -75,5 +61,4 @@ public partial class MainWindow : Window
         }
     }
 
-   
 }

@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230919034352_init")]
+    [Migration("20230919104738_init")]
     partial class init
     {
         /// <inheritdoc />

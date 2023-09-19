@@ -19,15 +19,17 @@ namespace WpfForM_CRM.Pages
         private int eye_counter = 0;
         private int eye_counter2 = 0;
 
-        public RegistrationPage()
+        private MainWindow mainWindow;
+        public RegistrationPage(MainWindow mainWindow)
         {
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
 
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            RegisterPage.NavigationService.Navigate(new MainMenuPage());
+            RegisterPage.NavigationService.Navigate(new MainMenuPage(mainWindow));
         }
 
         private void reg_btn_Click(object sender, RoutedEventArgs e)
@@ -73,7 +75,7 @@ namespace WpfForM_CRM.Pages
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
 
-            NavigationService.Navigate(new MainMenuPage());
+            NavigationService.Navigate(new MainMenuPage(mainWindow));
 
         }
 
@@ -103,7 +105,7 @@ namespace WpfForM_CRM.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RegisterPage.NavigationService.Navigate(new MainMenuPage());
+            RegisterPage.NavigationService.Navigate(new MainMenuPage(mainWindow));
         }
 
         private void pass_name_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
