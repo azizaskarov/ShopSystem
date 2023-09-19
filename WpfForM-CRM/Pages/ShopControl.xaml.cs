@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using WpfForM_CRM.Context;
 
 namespace WpfForM_CRM.Pages;
@@ -73,5 +72,9 @@ public partial class ShopControl : UserControl
         Button_Update(sender, e);
     }
 
- 
+
+    private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        shopsPage.ReadCategories();
+    }
 }

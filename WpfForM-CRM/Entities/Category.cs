@@ -8,5 +8,4 @@ public class Category
     public required string Title { get; set; }
     public DateTime CreatedDate { get; set; }
     public Guid ShopId { get; set; }
-
 }

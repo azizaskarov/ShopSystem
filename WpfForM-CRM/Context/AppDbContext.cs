@@ -15,7 +15,7 @@ namespace WpfForM_CRM.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;database=mcrmshopDb;user=root;",
+            optionsBuilder.UseMySql("server=localhost;database=mydb;user=root; password=5432",
                 ServerVersion.Parse("8.0.24-mysql"));
         }
 

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 
 namespace WpfForM_CRM.Pages;
 
@@ -55,6 +46,23 @@ public partial class ShopsPage : Page
         add.ShowDialog();
     }
 
+    public void ReadCategories()
+    {
+        var db = new AppDbContext();
+        var shops = db.Categories.ToList();
+        var list = new List<ShopControl>();
+
+        foreach (var shop in shops)
+        {
+            var model = new ShopControl(this);
+            //model.Width = 200;
+            //model.Height = 40;
+            model.Name = shop.Title;
+            list.Add(model);
+        }
+
+        shopsFrame.ItemsSource = list;
+    }
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {
         var searchTxt = SearchText.Text;

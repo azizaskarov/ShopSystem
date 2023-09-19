@@ -2,6 +2,7 @@
 
 namespace WpfForM_CRM.Entities;
 
+
 public class User
 {
     public Guid Id { get; set; }

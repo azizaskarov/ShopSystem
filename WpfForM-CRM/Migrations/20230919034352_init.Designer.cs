@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230915060019_init")]
+    [Migration("20230919034352_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -21,6 +21,27 @@ namespace WpfForM_CRM.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
                 {

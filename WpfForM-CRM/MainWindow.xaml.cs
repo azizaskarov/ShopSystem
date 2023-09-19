@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 using WpfForM_CRM.Pages;
 
 namespace WpfForM_CRM;
@@ -18,6 +21,19 @@ public partial class MainWindow : Window
     private int minut = 0;
     public MainWindow()
     {
+        var db = new AppDbContext();
+        var category = new Category()
+        {
+            Title = "nom"
+        };
+        var category1 = new Category()
+        {
+            Title = "nom1"
+        };
+
+        db.Categories.Add(category);
+        db.Categories.Add(category1);
+        db.SaveChanges();
         InitializeComponent();
         mainframe.Navigate(new MainMenuPage());
         exit_btn.Background = Brushes.Blue;
