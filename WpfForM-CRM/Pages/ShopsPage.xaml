@@ -41,8 +41,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-
-        <Button x:Name="AddButton" Margin="516,8,24,410" Content="Add category" FontSize="10" Click="AddCategoryButton" Cursor="Hand" Visibility="Visible" Grid.Column="1"/>
+                             
         <TextBox x:Name="SearchText" md:HintAssist.Hint="  Search" md:HintAssist.HintOpacity="0.3" md:TextFieldAssist.TextFieldCornerRadius="7" FontSize="12" Padding=".1" Grid.Column="2" TextWrapping="Wrap" Height="19" Width="320" VerticalAlignment="Top" Background="FloralWhite" Margin="146,-2,165,0" TextChanged="search_txt_TextChanged" Grid.ColumnSpan="2" />
     </Grid>
 

@@ -5,11 +5,10 @@ namespace WpfForM_CRM.Context
 {
     public class AppDbContext : DbContext
     {
-        
+
         public DbSet<User> Users => Set<User>();
         public DbSet<Shop> Shops => Set<Shop>();
-        public DbSet<Category> Categories => Set<Category>();
-            
+
 
         //public AppDbContext(DbContextOptions<AppDbContext>  options) : base(options) { }
 
@@ -44,6 +43,24 @@ namespace WpfForM_CRM.Context
                 entity.HasIndex(sh => sh.Name)
                      .IsUnique();
             });
+
+
+            //modelBuilder.Entity<Category>(entity =>
+            //{
+            //    entity.HasKey(e => e.Id);
+
+            //    entity.Property(e => e.Title)
+            //        .HasMaxLength(255)
+            //        .IsRequired(); 
+
+            //    entity.HasOne(c => c.Shop) 
+            //        .WithMany(s => s.Categories)
+            //        .HasForeignKey(c => c.ShopId)
+            //        .IsRequired();
+
+            //    entity.HasIndex(c => c.Title)
+            //        .IsUnique();
+            //});
         }
     }
 }

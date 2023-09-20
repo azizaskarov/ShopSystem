@@ -13,7 +13,7 @@ namespace WpfForM_CRM.Pages;
 /// </summary>
 public partial class Add : Window
 {
-    private ShopsPage shopsPage { get; set; }
+    private ShopsPage shopsPage;
     public Add(MainWindow mainWindow, ShopsPage shopsPage)
     {
         InitializeComponent();
@@ -44,10 +44,10 @@ public partial class Add : Window
         var shop = new Shop()
         {
             Name = shopname.Text,
-            Owner = Properties.Settings.Default.Name
+            Owner = Properties.Settings.Default.Name,
         };
 
-        shopsPage.ShopId = shop.Id;
+        //shopsPage.ShopId = shop.Id;
         db.Shops.Add(shop);
         db.SaveChanges();
         shopsPage.Load();

@@ -16,10 +16,10 @@
             <ColumnDefinition Width="46*"/>
             <ColumnDefinition Width="387*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="Blue" Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1" Grid.ColumnSpan="3">
+        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightSkyBlue" Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1" Grid.ColumnSpan="3">
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
 
-            <Button x:Name="exit_btn" Height="30" Background="Blue" FontSize="12" Click="Page1_Click" HorizontalAlignment="Right" Content="X" FontWeight="Bold" Width="40" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" />
+            <Button x:Name="exit_btn" Height="30" Background="LightSkyBlue"  FontSize="12" Click="Page1_Click" HorizontalAlignment="Right" Content="X" FontWeight="Bold" Width="40" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" />
         </DockPanel>
         <Frame x:Name="mainframe" Margin="-8,25,0,0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
     </Grid>

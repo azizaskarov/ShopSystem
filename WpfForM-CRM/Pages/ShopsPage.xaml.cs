@@ -34,7 +34,7 @@ public partial class ShopsPage : Page
             var model = new ShopControl(this);
             //model.Width = 200;
             //model.Height = 40;
-            ShopId = shop.Id;
+            model.ShopId = shop.Id;
             model.Name = shop.Name;
             list.Add(model);
         }
@@ -44,7 +44,6 @@ public partial class ShopsPage : Page
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
-        AddButton.Visibility = Visibility.Collapsed;
         SearchText.Visibility = Visibility.Visible;
         poisk.Visibility = Visibility.Visible;
         Load();
@@ -56,39 +55,36 @@ public partial class ShopsPage : Page
         add.ShowDialog();
     }
 
-    public void ReadCategories(Guid shopId)
-    {
-        SearchText.Visibility = Visibility.Collapsed;
-        poisk.Visibility = Visibility.Collapsed;
+    //public void ReadCategories()
+    //{
+    //    SearchText.Visibility = Visibility.Collapsed;
+    //    poisk.Visibility = Visibility.Collapsed;
 
-        AddButton.Visibility = Visibility.Visible;
+    //    AddButton.Visibility = Visibility.Visible;
         
-        var db = new AppDbContext();
-        var categories = db.Categories.ToList();
-        var list = new List<ShopControl>();
+    //    var db = new AppDbContext();
+    //    var categories = db.Categories.Where(category => category.ShopId == ShopId)
+    //        .OrderByDescending(category => category.CreatedDate).ToList();
+    //    var categoryControls = new List<CategoryControl>();
 
-        foreach (var category in categories)
-        {
-            var model = new ShopControl(this);
-            //model.Width = 200;
-            //model.Height = 40;
-            model.Name = category.Title;
+    //    foreach (var category in categories)
+    //    {
+    //        var categoryControl = new CategoryControl(this);
+    //        //categoryControl.Width = 200;
+    //        //categoryControl.Height = 40;
+    //        categoryControl.CategoryTitle = category.Title;
+    //        categoryControl.CategoryId = category.Id;
+    //        categoryControls.Add(categoryControl);
+    //    }
 
-            if (shopId == category.ShopId)
-            {
-                  list.Add(model);
-            }
-          
-        }
+    //    shopsFrame.ItemsSource = categoryControls;
+    //}
 
-        shopsFrame.ItemsSource = list;
-    }
-
-    public void AddCategoryButton(object sender, RoutedEventArgs e)
-    {
-        var category = new AddCategory(window, this, ShopId);
-        category.ShowDialog();
-    }
+    //public void AddCategoryButton(object sender, RoutedEventArgs e)
+    //{
+    //    var category = new AddCategory(window, this);
+    //    category.ShowDialog();
+    //}
 
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {

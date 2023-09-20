@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +15,11 @@ public partial class ShopControl : UserControl
     {
         get { return shopName.Content; }
         set { shopName.Content = value; }
+    }
+    public object ShopId
+    {
+        get { return shopId.Content; }
+        set { shopId.Content = value; }
     }
 
 
@@ -86,16 +92,9 @@ public partial class ShopControl : UserControl
         UpdateImageIcon.Visibility = Visibility.Hidden;
     }
 
-    private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        var shop = appDbContext.Shops.FirstOrDefault(shop => shop.Name == shopName.Content);
-        if (shop != null)
-        {
-            DeleteImageIcon.Visibility = Visibility.Visible;
-            UpdateImageIcon.Visibility = Visibility.Visible;
-            shopsPage.ReadCategories(shop.Id);
-        }
-       
-
-    }
+    //private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    //{
+    //    shopsPage.ShopId = (Guid)ShopId;
+    //    shopsPage.ReadCategories();
+    //}
 }

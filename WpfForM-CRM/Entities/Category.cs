@@ -9,5 +9,7 @@ public class Category
     public Guid Id { get; set; }
     public required string Title { get; set; }
     public DateTime CreatedDate { get; set; }
-    public required Guid ShopId { get; set; }
+
+    public Guid? ShopId { get; set; }
+    public Shop? Shop { get; set; }
 }
