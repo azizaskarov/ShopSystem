@@ -13,7 +13,7 @@
 
         <!--<Label Content="Логин " md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,142,0,0" FontSize="20" Padding="50,0,0,0" Foreground="Black" FontFamily="Arial" FontWeight="Bold"/>-->
         <!--<Label Content="Пароль" md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,212,0,0" FontSize="20" Padding="50,0,0,0" Background="Transparent" Foreground="Black" FontWeight="Bold"/>-->
-
+        <TextBlock  FontSize="30" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
         <TextBox 
             md:TextFieldAssist.TextFieldCornerRadius="5"
             x:Name="parol_tx" 
@@ -54,7 +54,7 @@
         <Button x:Name="enter_btn" Content="Входить" md:ButtonAssist.CornerRadius="5" Cursor="Hand" Background="LightSkyBlue" HorizontalAlignment="Left" Height="45" Margin="300,336,0,0" VerticalAlignment="Top" Width="256"
                 FontSize="24"  Click="enter_btn_Click" FontFamily="Arial" RenderTransformOrigin="0,0" Foreground="Black"/>
 
-        <Button Content="Регистр" Cursor="Hand"  HorizontalAlignment="Left" Background="White"   Margin="10,20,0,0" VerticalAlignment="Top" Width="122" Height="45" FontSize="24" Click="Button_Click" FontFamily="Arial"
+        <Button Content="Регистр" Cursor="Hand"  HorizontalAlignment="Left" Background="White"   Margin="10,20,0,0" VerticalAlignment="Top" Width="122" Height="45" FontSize="22" Click="Button_Click" FontFamily="Arial"
                 md:ButtonAssist.CornerRadius="4" BorderBrush="#FF4282D8" RenderTransformOrigin="0.335,0.64" Foreground="Black"/>
 
         <CheckBox x:Name="checkMe" Content="Запомнить меня" HorizontalAlignment="Left" Height="25" Margin="227,300,0,0" VerticalAlignment="Top" Width="140"/>
