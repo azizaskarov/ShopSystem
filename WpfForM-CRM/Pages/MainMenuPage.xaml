@@ -24,6 +24,7 @@
             FontFamily="Times New Roman" 
             TextChanged="parol_tx_TextChanged"/>
 
+
         <PasswordBox 
             md:TextFieldAssist.TextFieldCornerRadius="5"
             x:Name="parol_txt" 
