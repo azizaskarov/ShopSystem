@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -23,8 +24,8 @@ public partial class Add : Window
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        
-        
+
+
         var db = new AppDbContext();
 
         if ((db.Shops.Any(sh => sh.Name == shopname.Text)))
@@ -44,9 +45,9 @@ public partial class Add : Window
         var shop = new Shop()
         {
             Name = shopname.Text,
-            UserId = (Guid)shopsPage.userId,
+            UserId =(Guid)shopsPage.userId,
             Owner = Properties.Settings.Default.Name,
-            
+
         };
 
         //var user = db.Users.FirstOrDefault(user => user.Id == shopsPage.userId);
@@ -56,9 +57,14 @@ public partial class Add : Window
         //    db.Users.Update(user);
         //}
 
-        
+
         //shopsPage.ShopId = shop.Id;
         db.Shops.Add(shop);
+
+        var user = db.Users.FirstOrDefault(u => u.Id == shopsPage.userId);
+        user.Shops.Add(shop);
+        db.Users.Update(user);
+
         db.SaveChanges();
         shopsPage.Load();
         Close();
@@ -79,7 +85,7 @@ public partial class Add : Window
     {
         if (e.Key == Key.Enter)
         {
-            Button_Click(sender,e);
+            Button_Click(sender, e);
         }
     }
 }

@@ -9,10 +9,43 @@
 
     <Grid >
         <Label Name="shopId" Visibility="Hidden"/>
-        <Border Background="LightSkyBlue" CornerRadius="5" />
-        <Image Name="DeleteImageIcon" VerticalAlignment="Top" Height="20" Source="../IconImages/del.png" Visibility="Hidden"  Margin="180,7,-1,0" Cursor="Hand"  MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
-        <Image Name="UpdateImageIcon" VerticalAlignment="Top" Height="18" Source="../IconImages/update.png" Visibility="Hidden" Margin="182,42,-1,0" Cursor="Hand"   MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
-        <Label Name="shopName" FontWeight="DemiBold"  Content="Name" Background="LightSkyBlue"  FontSize="16"  HorizontalAlignment="Center" Cursor="Hand"   BorderBrush="LightSkyBlue" VerticalContentAlignment="Top" Margin="0,12,0,29" Width="116" />
+
+        <Border Background="DarkSeaGreen" CornerRadius="5" />
+
+        <Image 
+            Name="DeleteImageIcon" 
+            VerticalAlignment="Top" 
+            Height="20" 
+            Source="../IconImages/del.png" 
+            Visibility="Hidden"  
+            Margin="180,7,-1,0" 
+            Cursor="Hand"  
+            MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
+
+        <Image 
+            Name="UpdateImageIcon" 
+            VerticalAlignment="Top" 
+            Height="18" 
+            Source="../IconImages/update.png" 
+            Visibility="Hidden" 
+            Margin="182,42,-1,0" 
+            Cursor="Hand"   
+            MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
+
+        <Label 
+            md:TextFieldAssist.SuffixText="ali" 
+            Name="shopName" 
+            FontWeight="DemiBold"
+            Content="Name" 
+            HorizontalContentAlignment="Center" 
+            Foreground="Black" 
+            Background="DarkSeaGreen"  
+            FontSize="16"  
+            HorizontalAlignment="Center" 
+            Cursor="Hand"   
+            BorderBrush="DarkSeaGreen" 
+            VerticalContentAlignment="Top" 
+            Margin="0,12,0,29" Width="161" />
     </Grid>
 
 

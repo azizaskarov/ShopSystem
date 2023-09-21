@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="IconImages\del.png" />
     <None Remove="IconImages\home.png" />
+    <None Remove="IconImages\lock.png" />
     <None Remove="IconImages\update.png" />
     <None Remove="Pages\eye close.png" />
     <None Remove="Pages\eye open.png" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <Resource Include="IconImages\del.png" />
     <Resource Include="IconImages\home.png" />
+    <Resource Include="IconImages\lock.png" />
     <Resource Include="IconImages\update.png" />
     <Resource Include="Pages\eye close.png" />
     <Resource Include="Pages\eye open.png" />
