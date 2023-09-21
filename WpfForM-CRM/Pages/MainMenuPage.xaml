@@ -10,7 +10,6 @@
       Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Height="500" Width="800" Background="#D8D8D8">
 
     <Grid >
-
         <!--<Label Content="Логин " md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,142,0,0" FontSize="20" Padding="50,0,0,0" Foreground="Black" FontFamily="Arial" FontWeight="Bold"/>-->
         <!--<Label Content="Пароль" md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,212,0,0" FontSize="20" Padding="50,0,0,0" Background="Transparent" Foreground="Black" FontWeight="Bold"/>-->
         <TextBlock  FontSize="30" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
