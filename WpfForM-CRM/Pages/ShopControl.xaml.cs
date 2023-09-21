@@ -63,7 +63,7 @@ public partial class ShopControl : UserControl
         if (shop != null)
         {
             var shopId = shop.Id;
-            var update = new ShopUpdate(shopsPage, shopId);
+            var update = new ShopUpdate(shopsPage, shopId, shop.Name);
             update.ShowDialog();
         }
     }

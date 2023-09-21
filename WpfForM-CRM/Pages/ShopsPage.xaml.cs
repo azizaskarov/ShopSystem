@@ -14,9 +14,15 @@ namespace WpfForM_CRM.Pages;
 public partial class ShopsPage : Page
 {
     private MainWindow window;
-    public ShopsPage(MainWindow window)
+    public Guid userId;
+    private AppDbContext appDbContext;
+    public ShopsPage(MainWindow window, Guid userId)
     {
+        ;
         this.window = window;
+        this.userId = userId;
+        this.appDbContext = new AppDbContext();
+        //User? user = appDbContext.Users.FirstOrDefault(u => u.Id == userId);
         InitializeComponent();
     }
 
@@ -26,7 +32,13 @@ public partial class ShopsPage : Page
     public void Load()
     {
         var db = new AppDbContext();
-        var shops = db.Shops.ToList();
+        var shops = db.Shops.Where(shop => shop.UserId == userId).ToList();
+
+        //if (shops != null)
+        //{
+        //    MessageBox.Show("You  have not shops");
+        //    return;
+        //}
         var list = new List<ShopControl>();
 
         foreach (var shop in shops)
@@ -39,13 +51,15 @@ public partial class ShopsPage : Page
             list.Add(model);
         }
 
+        addShopButton.Visibility = Visibility.Visible;
         shopsFrame.ItemsSource = list;
     }
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
+        addShopButton.Visibility = Visibility.Visible;
         SearchText.Visibility = Visibility.Visible;
-        poisk.Visibility = Visibility.Visible;
+        //poisk.Visibility = Visibility.Visible;
         Load();
     }
 
@@ -93,7 +107,7 @@ public partial class ShopsPage : Page
         var dbContext = new AppDbContext();
 
         var matchingShops = dbContext.Shops
-            .Where(shop => shop.Name.Contains(searchTxt))
+            .Where(shop => shop.Name.Contains(searchTxt) && shop.UserId == userId)
             .ToList();
 
         var list = new List<ShopControl>();

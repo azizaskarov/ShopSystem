@@ -30,6 +30,10 @@ namespace WpfForM_CRM.Context
 
                 entity.HasIndex(e => e.UserName)
                     .IsUnique();
+                entity.HasMany(user => user.Shops)
+                    .WithOne(shop => shop.User)
+                    .HasForeignKey(shop => shop.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
 
@@ -40,8 +44,7 @@ namespace WpfForM_CRM.Context
                 entity.Property(e => e.Name)
                     .HasMaxLength(50);
 
-                entity.HasIndex(sh => sh.Name)
-                     .IsUnique();
+                entity.HasIndex(shop => shop.Name).IsUnique();
             });
 
 

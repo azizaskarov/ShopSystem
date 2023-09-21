@@ -16,8 +16,8 @@ public partial class Add : Window
     private ShopsPage shopsPage;
     public Add(MainWindow mainWindow, ShopsPage shopsPage)
     {
-        InitializeComponent();
         this.shopsPage = shopsPage;
+        InitializeComponent();
     }
 
 
@@ -44,9 +44,19 @@ public partial class Add : Window
         var shop = new Shop()
         {
             Name = shopname.Text,
+            UserId = (Guid)shopsPage.userId,
             Owner = Properties.Settings.Default.Name,
+            
         };
 
+        //var user = db.Users.FirstOrDefault(user => user.Id == shopsPage.userId);
+        //if (user != null)
+        //{
+        //    user.Shops.Add(shop);
+        //    db.Users.Update(user);
+        //}
+
+        
         //shopsPage.ShopId = shop.Id;
         db.Shops.Add(shop);
         db.SaveChanges();

@@ -10,97 +10,127 @@
 
 
     <Grid Background="#D8D8D8">
-        <!--<TextBox x:Name="pass2" Width="0"  Height="35" FontSize="36"  TextChanged="pass2_TextChanged" 
-                 PreviewTextInput="pass2_PreviewTextInput"/>-->
 
-        <TextBox x:Name="pass2"  Height="35" FontSize="36"  TextChanged="pass2_TextChanged" 
-                 PreviewTextInput="pass2_PreviewTextInput" Width="358"/>
-        <TextBox x:Name="con_pass2" Width="300"  Height="35"  FontSize="36" FontFamily="Times New Roman" TextChanged="con_pass2_TextChanged"   PreviewTextInput="con_pass2_PreviewTextInput"/>
+        <TextBlock  FontSize="34" Text="Регистр" FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
 
-        <Button x:Name="loginButton"
-                md:ButtonAssist.CornerRadius="6"
-                BorderBrush="LightSkyBlue"
-                Content="Войти " Height="45"
-                VerticalAlignment="Top" 
-                Click="Button_Click" 
-                Margin="28,19,698,0"/>
-        <!--<Button Content="Логин" FontSize="24" md:ButtonAssist.CornerRadius="5"  BorderBrush="#FF4282D8" Background="White" Margin="0,413,67,0" VerticalAlignment="Top" Height="34" Width="110" " FontFamily="Arial" Foreground="Black" HorizontalAlignment="Right"
-                MinWidth="0" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5"/>-->
-        <Image x:Name="pass_name"  HorizontalAlignment="Left" Height="35" Margin="623,201,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="pass_name_MouseLeftButtonDown" RenderTransformOrigin="0.42,0.646" />
-        <Image x:Name="conpassname" HorizontalAlignment="Left" Height="35" Margin="638,285,0,0" VerticalAlignment="Top" Width="30" Source="/Pages/eye open.png" MouseLeftButtonDown="conpassname_MouseLeftButtonDown" RenderTransformOrigin="0.567,0.086"/>
-        <Border Background="White"  Width="400" Height="350" HorizontalAlignment="Center" CornerRadius="10">
-            <StackPanel>
-                <TextBlock Margin="0 5" FontSize="24" Text="Регистрация" FontWeight="SemiBold" VerticalAlignment="Center" TextAlignment="Center" Height="42"/>
-                <!--<TextBox x:Name="login_txt" md:TextFieldAssist.TextFieldCornerRadius="5" Width="500" Height="50" Background="White" Margin="153,103,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="35" PreviewTextInput="login_txt_PreviewTextInput"/>-->
-                <TextBox Name="login_txt"
-                         md:HintAssist.Hint=" Имя пользователя" 
-                         FontSize="13" Height="35" 
-                         md:HintAssist.HintOpacity="0.4" 
-                         PreviewTextInput="login_txt_PreviewTextInput"
-                         md:TextFieldAssist.TextFieldCornerRadius="10" 
-                         Margin="20 20 20 0" Padding="8" BorderThickness="0" 
-                         Background="#F7F1F1"/>
+        <TextBox 
+            md:TextFieldAssist.TextFieldCornerRadius="5"
+            x:Name="pass2" 
+            Background="White" 
+            HorizontalAlignment="Left" 
+            Height="45" Margin="228,240,0,0" 
+            VerticalAlignment="Top"  Width="400" 
+            MaxLength="20" FontSize="24" 
+            FontFamily="Times New Roman" 
+            TextChanged="pass2_TextChanged"  
+            PreviewTextInput="pass2_PreviewTextInput"/>
 
+        <PasswordBox 
+            md:TextFieldAssist.TextFieldCornerRadius="5"
+            x:Name="pass" 
+            md:HintAssist.Hint=" Введите пароль" 
+            Background="White" HorizontalAlignment="Left" 
+            Height="45" Margin="228,240,0,0" 
+            VerticalAlignment="Top" Width="400" 
+            PasswordChar="*" MaxLength="20" FontSize="22"
+            AllowDrop="True" 
+            PreviewTextInput="pass_PreviewTextInput"
+            IsVisibleChanged="pass_IsVisibleChanged"/>
 
+        <TextBox 
+            x:Name="login_txt" 
+            md:HintAssist.Hint=" Имя пользователя" 
+            md:TextFieldAssist.TextFieldCornerRadius="5" 
+            Background="White"
+            HorizontalAlignment="Left" 
+            Margin="226,163,0,0" 
+            TextWrapping="Wrap" 
+            VerticalAlignment="Top" 
+            Width="400" Height="45" 
+            FontSize="22"  
+            HorizontalContentAlignment="Left" 
+            PreviewTextInput="login_txt_PreviewTextInput"
+             />
 
-                <!--< pass1 PasswordBox x:Name="pass" Background="White" md:TextFieldAssist.TextFieldCornerRadius="5" Width="500" Height="50" HorizontalAlignment="Left" Margin="159,189,0,0" VerticalAlignment="Top" FontSize="36"
-                FontFamily="Times New Roman" IsVisibleChanged="pass_IsVisibleChanged" MaxLength="20" PreviewTextInput="pass_PreviewTextInput"/>-->
-                
-                    <PasswordBox  Name="pass"
-                             md:HintAssist.Hint=" Введите пароль" 
-                             FontSize="13" Height="35" 
-                             md:HintAssist.HintOpacity="0.4" 
-                             IsVisibleChanged="pass_IsVisibleChanged"
-                             PreviewTextInput="login_txt_PreviewTextInput"
-                             md:TextFieldAssist.TextFieldCornerRadius="10" 
-                             Margin="20 30" Padding="8" BorderThickness="0" 
-                             Background="#F7F1F1">
+        <TextBox 
+            md:TextFieldAssist.TextFieldCornerRadius="5"
+            x:Name="con_pass2" 
+            Background="White" 
+            HorizontalAlignment="Left" 
+            Height="45" Margin="228,311,0,0" 
+            VerticalAlignment="Top"  Width="400" 
+            MaxLength="20" FontSize="24" 
+            FontFamily="Times New Roman" 
+            TextChanged="con_pass2_TextChanged"  
+            PreviewTextInput="con_pass2_PreviewTextInput"/>
 
-                    </PasswordBox>
-                   
-                
+        <PasswordBox 
+            md:TextFieldAssist.TextFieldCornerRadius="5"
+            x:Name="con_pass" 
+            md:HintAssist.Hint=" Введите пароль еще раз" 
+            Background="White" HorizontalAlignment="Left" 
+            Height="45" Margin="228,311,0,0" 
+            VerticalAlignment="Top" Width="400" 
+            PasswordChar="*" 
+            MaxLength="20"
+            FontSize="22"
+            AllowDrop="True" 
+            PreviewTextInput="con_pass_PreviewTextInput"
+            IsVisibleChanged="con_pass_IsVisibleChanged"/>
 
-                <!--<pass2 PasswordBox x:Name="con_pass" Width="500" md:TextFieldAssist.TextFieldCornerRadius="5" Height="50" Background="White" 
-                HorizontalAlignment="Left"  Margin="159,288,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Sitka Text Semibold" IsVisibleChanged="con_pass_IsVisibleChanged" MaxLength="20" PreviewTextInput="con_pass_PreviewTextInput"/>-->
-                <PasswordBox Name="con_pass"
-                             md:HintAssist.Hint=" Введите пароль еще раз" 
-                             FontSize="13" Height="35" 
-                             md:HintAssist.HintOpacity="0.4" 
-                             PreviewTextInput="login_txt_PreviewTextInput"
-                             md:TextFieldAssist.TextFieldCornerRadius="10" 
-                             Margin="20 0" Padding="8" BorderThickness="0" 
-                             Background="#F7F1F1"/>
+        <Button 
+            x:Name="enter_btn" 
+            Content="Зарегистрация" 
+            md:ButtonAssist.CornerRadius="5" 
+            Cursor="Hand" 
+            Background="LightSkyBlue" 
+            HorizontalAlignment="Left" 
+            Height="45" 
+            Margin="300,390,0,0" 
+            VerticalAlignment="Top" 
+            Width="256"
+            FontSize="24"  
+            Click="reg_btn_Click" 
+            FontFamily="Arial" 
+            RenderTransformOrigin="0,0" 
+            Foreground="Black"/>
 
+        <Button 
+            Content="Назад" 
+            Cursor="Hand"  
+            HorizontalAlignment="Left" 
+            Background="White"   
+            Margin="10,20,0,0" 
+            VerticalAlignment="Top" 
+            Width="122" Height="45" 
+            FontSize="22" 
+            Click="Button_Click" 
+            FontFamily="Arial"
+            md:ButtonAssist.CornerRadius="4" 
+            BorderBrush="#FF4282D8" 
+            RenderTransformOrigin="0.335,0.64"
+            Foreground="Black"/>
 
-                <!--<Button  x:Name="reg_btn" Width="200" HorizontalContentAlignment="Center " Cursor="Hand" Height="46" md:ButtonAssist.CornerRadius="5" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,358,0,0"
-                Content="Регистр" FontSize="36" Click="reg_btn_Click" FontFamily="Arial"
-                         BorderBrush="Black" Foreground="White"/>-->
-                <Button Name="reg_btn" 
-                        BorderBrush="Purple"
-                        md:ButtonAssist.CornerRadius="6"
-                        FontSize="16" FontWeight="Bold"   FontStretch="Normal"
-                        Click="reg_btn_Click"
-                        Margin="40 30" Background="LightSkyBlue"
-                        Width="200" Height="45" Content="Зарегистрация " />
+        <Image 
+            x:Name="pass_name"  
+            HorizontalAlignment="Left" 
+            Height="35" 
+            Margin="598,250,0,0" 
+            VerticalAlignment="Top" 
+            Width="30"
+            Source="/Pages/eye open.png" 
+            MouseLeftButtonDown="pass_name_MouseLeftButtonDown" 
+            RenderTransformOrigin="0.42,0.646" />
 
+        <Image 
+            x:Name="conpassname" 
+            HorizontalAlignment="Left" 
+            Height="36" Margin="598,318,0,0" 
+            VerticalAlignment="Top" 
+            Width="30" 
+            Source="/Pages/eye open.png" 
+            MouseLeftButtonDown="conpassname_MouseLeftButtonDown" 
+            RenderTransformOrigin="0.567,0.086"/>
 
-
-                <!--< Parol hatosini tekshirad Label x:Name="valid_lbl" Height="21" Margin="153,236,25,0" VerticalAlignment="Top" FontWeight="Heavy" Foreground="Black" FontFamily="Bahnschrift" Background="Transparent"/>-->
-
-                <!--<Label x:Name="login_lbl" Width="200" Height="33" md:TextFieldAssist.TextFieldCornerRadius="5" Content="Логин *" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>
-                <Label x:Name="parol_lbl" Width="200" Height="33" md:TextFieldAssist.TextFieldCornerRadius="5" Content="Пароль *" HorizontalAlignment="Left" Margin="164,158,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>-->
-
-                <!--<Label x:Name="conf_parol_lbl" Width="274" Height="35"  md:TextFieldAssist.TextFieldCornerRadius="5" Content="Введите пароль еще раз *" 
-                HorizontalAlignment="Left" Margin="167,259,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="Black" FontSize="20" FontFamily="Arial"/>-->
-
-
-
-
-
-
-
-
-            </StackPanel>
-        </Border>
     </Grid>
 </Page>

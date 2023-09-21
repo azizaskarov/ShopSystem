@@ -76,7 +76,7 @@ namespace WpfForM_CRM.Pages
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
 
-            NavigationService.Navigate(new MainMenuPage(mainWindow));
+            NavigationService.Navigate(new MainMenuPage(mainWindow,isRegistered: true,currentRegisterUser: username,currentPasswordUser: password));
 
         }
 

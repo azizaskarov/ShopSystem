@@ -6,21 +6,30 @@
         xmlns:local="clr-namespace:WpfForM_CRM"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        x:Name="Window"
-        WindowStartupLocation="CenterScreen"
-        Title="MainWindow" KeyDown="MainWindow_OnKeyDown"  WindowStyle="None" MaxWidth="800" MaxHeight="500">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="365*"/>
-            <ColumnDefinition Width="46*"/>
-            <ColumnDefinition Width="387*"/>
-        </Grid.ColumnDefinitions>
-        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="LightSkyBlue" Height="25" Width="800" MouseDown="DockPanel_MouseDown" Grid.Column="1" Grid.ColumnSpan="3">
+        x:Name="Window"  AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#F7F1F1"  Width="800" Height="500">
+    <Grid >
+
+
+        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="#D8D8D8" Height="25" Width="800" MouseDown="DockPanel_MouseDown">
             <Label Content="" Width="14" FontSize="14" FontFamily="Times New Roman" FontWeight="Bold"/>
 
-            <Button x:Name="exit_btn" Height="30" Background="LightSkyBlue"  FontSize="12" Click="Page1_Click" HorizontalAlignment="Right" Content="X" FontWeight="Bold" Width="40" Cursor="Hand" MouseEnter="exit_btn_MouseEnter" MouseLeave="exit_btn_MouseLeave" />
+            <Button x:Name="exit_btn" 
+                    Height="25" 
+                    Background="#D8D8D8"  
+                    BorderBrush="#D8D8D8" 
+                    Foreground="Black"
+                    md:ButtonAssist.CornerRadius="0"
+                    FontSize="14" Click="Page1_Click" 
+                    HorizontalAlignment="Right" 
+                    Content="x" 
+                    FontWeight="Bold" 
+                    Width="40" 
+                    Cursor="Hand" 
+                    MouseEnter="exit_btn_MouseEnter" 
+                    MouseLeave="exit_btn_MouseLeave" />
         </DockPanel>
-        <Frame x:Name="mainframe" Margin="-8,25,0,0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top" Grid.ColumnSpan="4"/>
+        <Frame x:Name="mainframe" Margin="0,25,0,0" NavigationUIVisibility="Hidden" Height="500" VerticalAlignment="Top"  />
     </Grid>
 </Window>

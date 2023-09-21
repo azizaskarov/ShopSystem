@@ -22,7 +22,7 @@ public partial class MainWindow : Window
         
         InitializeComponent();
         mainframe.Navigate(new MainMenuPage(this));
-        exit_btn.Background = Brushes.Blue;
+        //exit_btn.Background = Brushes.LightSkyBlue;
     }
 
     
@@ -44,7 +44,7 @@ public partial class MainWindow : Window
 
     private void exit_btn_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
     {
-        exit_btn.Background = Brushes.Blue;
+        exit_btn.Background = new SolidColorBrush(Color.FromRgb(0xD8, 0xD8, 0xD8));
     }
 
     private void DockPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -14,10 +14,11 @@ namespace WpfForM_CRM.Pages
         ShopsPage shopsPage;
         private readonly AppDbContext appDbContext;
         Guid shopId;
-        public ShopUpdate(ShopsPage shopsPage, Guid shopId)
+        public ShopUpdate(ShopsPage shopsPage, Guid shopId, string currentShopName)
         {
             InitializeComponent();
             this.shopId = shopId;
+            shopname.Text = currentShopName;
             this.appDbContext = new AppDbContext();
             this.shopsPage = shopsPage;
         }

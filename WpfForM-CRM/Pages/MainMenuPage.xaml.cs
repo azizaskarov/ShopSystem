@@ -17,19 +17,19 @@ public partial class MainMenuPage : Page
     private int eye_counter = 0;
     private string password_change = string.Empty;
     private MainWindow mainWindow;
-    public MainMenuPage(MainWindow mainWindow, bool enter = false, string login = "", string parol = "")
+    public MainMenuPage(MainWindow mainWindow, bool isRegistered = false, string currentRegisterUser = "" , string currentPasswordUser = "")
     {
         this.mainWindow = mainWindow;
         InitializeComponent();
-        EnterTextBox(enter, login, parol);
+        EnterTextBox(isRegistered, currentRegisterUser, currentPasswordUser);
     }
 
-    private void EnterTextBox(bool enter = false, string login = "", string parol = "")
+    private void EnterTextBox(bool isRegistered = false, string currentRegisterUser = "", string currentPasswordUser = "")
     {
-        if (enter)
+        if (isRegistered)
         {
-            parol_txt.Password = parol;
-            register_txt.Text = login;
+            parol_txt.Password = currentPasswordUser;
+            register_txt.Text = currentRegisterUser;
         }
         else
         {
@@ -83,7 +83,7 @@ public partial class MainMenuPage : Page
                     {
                         Properties.Settings.Default.Name = username;
                     }
-                    MainPage.NavigationService.Navigate(new ShopsPage(mainWindow));
+                    MainPage.NavigationService.Navigate(new ShopsPage(mainWindow, user.Id));
                 }
                 else
                 {

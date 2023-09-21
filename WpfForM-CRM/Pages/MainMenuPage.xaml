@@ -10,9 +10,7 @@
       Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Height="500" Width="800" Background="#D8D8D8">
 
     <Grid >
-        <!--<Label Content="Логин " md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,142,0,0" FontSize="20" Padding="50,0,0,0" Foreground="Black" FontFamily="Arial" FontWeight="Bold"/>-->
-        <!--<Label Content="Пароль" md:TextFieldAssist.TextFieldCornerRadius="5" HorizontalAlignment="Left" Width="160" Height="40" VerticalAlignment="Top" Margin="183,212,0,0" FontSize="20" Padding="50,0,0,0" Background="Transparent" Foreground="Black" FontWeight="Bold"/>-->
-        <TextBlock  FontSize="30" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
+        <TextBlock  FontSize="34" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
         <TextBox 
             md:TextFieldAssist.TextFieldCornerRadius="5"
             x:Name="parol_tx" 
@@ -24,7 +22,6 @@
             FontFamily="Times New Roman" 
             TextChanged="parol_tx_TextChanged"/>
 
-
         <PasswordBox 
             md:TextFieldAssist.TextFieldCornerRadius="5"
             x:Name="parol_txt" 
@@ -32,7 +29,7 @@
             Background="White" HorizontalAlignment="Left" 
             Height="45" Margin="228,240,0,0" 
             VerticalAlignment="Top" Width="400" 
-            PasswordChar="*" MaxLength="20" FontSize="24"
+            PasswordChar="*" MaxLength="20" FontSize="22"
             AllowDrop="True" 
             IsVisibleChanged="parol_txt_IsVisibleChanged"/>
 
@@ -46,18 +43,54 @@
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="400" Height="45" 
-            FontSize="24"  
+            FontSize="22"  
             HorizontalContentAlignment="Left" 
              />
 
+        <Button 
+            x:Name="enter_btn" 
+            Content="Входить" 
+            md:ButtonAssist.CornerRadius="5" 
+            Cursor="Hand" Background="LightSkyBlue" 
+            HorizontalAlignment="Left" 
+            Height="45" Margin="300,336,0,0" 
+            VerticalAlignment="Top" Width="256"
+            FontSize="24"  Click="enter_btn_Click"
+            FontFamily="Arial" 
+            RenderTransformOrigin="0,0" 
+            Foreground="Black"/>
 
-        <Button x:Name="enter_btn" Content="Входить" md:ButtonAssist.CornerRadius="5" Cursor="Hand" Background="LightSkyBlue" HorizontalAlignment="Left" Height="45" Margin="300,336,0,0" VerticalAlignment="Top" Width="256"
-                FontSize="24"  Click="enter_btn_Click" FontFamily="Arial" RenderTransformOrigin="0,0" Foreground="Black"/>
+        <Button 
+            Content="Регистр" 
+            Cursor="Hand"  
+            HorizontalAlignment="Left" 
+            Background="White"   
+            Margin="10,20,0,0" 
+            VerticalAlignment="Top" 
+            Width="122" Height="45" 
+            FontSize="22" 
+            Click="Button_Click" 
+            FontFamily="Arial"
+            md:ButtonAssist.CornerRadius="4" 
+            BorderBrush="#FF4282D8" 
+            RenderTransformOrigin="0.335,0.64" 
+            Foreground="Black"/>
 
-        <Button Content="Регистр" Cursor="Hand"  HorizontalAlignment="Left" Background="White"   Margin="10,20,0,0" VerticalAlignment="Top" Width="122" Height="45" FontSize="22" Click="Button_Click" FontFamily="Arial"
-                md:ButtonAssist.CornerRadius="4" BorderBrush="#FF4282D8" RenderTransformOrigin="0.335,0.64" Foreground="Black"/>
+        <CheckBox 
+            x:Name="checkMe" 
+            Content="Запомнить меня" 
+            HorizontalAlignment="Left" 
+            Height="25" Margin="227,300,0,0" 
+            VerticalAlignment="Top" Width="140"/>
 
-        <CheckBox x:Name="checkMe" Content="Запомнить меня" HorizontalAlignment="Left" Height="25" Margin="227,300,0,0" VerticalAlignment="Top" Width="140"/>
-        <Image x:Name="eye" HorizontalAlignment="Left" Height="35" Margin="592,245,0,0" VerticalAlignment="Top" Width="36" Source="/Pages/eye open.png" Stretch="Fill" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Image 
+            x:Name="eye" 
+            HorizontalAlignment="Left" 
+            Height="31" Margin="592,245,0,0" 
+            VerticalAlignment="Top" 
+            Width="34" 
+            Source="/Pages/eye open.png" 
+            Stretch="Fill" 
+            MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
     </Grid>
 </Page>
