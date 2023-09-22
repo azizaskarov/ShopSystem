@@ -8,7 +8,7 @@ namespace WpfForM_CRM.Context
 
         public DbSet<User> Users => Set<User>();
         public DbSet<Shop> Shops => Set<Shop>();
-
+        public DbSet<Category> Categories => Set<Category>();
 
         //public AppDbContext(DbContextOptions<AppDbContext>  options) : base(options) { }
 
@@ -41,10 +41,18 @@ namespace WpfForM_CRM.Context
             {
                 entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(50);
+                entity.HasMany(shop => shop.Categories)
+                    .WithOne(category => category.Shop)
+                    .HasForeignKey(shop => shop.ShopId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasIndex(shop => shop.Name).IsUnique();
+            });
+
+            modelBuilder.Entity<Category>(category =>
+            {
+                category.HasKey(category => category.Id);
+
             });
 
 

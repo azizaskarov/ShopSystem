@@ -13,6 +13,7 @@ namespace WpfForM_CRM.Pages;
 public partial class ShopsPage : Page
 {
     private MainWindow window;
+
     public Guid userId;
     private AppDbContext appDbContext;
     public ShopsPage(MainWindow window, Guid userId)
@@ -22,6 +23,7 @@ public partial class ShopsPage : Page
         this.userId = userId;
         this.appDbContext = new AppDbContext();
         InitializeComponent();
+        UserShopsCount(userId);
 
     }
 
