@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WpfForM_CRM.Context;
 
@@ -10,9 +11,11 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230922120459_init3")]
+    partial class init3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +42,7 @@ namespace WpfForM_CRM.Migrations
 
                     b.HasIndex("ShopId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
@@ -53,7 +56,8 @@ namespace WpfForM_CRM.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
@@ -98,8 +102,7 @@ namespace WpfForM_CRM.Migrations
                 {
                     b.HasOne("WpfForM_CRM.Entities.Shop", "Shop")
                         .WithMany("Categories")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ShopId");
 
                     b.Navigation("Shop");
                 });

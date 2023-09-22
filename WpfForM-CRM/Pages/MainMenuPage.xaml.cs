@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 
 namespace WpfForM_CRM.Pages;
 
@@ -22,7 +24,50 @@ public partial class MainMenuPage : Page
         this.mainWindow = mainWindow;
         InitializeComponent();
         EnterTextBox(isRegistered, currentRegisterUser, currentPasswordUser);
+       
     }
+
+    //public void AddCategory()
+    //{
+    //    var db = new AppDbContext();
+
+    //    var password = "2003azizC";
+    //    var hasher = new SHA256Managed();
+    //    var unhashed = System.Text.Encoding.Unicode.GetBytes(password);
+    //    var hashed = hasher.ComputeHash(unhashed);
+    //    var hashedPassword = Convert.ToBase64String(hashed);
+
+    //    var user = new User()
+    //    {
+    //        UserName = "azizaskarow",
+    //        RememberMe = false,
+    //        Password = hashedPassword
+    //    };
+
+    //    db.Users.Add(user);
+
+    //    var shop = new Shop()
+    //    {
+    //        Name = "MyShop",
+    //        UserId = user.Id,
+    //    };
+    //    db.Shops.Add(shop);
+
+    //    user.Shops.Add(shop);
+    //    db.Users.Update(user);
+
+    //    var category = new Category()
+    //    {
+    //        Name = "Kiyim",
+    //        ShopId = shop.Id,
+    //    };
+
+    //    db.Categories.Add(category);
+    //    shop.Categories.Add(category);
+    //    db.Shops.Update(shop);
+
+    //    db.SaveChanges();
+    //}
 
     private void EnterTextBox(bool isRegistered = false, string currentRegisterUser = "", string currentPasswordUser = "")
     {

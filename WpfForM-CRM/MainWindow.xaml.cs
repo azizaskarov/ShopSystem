@@ -1,6 +1,10 @@
-﻿using System.Windows;
+﻿using System;
+using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 using WpfForM_CRM.Pages;
 
 namespace WpfForM_CRM;
@@ -16,10 +20,10 @@ public partial class MainWindow : Window
         
         InitializeComponent();
         mainframe.Navigate(new MainMenuPage(this));
+        
         //exit_btn.Background = Brushes.LightSkyBlue;
     }
 
-    
 
     private void Page1_Click(object sender, RoutedEventArgs e)
     {
