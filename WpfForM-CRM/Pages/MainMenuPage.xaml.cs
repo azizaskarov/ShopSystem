@@ -35,7 +35,7 @@ public partial class MainMenuPage : Page
         {
             if (Properties.Settings.Default.RememberMe)
             {
-                register_txt.Text = Properties.Settings.Default.Owner;
+                register_txt.Text = Properties.Settings.Default.Name;
                 parol_txt.Password = Properties.Settings.Default.Password;
             }
         }
@@ -76,13 +76,18 @@ public partial class MainMenuPage : Page
                         Properties.Settings.Default.Password = password;
                         Properties.Settings.Default.Owner = username;
                         Properties.Settings.Default.RememberMe = true;
-                        Properties.Settings.Default.Save();
                         Properties.Settings.Default.Name = username;
+                        Properties.Settings.Default.Save();
                     }
                     else
                     {
-                        Properties.Settings.Default.Name = username;
+                        Properties.Settings.Default.Password = "";
+                        Properties.Settings.Default.Owner = "";
+                        Properties.Settings.Default.RememberMe = false;
+                        Properties.Settings.Default.Name = "";
+                        Properties.Settings.Default.Save();
                     }
+
                     MainPage.NavigationService.Navigate(new ShopsPage(mainWindow, user.Id));
                 }
                 else
