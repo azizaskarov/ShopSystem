@@ -79,6 +79,7 @@
         <CheckBox 
             x:Name="checkMe" 
             Content="Запомнить меня" 
+            IsChecked="True"
             HorizontalAlignment="Left" 
             Height="25" Margin="227,300,0,0" 
             VerticalAlignment="Top" Width="140"/>

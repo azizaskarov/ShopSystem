@@ -44,7 +44,7 @@ public partial class MainWindow : Window
 
     private void exit_btn_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
     {
-        exit_btn.Background = new SolidColorBrush(Color.FromRgb(0xD8, 0xD8, 0xD8));
+        exit_btn.Background = Brushes.CadetBlue;
     }
 
     private void DockPanel_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
