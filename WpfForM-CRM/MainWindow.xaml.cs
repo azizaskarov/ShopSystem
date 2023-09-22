@@ -1,12 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
-using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
 using WpfForM_CRM.Pages;
 
 namespace WpfForM_CRM;
