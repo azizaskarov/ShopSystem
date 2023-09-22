@@ -16,14 +16,13 @@ public partial class ShopsPage : Page
 
     public Guid userId;
     private AppDbContext appDbContext;
-    public ShopsPage(MainWindow window, Guid userId)
+    public ShopsPage(MainWindow window, Guid userId,Guid? shopId = null)
     {
         ;
         this.window = window;
         this.userId = userId;
         this.appDbContext = new AppDbContext();
         InitializeComponent();
-        UserShopsCount(userId);
 
     }
 
