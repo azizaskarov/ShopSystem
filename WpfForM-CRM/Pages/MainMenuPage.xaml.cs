@@ -74,7 +74,6 @@ public partial class MainMenuPage : Page
                     if ((bool)checkMe.IsChecked!)
                     {
                         Properties.Settings.Default.Password = password;
-                        Properties.Settings.Default.Owner = username;
                         Properties.Settings.Default.RememberMe = true;
                         Properties.Settings.Default.Name = username;
                         Properties.Settings.Default.Save();
@@ -82,7 +81,6 @@ public partial class MainMenuPage : Page
                     else
                     {
                         Properties.Settings.Default.Password = "";
-                        Properties.Settings.Default.Owner = "";
                         Properties.Settings.Default.RememberMe = false;
                         Properties.Settings.Default.Name = "";
                         Properties.Settings.Default.Save();

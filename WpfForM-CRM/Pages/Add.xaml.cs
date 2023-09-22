@@ -46,8 +46,6 @@ public partial class Add : Window
         {
             Name = shopname.Text,
             UserId =(Guid)shopsPage.userId,
-            Owner = Properties.Settings.Default.Name,
-
         };
 
         //var user = db.Users.FirstOrDefault(user => user.Id == shopsPage.userId);
