@@ -38,8 +38,6 @@ namespace WpfForM_CRM.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Owner = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
@@ -49,7 +47,8 @@ namespace WpfForM_CRM.Migrations
                         name: "FK_Shops_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 

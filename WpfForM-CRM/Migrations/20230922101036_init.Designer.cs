@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230921072324_init")]
+    [Migration("20230922101036_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,9 +32,6 @@ namespace WpfForM_CRM.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Owner")
-                        .HasColumnType("longtext");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
@@ -79,7 +76,8 @@ namespace WpfForM_CRM.Migrations
                 {
                     b.HasOne("WpfForM_CRM.Entities.User", "User")
                         .WithMany("Shops")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });

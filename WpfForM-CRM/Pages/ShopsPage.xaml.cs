@@ -22,7 +22,7 @@ public partial class ShopsPage : Page
         this.userId = userId;
         this.appDbContext = new AppDbContext();
         InitializeComponent();
-        
+
     }
 
     public void UserShopsCount(Guid userId)
@@ -37,20 +37,17 @@ public partial class ShopsPage : Page
     public void Load()
     {
         var db = new AppDbContext();
-        var shops = db.Shops.Where(shop => shop.UserId == userId).ToList();
 
-        //if (shops != null)
-        //{
-        //    MessageBox.Show("You  have not shops");
-        //    return;
-        //}
+        var shops = db.Shops
+            .Where(shop => shop.UserId == userId)
+            .OrderByDescending(shop => shop.CreatedDate)
+            .ToList();
+
         var list = new List<ShopControl>();
 
         foreach (var shop in shops)
         {
             var model = new ShopControl(this);
-            //model.Width = 200;
-            //model.Height = 40;
             model.ShopId = shop.Id;
             model.Name = shop.Name;
             list.Add(model);
@@ -65,9 +62,6 @@ public partial class ShopsPage : Page
         TitleShop.Visibility = Visibility.Visible;
         addShopButton.Visibility = Visibility.Visible;
         SearchText.Visibility = Visibility.Visible;
-        //poisk.Visibility = Visibility.Visible;
-
-
         Load();
     }
 
