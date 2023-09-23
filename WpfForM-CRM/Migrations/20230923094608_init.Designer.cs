@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230922101036_init")]
+    [Migration("20230923094608_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -22,16 +22,41 @@ namespace WpfForM_CRM.Migrations
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("WpfForM_CRM.Entities.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
@@ -72,6 +97,16 @@ namespace WpfForM_CRM.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WpfForM_CRM.Entities.Category", b =>
+                {
+                    b.HasOne("WpfForM_CRM.Entities.Shop", "Shop")
+                        .WithMany("Categories")
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Shop");
+                });
+
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
                 {
                     b.HasOne("WpfForM_CRM.Entities.User", "User")
@@ -80,6 +115,11 @@ namespace WpfForM_CRM.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
+                {
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.User", b =>

@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfForM_CRM.Pages.AddCategory"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfForM_CRM.Pages"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        Title="Добавить категория" VerticalAlignment="Center" Height="300" Width="400">
+
+    <Grid Margin="5,2,0,2"  >
+
+        <Label Name="EmptyName" FontWeight="Heavy" Content="" Foreground="Firebrick" Margin="19,155,136,92" RenderTransformOrigin="0.488,0.758"/>
+        <TextBox x:Name="CategoryName" materialDesign:HintAssist.Hint=" Название категория" materialDesign:HintAssist.HintOpacity="0.4" Padding="0.5" FontSize="20" Height="35" Margin="4,80,4,86" PreviewTextInput="CategoryName_OnPreviewTextInput"  />
+        <Button Height="30" Width="150" Background="#FF4282D8" Margin="10 100 0 0" Click="ButtonBase_OnClick"  FontFamily="Arial" FontSize="18">Добавить</Button>
+
+    </Grid>
+</Window>

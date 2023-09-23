@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 
 namespace WpfForM_CRM.Pages;
 
@@ -14,9 +16,9 @@ public partial class ShopsPage : Page
 {
     private MainWindow window;
 
-    public Guid userId;
+    public Guid? userId;
     private AppDbContext appDbContext;
-    public ShopsPage(MainWindow window, Guid userId,Guid? shopId = null)
+    public ShopsPage(MainWindow window, Guid? userId = null,Guid? shopId = null)
     {
         ;
         this.window = window;
@@ -26,20 +28,22 @@ public partial class ShopsPage : Page
 
     }
 
+    private string AddText { get; set; }
+
     public void UserShopsCount(Guid userId)
     {
         var shops = appDbContext.Shops.Where(u => u.UserId == userId);
         MessageBox.Show($"{shops.Count()}");
     }
 
-    public Guid ShopId { get; set; }
+    public Guid? ShopId { get; set; }
     public Guid? CategoryId { get; set; }
 
     public void Load()
     {
-        var db = new AppDbContext();
-
-        var shops = db.Shops
+        Title.Text = "Мои магазины";
+        AddText = "shop";
+        var shops = appDbContext.Shops
             .Where(shop => shop.UserId == userId)
             .OrderByDescending(shop => shop.CreatedDate)
             .ToList();
@@ -58,20 +62,63 @@ public partial class ShopsPage : Page
         shopsFrame.ItemsSource = list;
     }
 
+    public void ReadCategories()
+    {
+        SearchText.Visibility = Visibility.Collapsed;
+        AddText = "category";
+        Title.Text = "Категории";
+        var categories = appDbContext.Categories
+            .Where(category => category.ShopId == ShopId)
+            .OrderByDescending(category => category.CreatedDate).ToList();
+
+        ShopNameTitle.Text = appDbContext.Shops.FirstOrDefault(shop => shop.Id == ShopId)!.Name;
+        ShopNameTitle.Visibility = Visibility.Visible;
+
+        var categoryControls = new List<CategoryControl>();
+        foreach (var category in categories)
+        {
+            var categoryControl = new CategoryControl(this);
+            categoryControl.Name = category.Name;
+            categoryControl.CategoryId = category.Id;
+            categoryControl.ShopId = ShopId;
+            categoryControls.Add(categoryControl);
+        }
+
+        shopsFrame.ItemsSource = categoryControls;
+    }
+
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
-        TitleShop.Visibility = Visibility.Visible;
+        Title.Visibility = Visibility.Visible;
         addShopButton.Visibility = Visibility.Visible;
         SearchText.Visibility = Visibility.Visible;
+        ShopNameTitle.Visibility = Visibility.Hidden;
         Load();
     }
 
-    private void Button_AddShop(object sender, RoutedEventArgs e)
+    private void Button_Add(object sender, RoutedEventArgs e)
+    {
+        if (AddText =="shop")
+        {
+            AddShop();
+        }
+
+        if (AddText == "category")
+        {
+            AddCategory();
+        }
+    }
+
+    private void AddShop()
     {
         Add add = new Add(mainWindow: window, this);
         add.ShowDialog();
     }
-
+    private void AddCategory()
+    {
+        var addCategory = new AddCategory(this);
+        addCategory.ShowDialog();
+    }
 
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -96,5 +143,11 @@ public partial class ShopsPage : Page
 
         shopsFrame.ItemsSource = list;
 
+    }
+
+    private void AddCategoryName_OnClick(object sender, RoutedEventArgs e)
+    {
+        var addCategory = new AddCategory(this);
+        addCategory.ShowDialog();
     }
 }

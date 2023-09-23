@@ -118,7 +118,7 @@
             Margin="598,250,0,0" 
             VerticalAlignment="Top" 
             Width="30"
-            Source="/Pages/eye open.png" 
+            Source="/IconImages/eye open.png" 
             MouseLeftButtonDown="pass_name_MouseLeftButtonDown" 
             RenderTransformOrigin="0.42,0.646" />
 
@@ -128,7 +128,7 @@
             Height="36" Margin="598,318,0,0" 
             VerticalAlignment="Top" 
             Width="30" 
-            Source="/Pages/eye open.png" 
+            Source="/IconImages/eye open.png" 
             MouseLeftButtonDown="conpassname_MouseLeftButtonDown" 
             RenderTransformOrigin="0.567,0.086"/>
 

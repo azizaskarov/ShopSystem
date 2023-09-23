@@ -4,50 +4,49 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:local="clr-namespace:WpfForM_CRM.Pages" Cursor="Hand"
+             xmlns:local="clr-namespace:WpfForM_CRM.Pages" 
              mc:Ignorable="d" MouseEnter="ShopControl_OnMouseEnter" MouseLeave="ShopControl_OnMouseLeave" Width="200" Margin="20" Height="70" >
 
     <Grid >
-        <Label Name="shopId" Visibility="Hidden"/>
 
-        <Border Background="DarkSeaGreen" CornerRadius="5" />
+        <Border Background="DarkSeaGreen" CornerRadius="10"  />
 
-        <Image 
-            Name="DeleteImageIcon" 
-            VerticalAlignment="Top" 
-            Height="20" 
-            Source="../IconImages/del.png" 
-            Visibility="Hidden"  
-            Margin="180,7,-1,0" 
-            Cursor="Hand"  
-            MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown"/>
+        <StackPanel Margin="0 0 25 0" MouseLeftButtonDown="ShopControl_OnMouseLeftButtonDown" Cursor="Hand">
+            <Label 
+                Name="shopId" 
+                Width="0" 
+                Height="0" 
+                Visibility="Hidden" />
 
-        <Image 
-            Name="UpdateImageIcon" 
-            VerticalAlignment="Top" 
-            Height="18" 
-            Source="../IconImages/update.png" 
-            Visibility="Hidden" 
-            Margin="182,42,-1,0" 
-            Cursor="Hand"   
-            MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
+            <Label 
+                FontSize="18"
+                FontWeight="DemiBold"
+                Name="shopName" 
+                Content="Shop name" 
+                HorizontalContentAlignment="Center"
+                Margin="0 20"/>
+        </StackPanel>
+        <StackPanel  Margin="0175 0 0 0">
+            <Image  
 
-        <Label 
-            md:TextFieldAssist.SuffixText="ali" 
-            Name="shopName" 
-            FontWeight="DemiBold"
-            Content="Name" 
-            HorizontalContentAlignment="Center" 
-            Foreground="Black" 
-            Background="DarkSeaGreen"  
-            FontSize="16"  
-            HorizontalAlignment="Center" 
-            Cursor="Hand"   
-            BorderBrush="DarkSeaGreen" 
-            VerticalContentAlignment="Top" 
-            Margin="0,12,0,29" Width="161" />
+                Margin="0 8"
+                x:Name="DeleteImageIcon" 
+                Visibility="Hidden"
+                Source="../IconImages/del.png" 
+                Width="20" 
+                Cursor="Hand"
+                MouseLeftButtonDown="DeleteImageIcon_OnMouseLeftButtonDown" RenderTransformOrigin="0.542,0.55"   />
+
+            <Image 
+                x:Name="UpdateImageIcon" 
+                Visibility="Hidden"
+                Source="../IconImages/update.png"
+                Width="20" 
+                Margin="0 10" 
+                Cursor="Hand"
+                MouseLeftButtonDown="UpdateImageIcon_OnMouseLeftButtonDown"/>
+        </StackPanel>
+
     </Grid>
-
-
 
 </UserControl>

@@ -1,0 +1,63 @@
+﻿using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
+
+namespace WpfForM_CRM.Pages;
+
+/// <summary>
+/// Interaction logic for CategoryControl.xaml
+/// </summary>
+public partial class CategoryControl : UserControl
+{
+    public CategoryControl(ShopsPage shopsPage)
+    {
+        this.shopsPage = shopsPage;
+        InitializeComponent();
+        this.appDbContext = new AppDbContext();
+    }
+    private AppDbContext appDbContext;
+    private ShopsPage shopsPage;
+    public object Name
+    {
+        get { return categoryName.Text; }
+        set { categoryName.Text = value.ToString(); }
+    }
+    public object CategoryId
+    {
+        get { return categoryId.Content; }
+        set { categoryId.Content = (Guid)value; }
+    }
+
+    public Guid? ShopId { get; set; }
+
+
+    private void CategoryNameDelete_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var category = appDbContext.Categories
+            .FirstOrDefault(category => category.Id == (Guid)CategoryId);
+        var deleteResultButton = MessageBox.Show("Вы уверены, что хотите удалить категория?",
+            "Удалит",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Question);
+
+        if (deleteResultButton == MessageBoxResult.Yes)
+        {
+            
+            appDbContext.Categories.Remove(category);
+            appDbContext.SaveChanges();
+            shopsPage.ReadCategories();
+        }
+
+    }
+
+    private void CategoryNameUpdateImage_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var categoryUpdate = new UpdateCategory(shopsPage, (Guid)CategoryId, (string)Name);
+        categoryUpdate.ShowDialog();
+
+    }
+}

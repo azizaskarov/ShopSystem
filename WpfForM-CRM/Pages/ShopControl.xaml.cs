@@ -97,4 +97,11 @@ public partial class ShopControl : UserControl
     //    shopsPage.ShopId = (Guid)ShopId;
     //    shopsPage.ReadCategories();
     //}
+    private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        shopsPage.ShopId = (Guid?)ShopId;
+        shopsPage.Name = shopName.Content.ToString();
+
+        shopsPage.ReadCategories();
+    }
 }
