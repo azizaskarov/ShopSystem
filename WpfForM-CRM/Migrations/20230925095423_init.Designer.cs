@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230923094608_init")]
+    [Migration("20230925095423_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -43,6 +43,34 @@ namespace WpfForM_CRM.Migrations
                     b.HasIndex("ShopId");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.ChildCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("ChildCategories");
                 });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
@@ -107,6 +135,22 @@ namespace WpfForM_CRM.Migrations
                     b.Navigation("Shop");
                 });
 
+            modelBuilder.Entity("WpfForM_CRM.Entities.ChildCategory", b =>
+                {
+                    b.HasOne("WpfForM_CRM.Entities.Category", "Category")
+                        .WithMany("ChildCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WpfForM_CRM.Entities.Shop", "Shop")
+                        .WithMany()
+                        .HasForeignKey("ShopId");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Shop");
+                });
+
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>
                 {
                     b.HasOne("WpfForM_CRM.Entities.User", "User")
@@ -115,6 +159,11 @@ namespace WpfForM_CRM.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.Category", b =>
+                {
+                    b.Navigation("ChildCategories");
                 });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.Shop", b =>

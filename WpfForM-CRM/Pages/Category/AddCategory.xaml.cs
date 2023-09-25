@@ -13,7 +13,7 @@ namespace WpfForM_CRM.Pages.Category
     /// </summary>
     public partial class AddCategory : Window
     {
-        public AddCategory( ShopsPage shopsPage)
+        public AddCategory(ShopsPage shopsPage)
         {
             InitializeComponent();
             this.db = new AppDbContext();

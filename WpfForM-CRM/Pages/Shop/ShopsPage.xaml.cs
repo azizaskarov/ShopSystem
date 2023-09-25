@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Category;
+using WpfForM_CRM.Pages.ChildCategory;
 
 namespace WpfForM_CRM.Pages.Shop;
 
@@ -35,11 +36,19 @@ public partial class ShopsPage : Page
         MessageBox.Show($"{shops.Count()}");
     }
 
+    public string CategoryName { get; set; }
+    public string ShopName { get; set; }
+    public Guid? ChildCategoryId { get; set; }
     public Guid? ShopId { get; set; }
     public Guid? CategoryId { get; set; }
 
     public void Load()
     {
+        CategoryNameTitle.Text = "Category";
+        CategoryNameTitle.Visibility = Visibility.Hidden;
+
+        ShopNameTitle.Text = "Магазин: ";
+        ShopNameTitle.Visibility = Visibility.Hidden;
         ReadShopsButton.Content = "Магазины";
         AppDbContext appDbContext = new AppDbContext();
         Title.Text = "Мои магазины";
@@ -76,7 +85,7 @@ public partial class ShopsPage : Page
             .Where(category => category.ShopId == ShopId)
             .OrderByDescending(category => category.CreatedDate).ToList();
 
-        ShopNameTitle.Text = appDbContext.Shops.FirstOrDefault(shop => shop.Id == ShopId)!.Name;
+        ShopNameTitle.Text = "Магазин:" +ShopName;
         ShopNameTitle.Visibility = Visibility.Visible;
 
         var categoryControls = new List<CategoryControl>();
@@ -89,7 +98,36 @@ public partial class ShopsPage : Page
             categoryControls.Add(categoryControl);
         }
 
+        
         shopsFrame.ItemsSource = categoryControls;
+    }
+
+    public void ReadChildCategories()
+    {
+        Title.Text = "Под категории ";
+        AddText = "childCategory";
+        var db = new AppDbContext();
+
+        var childCategories = db.ChildCategories.Where(childCategory => childCategory.CategoryId == CategoryId)
+            .OrderByDescending(childCategory => childCategory.CreatedDate).ToList();
+
+        CategoryNameTitle.Text = CategoryName;
+        CategoryNameTitle.Visibility = Visibility.Visible;
+
+        var childCategoryControls = new List<ChildCategoryControl>();
+
+        foreach (var childCategory in childCategories)
+        {
+            var childCategoryControl = new ChildCategoryControl();
+            childCategoryControl.ChildCategoryId = childCategory.Id;
+            childCategoryControl.ChildCategoryName = childCategory.Name;
+            childCategoryControl.ShopId = ShopId;
+            childCategoryControl.CategoryId = CategoryId;
+            childCategoryControls.Add(childCategoryControl);
+        }
+
+        shopsFrame.ItemsSource = childCategoryControls;
+
     }
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
@@ -112,6 +150,11 @@ public partial class ShopsPage : Page
         {
             AddCategory();
         }
+
+        if (AddText == "childCategory")
+        {
+            AddChildCategory();
+        }
     }
 
     private void AddShop()
@@ -123,6 +166,12 @@ public partial class ShopsPage : Page
     {
         var addCategory = new AddCategory(this);
         addCategory.ShowDialog();
+    }
+
+    public void AddChildCategory()
+    {
+        var addChildCategory = new AddChildCategory(this);
+        addChildCategory.ShowDialog();
     }
 
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)

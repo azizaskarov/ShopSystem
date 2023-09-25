@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="WpfForM_CRM.Pages.ChildCategory.ChildCategoryControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfForM_CRM.Pages.ChildCategory"
+             Height="70" Width="200" Margin="20" MouseEnter="ChildCategoryControl_OnMouseEnter" MouseLeave="ChildCategoryControl_OnMouseLeave">
+    <Grid>
+        <Border Background="SeaGreen" CornerRadius="10"/>
+
+        <StackPanel Margin="0 0 25 0">
+            <Label 
+                Name="childCategoryId" 
+                Width="0" 
+                Height="0" 
+                Visibility="Hidden" />
+
+            <TextBlock 
+                FontSize="18"
+                Name="childCategoryName" 
+                Text="Child Category name" 
+                TextAlignment="Center"  
+                Margin="0 20"/>
+        </StackPanel>
+
+        <StackPanel  Margin="0175 0 0 0">
+            <Image  
+                Margin="0 8"
+                x:Name="childCategoryDeleteImage" 
+                Visibility="Hidden"
+                Source="/IconImages/del.png" 
+                Width="20" 
+                Cursor="Hand"
+                MouseLeftButtonDown="ChildCategoryNameDelete_OnMouseLeftButtonDown" RenderTransformOrigin="0.542,0.55"   />
+
+            <Image 
+                x:Name="childCategoryNameUpdateImage" 
+                Visibility="Hidden"
+                MouseLeftButtonDown="ChildCategoryNameUpdateImage_OnMouseLeftButtonDown"
+                Source="/IconImages/update.png"
+                Width="20" 
+                Margin="0 10" 
+                Cursor="Hand"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

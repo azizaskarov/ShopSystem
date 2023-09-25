@@ -9,6 +9,7 @@ namespace WpfForM_CRM.Context
         public DbSet<User> Users => Set<User>();
         public DbSet<Shop> Shops => Set<Shop>();
         public DbSet<Category> Categories => Set<Category>();
+        public DbSet<ChildCategory> ChildCategories => Set<ChildCategory>();
 
         //public AppDbContext(DbContextOptions<AppDbContext>  options) : base(options) { }
 
@@ -51,11 +52,18 @@ namespace WpfForM_CRM.Context
 
             modelBuilder.Entity<Category>(category =>
             {
-                category.HasKey(category => category.Id);
+                category.HasKey(c => c.Id);
+                category.HasMany(c => c.ChildCategories)
+                    .WithOne(ch => ch.Category)
+                    .HasForeignKey(ch => ch.CategoryId)
+                    .OnDelete(DeleteBehavior.Cascade);
 
             });
 
-
+            modelBuilder.Entity<ChildCategory>(child =>
+            {
+                child.HasKey(ch => ch.Id);
+            });
             //modelBuilder.Entity<Category>(entity =>
             //{
             //    entity.HasKey(e => e.Id);

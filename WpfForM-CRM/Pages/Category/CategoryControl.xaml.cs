@@ -72,4 +72,11 @@ public partial class CategoryControl : UserControl
         CategoryDeleteImage.Visibility = Visibility.Hidden;
         CategoryNameUpdateImage.Visibility = Visibility.Hidden;
     }
+
+    private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        shopsPage.CategoryId = (Guid)CategoryId;
+        shopsPage.CategoryName = (string)Name;
+        shopsPage.ReadChildCategories();
+    }
 }
