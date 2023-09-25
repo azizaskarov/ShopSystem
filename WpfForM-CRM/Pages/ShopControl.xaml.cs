@@ -59,12 +59,13 @@ public partial class ShopControl : UserControl
 
     private void Button_Update(object sender, RoutedEventArgs e)
     {
-        var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Name == shopName.Content);
+        var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Id == (Guid)ShopId);
         if (shop != null)
         {
             var shopId = shop.Id;
             var update = new ShopUpdate(shopsPage, shopId, shop.Name);
             update.ShowDialog();
+            shopsPage.Load();
         }
     }
 

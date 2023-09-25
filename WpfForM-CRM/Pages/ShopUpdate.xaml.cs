@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
@@ -12,27 +13,19 @@ namespace WpfForM_CRM.Pages
     public partial class ShopUpdate : Window
     {
         ShopsPage shopsPage;
-        private readonly AppDbContext appDbContext;
         Guid shopId;
         public ShopUpdate(ShopsPage shopsPage, Guid shopId, string currentShopName)
         {
             InitializeComponent();
             this.shopId = shopId;
             shopname.Text = currentShopName;
-            this.appDbContext = new AppDbContext();
             this.shopsPage = shopsPage;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Id == shopId);
-
-            if (appDbContext.Shops.Any(sh => sh.Name == shopname.Text))
-            {
-                MessageBox.Show( "Это имя уже существует");
-                return;
-            }
-
+            var appDbContext = new AppDbContext();
+            var shop = appDbContext.Shops.First(sh => sh.Id == shopId);
             if (shopname.Text.Length == 0)
             {
 
@@ -42,11 +35,32 @@ namespace WpfForM_CRM.Pages
                 return;
             }
 
+            if (appDbContext.Shops.Any(sh => sh.Name == shopname.Text))
+            {
+                MessageBox.Show( "Это имя уже существует");
+                return;
+            }
+
             shop.Name = shopname.Text;
             appDbContext.Shops.Update(shop);
             appDbContext.SaveChanges();
             shopsPage.Load();
             Close();
+            this.Close();
+        }
+
+        private void addtxt_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            string pattern = @"^[а-яА-Яa-zA-Z0-9]+$";
+
+            // Create a regular expression object with the pattern
+            Regex regex = new Regex(pattern);
+
+            // Check if the entered text matches the pattern
+            if (!regex.IsMatch(e.Text))
+            {
+                e.Handled = true; // Ignore the input
+            }
         }
 
 

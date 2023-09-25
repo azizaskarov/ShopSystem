@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfForM_CRM.Context;
 
 namespace WpfForM_CRM.Pages
@@ -21,11 +12,11 @@ namespace WpfForM_CRM.Pages
     public partial class UpdateCategory : Window
     {
         public UpdateCategory(ShopsPage shopsPage, Guid categoryId, string currentCategoryName)
-        {
+        { 
+            InitializeComponent();
             this.shopsPage = shopsPage;
             this.categoryId = categoryId;
-            //categoryName.Text = currentCategoryName;
-            InitializeComponent();
+            categoryName.Text = currentCategoryName;
             this.appDbContext = new AppDbContext();
         }
 
@@ -58,5 +49,20 @@ namespace WpfForM_CRM.Pages
             shopsPage.ReadCategories();
             Close();
         }
+
+        private void addtxt_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            string pattern = @"^[а-яА-Яa-zA-Z0-9]+$";
+
+            // Create a regular expression object with the pattern
+            Regex regex = new Regex(pattern);
+
+            // Check if the entered text matches the pattern
+            if (!regex.IsMatch(e.Text))
+            {
+                e.Handled = true; // Ignore the input
+            }
+        }
+
     }
 }

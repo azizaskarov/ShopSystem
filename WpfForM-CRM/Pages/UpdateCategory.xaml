@@ -4,13 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM.Pages"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ShopUpdate" Height="300" Width="400" 
         WindowStartupLocation="CenterScreen" >
 
     <Grid Margin="5,2,0,2" >
-        <TextBox x:Name="categoryName" FontSize="20" materialDesign:HintAssist.Hint=" Название category" materialDesign:HintAssist.HintOpacity="0.4" Height="35" Margin="4,40,4,20" />
-        <Button Height="30" Background="#FF4282D8" Margin="122,200,103,50" Click="Button_Click" FontFamily="Arial" FontSize="18" Content="Редактирование"/>
+        <StackPanel Margin="20">
+            <TextBox x:Name="categoryName" md:HintAssist.Hint="Введите новое название категория" Text="a" md:HintAssist.IsFloating="True" Margin="10 30 10 0" md:HintAssist.HintOpacity="0.3" Height="50" FontSize="18" PreviewTextInput="addtxt_PreviewTextInput" VerticalContentAlignment="Bottom"/>
+            <Button x:Name="addbtn" Content="Редактирование" Width="170" Height="40" Margin="0 80 0 0" Background="#FF4282D8" BorderBrush="Transparent" Click="Button_Click"/>
+        </StackPanel>
+        <!--<TextBox x:Name="categoryName" FontSize="20" materialDesign:HintAssist.Hint=" Название category" materialDesign:HintAssist.HintOpacity="0.4" Height="35" Margin="4,40,4,20" />
+        <Button Height="30" Background="#FF4282D8" Margin="119,183,106,67" Click="Button_Click" FontFamily="Arial" FontSize="18" Content="Редактирование"/>-->
     </Grid>
 </Window>

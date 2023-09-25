@@ -6,11 +6,19 @@
         xmlns:local="clr-namespace:WpfForM_CRM.Pages"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ShopUpdate" Height="300" Width="400" 
-        WindowStartupLocation="CenterScreen" KeyDown="ShopUpdate_OnKeyDown">
+        Title="ShopUpdate" MaxHeight="300" Width="400" 
+        WindowStartupLocation="CenterScreen" VerticalAlignment="Center" KeyDown="ShopUpdate_OnKeyDown">
 
     <Grid Margin="5,2,0,2" >
-        <TextBox x:Name="shopname" FontSize="20" md:HintAssist.Hint=" Название магазина" md:HintAssist.HintOpacity="0.4" Height="35" Margin="4,40,4,20" />
-        <Button Height="30" Background="#FF4282D8" Margin="122,200,103,50" Click="Button_Click" FontFamily="Arial" FontSize="18" Content="Редактирование"/>
+
+        <StackPanel Margin="20">
+            <TextBox x:Name="shopname" md:HintAssist.Hint="Введите новое название магазина" md:HintAssist.IsFloating="True" Margin="10 30 10 0" md:HintAssist.HintOpacity="0.3" Height="50" FontSize="18" PreviewTextInput="addtxt_PreviewTextInput" VerticalContentAlignment="Bottom"/>
+            <Button x:Name="addbtn" Content="Редактирование" Width="170" Height="40" Margin="0 80 0 0" Background="#FF4282D8" BorderBrush="Transparent" Click="Button_Click"/>
+        </StackPanel>
+        <!--<StackPanel Background="LightSeaGreen">
+            <TextBox x:Name="shopname" FontSize="20" md:HintAssist.Hint=" Название магазина" md:HintAssist.HintOpacity="0.4" Height="35" Margin="4,40,4,20" />
+
+            <Button Background="#FF4282D8" Margin="99,184,79,59" Width="170" Height="30" Click="Button_Click" FontFamily="Arial" FontSize="18" Content="Редактирование"/>
+        </StackPanel>-->
     </Grid>
 </Window>

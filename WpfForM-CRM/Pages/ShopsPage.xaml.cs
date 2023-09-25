@@ -17,13 +17,12 @@ public partial class ShopsPage : Page
     private MainWindow window;
 
     public Guid? userId;
-    private AppDbContext appDbContext;
+   
     public ShopsPage(MainWindow window, Guid? userId = null,Guid? shopId = null)
     {
         ;
         this.window = window;
         this.userId = userId;
-        this.appDbContext = new AppDbContext();
         InitializeComponent();
 
     }
@@ -32,6 +31,7 @@ public partial class ShopsPage : Page
 
     public void UserShopsCount(Guid userId)
     {
+        AppDbContext appDbContext = new AppDbContext();
         var shops = appDbContext.Shops.Where(u => u.UserId == userId);
         MessageBox.Show($"{shops.Count()}");
     }
@@ -41,6 +41,7 @@ public partial class ShopsPage : Page
 
     public void Load()
     {
+        AppDbContext appDbContext = new AppDbContext();
         Title.Text = "Мои магазины";
         AddText = "shop";
         var shops = appDbContext.Shops
@@ -53,6 +54,8 @@ public partial class ShopsPage : Page
         foreach (var shop in shops)
         {
             var model = new ShopControl(this);
+            model.Width = 200;
+            model.Height = 70;
             model.ShopId = shop.Id;
             model.Name = shop.Name;
             list.Add(model);
@@ -64,6 +67,7 @@ public partial class ShopsPage : Page
 
     public void ReadCategories()
     {
+        AppDbContext appDbContext = new AppDbContext();
         SearchText.Visibility = Visibility.Collapsed;
         AddText = "category";
         Title.Text = "Категории";
