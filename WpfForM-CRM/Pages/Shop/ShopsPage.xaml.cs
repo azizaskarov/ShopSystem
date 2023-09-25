@@ -85,7 +85,7 @@ public partial class ShopsPage : Page
             .Where(category => category.ShopId == ShopId)
             .OrderByDescending(category => category.CreatedDate).ToList();
 
-        ShopNameTitle.Text = "Магазин:" +ShopName;
+        ShopNameTitle.Text = "Магазин: " +ShopName;
         ShopNameTitle.Visibility = Visibility.Visible;
 
         var categoryControls = new List<CategoryControl>();
@@ -111,7 +111,7 @@ public partial class ShopsPage : Page
         var childCategories = db.ChildCategories.Where(childCategory => childCategory.CategoryId == CategoryId)
             .OrderByDescending(childCategory => childCategory.CreatedDate).ToList();
 
-        CategoryNameTitle.Text = CategoryName;
+        CategoryNameTitle.Text = "Категория: " + CategoryName;
         CategoryNameTitle.Visibility = Visibility.Visible;
 
         var childCategoryControls = new List<ChildCategoryControl>();
