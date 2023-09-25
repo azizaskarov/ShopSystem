@@ -4,9 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
+using WpfForM_CRM.Pages.Shop;
 
-namespace WpfForM_CRM.Pages;
+namespace WpfForM_CRM.Pages.Category;
 
 /// <summary>
 /// Interaction logic for CategoryControl.xaml
@@ -56,8 +56,20 @@ public partial class CategoryControl : UserControl
 
     private void CategoryNameUpdateImage_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        var categoryUpdate = new UpdateCategory(shopsPage, (Guid)CategoryId, (string)Name);
+        var categoryUpdate = new CtegoryUpdate(shopsPage, (Guid)CategoryId, (string)Name);
         categoryUpdate.ShowDialog();
 
+    }
+
+    private void ShopControl_OnMouseEnter(object sender, MouseEventArgs e)
+    {
+        CategoryDeleteImage.Visibility = Visibility.Visible;
+        CategoryNameUpdateImage.Visibility = Visibility.Visible;
+    }
+
+    private void ShopControl_OnMouseLeave(object sender, MouseEventArgs e)
+    {
+        CategoryDeleteImage.Visibility = Visibility.Hidden;
+        CategoryNameUpdateImage.Visibility = Visibility.Hidden;
     }
 }

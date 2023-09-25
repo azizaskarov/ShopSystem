@@ -7,9 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
 
-namespace WpfForM_CRM.Pages
+namespace WpfForM_CRM.Pages.User
 {
     /// <summary>
     /// Interaction logic for RegistrationPage.xaml
@@ -67,7 +66,7 @@ namespace WpfForM_CRM.Pages
 
             var hashedPassword = GenerateHash(password);
 
-            var user = new User()
+            var user = new Entities.User()
             {
                 UserName = username,
                 Password = hashedPassword

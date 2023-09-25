@@ -2,17 +2,19 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Pages.Shop;
 
-namespace WpfForM_CRM.Pages
+namespace WpfForM_CRM.Pages.Category
 {
     /// <summary>
-    /// Interaction logic for UpdateCategory.xaml
+    /// Interaction logic for CtegoryUpdate.xaml
     /// </summary>
-    public partial class UpdateCategory : Window
+    public partial class CtegoryUpdate : Window
     {
-        public UpdateCategory(ShopsPage shopsPage, Guid categoryId, string currentCategoryName)
-        { 
+        public CtegoryUpdate(ShopsPage shopsPage, Guid categoryId, string currentCategoryName)
+        {
             InitializeComponent();
             this.shopsPage = shopsPage;
             this.categoryId = categoryId;
@@ -26,7 +28,7 @@ namespace WpfForM_CRM.Pages
         AppDbContext appDbContext;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var category = appDbContext.Categories.FirstOrDefault(c => c.Id == categoryId);
+            var category = appDbContext.Categories.First(c => c.Id == categoryId);
             if (categoryName.Text.Length == 0)
             {
 
@@ -42,8 +44,10 @@ namespace WpfForM_CRM.Pages
                 return;
             }
 
+            var categoryName1 = categoryName.Text;
+            categoryName1 = char.ToUpper(categoryName1[0]) + categoryName1.Substring(1);
 
-            category.Name = categoryName.Text;
+            category.Name = categoryName1;
             appDbContext.Categories.Update(category);
             appDbContext.SaveChanges();
             shopsPage.ReadCategories();
@@ -64,5 +68,17 @@ namespace WpfForM_CRM.Pages
             }
         }
 
+        private void UpdateCategory_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Button_Click(sender, e);
+            }
+
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

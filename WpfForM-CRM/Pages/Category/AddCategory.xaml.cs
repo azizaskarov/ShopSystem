@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
+using WpfForM_CRM.Pages.Shop;
 
-namespace WpfForM_CRM.Pages
+namespace WpfForM_CRM.Pages.Category
 {
     /// <summary>
     /// Interaction logic for AddCategory.xaml
@@ -53,10 +44,13 @@ namespace WpfForM_CRM.Pages
                 return;
             }
 
-            var category = new Category()
+            var categoryName = CategoryName.Text;
+            categoryName = char.ToUpper(categoryName[0]) + categoryName.Substring(1);
+
+            var category = new Entities.Category()
             {
-                Name = CategoryName.Text,
-                ShopId = (Guid)shopsPage.ShopId,
+                Name = categoryName,
+                ShopId = (Guid?)shopsPage.ShopId,
             };
 
             db.Categories.Add(category);
@@ -80,6 +74,18 @@ namespace WpfForM_CRM.Pages
             }
         }
 
-        
+
+        private void AddCategory_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ButtonBase_OnClick(sender,e);
+            }
+
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

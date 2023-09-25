@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 
-namespace WpfForM_CRM.Pages
+namespace WpfForM_CRM.Pages.Shop
 {
     /// <summary>
     /// Interaction logic for ShopUpdate.xaml

@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfForM_CRM.Pages.AddCategory"
+﻿<Window x:Class="WpfForM_CRM.Pages.Category.AddCategory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Добавить категория" VerticalAlignment="Center" Height="300" Width="400">
+        Title="Добавить категория" KeyDown="AddCategory_OnKeyDown" VerticalAlignment="Center" Height="300" Width="400">
 
     <Grid Margin="5,2,0,2"  >
 

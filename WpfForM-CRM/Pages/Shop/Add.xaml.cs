@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
 
-namespace WpfForM_CRM.Pages;
+namespace WpfForM_CRM.Pages.Shop;
 
 /// <summary>
 /// Interaction logic for Add.xaml
@@ -42,10 +40,13 @@ public partial class Add : Window
 
         }
 
-        var shop = new Shop()
+        var shopName = shopname.Text;
+        shopName = char.ToUpper(shopName[0]) + shopName.Substring(1);
+
+        var shop = new Entities.Shop()
         {
-            Name = shopname.Text,
-            UserId =(Guid)shopsPage.userId,
+            Name = shopName,
+            UserId =(Guid?)shopsPage.userId,
         };
 
         //var user = db.Users.FirstOrDefault(user => user.Id == shopsPage.userId);

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
+using WpfForM_CRM.Pages.Shop;
 
-namespace WpfForM_CRM.Pages;
+namespace WpfForM_CRM.Pages.User;
 
 /// <summary>
 /// Interaction logic for MainMenuPage.xaml

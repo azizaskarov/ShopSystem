@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Entities;
+using WpfForM_CRM.Pages.Category;
 
-namespace WpfForM_CRM.Pages;
+namespace WpfForM_CRM.Pages.Shop;
 
 /// <summary>
 /// Interaction logic for ShopsPage.xaml
@@ -41,6 +40,7 @@ public partial class ShopsPage : Page
 
     public void Load()
     {
+        ReadShopsButton.Content = "Магазины";
         AppDbContext appDbContext = new AppDbContext();
         Title.Text = "Мои магазины";
         AddText = "shop";
@@ -67,6 +67,7 @@ public partial class ShopsPage : Page
 
     public void ReadCategories()
     {
+        ReadShopsButton.Content = "Назад";
         AppDbContext appDbContext = new AppDbContext();
         SearchText.Visibility = Visibility.Collapsed;
         AddText = "category";
