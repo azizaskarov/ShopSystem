@@ -15,25 +15,54 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="CadetBlue" Grid.ColumnSpan="2" Margin="0,0,645,0">
+        <Border Background="CadetBlue" Grid.ColumnSpan="2" Margin="0,0,639,0">
             <StackPanel Margin="0,0,-2,0">
                 <Button  x:Name="ReadShopsButton"
-                    Height="50" 
+                    Height="40" 
                     Background="CadetBlue" 
                     Foreground="Black" 
                     Content="Магазины" 
                     FontSize="16"
                     Click="Button_ReadShops" 
                     BorderBrush="CadetBlue" 
-                    Width="154"/>
+                    Width="160" >
+                </Button>
+
+                <Button Name="categoriesButton" 
+                        HorizontalContentAlignment="Left"
+                        Visibility="Collapsed"  
+                        BorderBrush="CadetBlue" 
+                        Width="160" Height="40" 
+                        Background="CadetBlue" 
+                        Foreground="Black"
+                        FontSize="16"
+                        Click="CategoriesButton_OnClick" Content="Категории"/>
+
+                <Button Name="createProductButton" 
+                        HorizontalContentAlignment="Left"
+                        Visibility="Collapsed"  
+                        BorderBrush="CadetBlue" 
+                        Width="160" Height="40" 
+                        Background="CadetBlue" 
+                        Foreground="Black"
+                        FontSize="16"
+                        Click="CategoriesButton_OnClick" Content="Создать продукт"/>
+                <Button Name="exitButton"
+                        BorderBrush="CadetBlue" 
+                        HorizontalContentAlignment="Left"
+                        Width="160" Height="40" 
+                        Background="CadetBlue" 
+                        Foreground="Black"
+                        FontSize="16"
+                        Visibility="Collapsed" Content="Назад" Click="ExitButton_OnClick"/>
             </StackPanel>
         </Border>
 
-        <ScrollViewer  Grid.Column="1" Margin="5,93,0,20" md:ScrollBarAssist.ButtonsVisibility="Hidden"  VerticalScrollBarVisibility="Hidden" >
-            <ItemsControl x:Name="shopsFrame">
+        <ScrollViewer  Grid.Column="1" Margin="76,93,0,20" md:ScrollBarAssist.ButtonsVisibility="Hidden"   VerticalScrollBarVisibility="Hidden" >
+            <ItemsControl x:Name="shopsFrame" Width="573" >
                 <ItemsControl.ItemsPanel  >
                     <ItemsPanelTemplate >
-                        <WrapPanel Margin="50,0,40,0" />
+                        <WrapPanel Margin="0,0,0,0" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
@@ -50,7 +79,7 @@
             </StackPanel>
 
         </Grid>
-        <Border Grid.Column="1" Width="60" Margin="10,60,0,0" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" >
+        <Border Grid.Column="1" Width="60"  Margin="16,122,0,0" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" >
 
             <Button Name="addShopButton" 
                     Visibility="Hidden"
@@ -59,7 +88,7 @@
                     Foreground="Black"   
                     Content="+"    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                     FontSize="18"
-                    Click="Button_Add" Margin="0,0,0,-2"/>
+                    Click="Button_Add" Margin="0,-2,0,0"/>
         </Border>
 
 
