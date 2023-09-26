@@ -85,7 +85,7 @@ public partial class ShopsPage : Page
     {
         ShopNameTitle.Visibility = Visibility.Collapsed;
         CategoryNameTitle.Visibility = Visibility.Collapsed;
-        ShopNameTitle.Visibility = Visibility.Hidden;
+        
 
         createProductButton.Visibility = Visibility.Collapsed;
         ReadShopsButton.Visibility = Visibility.Collapsed;
