@@ -56,7 +56,7 @@ public partial class CategoryControl : UserControl
 
     private void CategoryNameUpdateImage_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        var categoryUpdate = new CtegoryUpdate(shopsPage, (Guid)CategoryId, (string)Name);
+        var categoryUpdate = new CategoryUpdate(shopsPage, (Guid)CategoryId, (string)Name, ShopId);
         categoryUpdate.ShowDialog();
 
     }

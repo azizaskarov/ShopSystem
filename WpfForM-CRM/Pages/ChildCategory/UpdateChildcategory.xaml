@@ -1,17 +1,17 @@
-﻿<Window x:Class="WpfForM_CRM.Pages.Category.CategoryUpdate"
+﻿<Window x:Class="WpfForM_CRM.Pages.ChildCategory.UpdateChildCategory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfForM_CRM.Pages.Category"
+        xmlns:local="clr-namespace:WpfForM_CRM.Pages.ChildCategory"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="CtegoryUpdate" Height="300" Width="400" 
-        WindowStartupLocation="CenterScreen" KeyDown="UpdateCategory_OnKeyDown" >
+        Title="ChildCategoryUpdate" Height="300" Width="400" 
+        WindowStartupLocation="CenterScreen" KeyDown="UpdateChildcategory_OnKeyDown" >
 
     <Grid Margin="5,2,0,2" >
         <StackPanel Margin="20">
-            <TextBox x:Name="categoryName" materialDesign:HintAssist.Hint="Введите новое название категория" Text="+" materialDesign:HintAssist.IsFloating="True" Margin="10 30 10 0" materialDesign:HintAssist.HintOpacity="0.3" Height="50" FontSize="18" PreviewTextInput="addtxt_PreviewTextInput" VerticalContentAlignment="Bottom"/>
+            <TextBox x:Name="childCategoryName" materialDesign:HintAssist.Hint="Введите новое название под категория"  materialDesign:HintAssist.IsFloating="True" Margin="10 30 10 0" materialDesign:HintAssist.HintOpacity="0.3" Height="50" FontSize="18" PreviewTextInput="addtxt_PreviewTextInput" VerticalContentAlignment="Bottom"/>
             <Button x:Name="addbtn" Content="Редактирование" Width="170" Height="40" Margin="0 80 0 0" Background="#FF4282D8" BorderBrush="Transparent" Click="Button_Click"/>
         </StackPanel>
     </Grid>

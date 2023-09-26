@@ -11,19 +11,21 @@ namespace WpfForM_CRM.Pages.Category
     /// <summary>
     /// Interaction logic for CtegoryUpdate.xaml
     /// </summary>
-    public partial class CtegoryUpdate : Window
+    public partial class CategoryUpdate : Window
     {
-        public CtegoryUpdate(ShopsPage shopsPage, Guid categoryId, string currentCategoryName)
+        public CategoryUpdate(ShopsPage shopsPage, Guid categoryId, string currentCategoryName, Guid? shopId)
         {
             InitializeComponent();
             this.shopsPage = shopsPage;
             this.categoryId = categoryId;
+            this.shopId = shopId;
             categoryName.Text = currentCategoryName;
             this.appDbContext = new AppDbContext();
         }
 
         ShopsPage shopsPage;
         private Guid categoryId;
+        Guid? shopId;
         private string Name;
         AppDbContext appDbContext;
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -38,7 +40,7 @@ namespace WpfForM_CRM.Pages.Category
                 return;
             }
 
-            if (appDbContext.Categories.Any(c => c.Name == categoryName.Text))
+            if (appDbContext.Categories.Where(c => c.ShopId == shopId).ToList().Any(c => c.Name == categoryName.Text))
             {
                 MessageBox.Show("Это имя уже существует");
                 return;

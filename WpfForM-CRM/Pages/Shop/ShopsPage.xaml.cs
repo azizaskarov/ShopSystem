@@ -20,11 +20,9 @@ public partial class ShopsPage : Page
    
     public ShopsPage(MainWindow window, Guid? userId = null,Guid? shopId = null)
     {
-        ;
         this.window = window;
         this.userId = userId;
         InitializeComponent();
-
     }
 
     private string AddText { get; set; }
@@ -36,6 +34,8 @@ public partial class ShopsPage : Page
         MessageBox.Show($"{shops.Count()}");
     }
 
+    private int _readShopsButtonPressedCount = 0;
+
     public string CategoryName { get; set; }
     public string ShopName { get; set; }
     public Guid? ChildCategoryId { get; set; }
@@ -44,6 +44,13 @@ public partial class ShopsPage : Page
 
     public void Load()
     {
+        createProductButton.Visibility = Visibility.Hidden;
+        Title.Visibility = Visibility.Visible;
+        addShopButton.Visibility = Visibility.Visible;
+        SearchText.Visibility = Visibility.Visible;
+        ShopNameTitle.Visibility = Visibility.Hidden;
+
+
         CategoryNameTitle.Text = "Category";
         CategoryNameTitle.Visibility = Visibility.Hidden;
 
@@ -76,7 +83,17 @@ public partial class ShopsPage : Page
 
     public void ReadCategories()
     {
-        ReadShopsButton.Content = "Назад";
+        ShopNameTitle.Visibility = Visibility.Collapsed;
+        CategoryNameTitle.Visibility = Visibility.Collapsed;
+        ShopNameTitle.Visibility = Visibility.Hidden;
+
+        createProductButton.Visibility = Visibility.Collapsed;
+        ReadShopsButton.Visibility = Visibility.Collapsed;
+        categoriesButton.Visibility = Visibility.Visible;
+        exitButton.Visibility = Visibility.Visible;
+
+
+        //ReadShopsButton.Content = "Назад";
         AppDbContext appDbContext = new AppDbContext();
         SearchText.Visibility = Visibility.Collapsed;
         AddText = "category";
@@ -108,6 +125,8 @@ public partial class ShopsPage : Page
         AddText = "childCategory";
         var db = new AppDbContext();
 
+        createProductButton.Visibility = Visibility.Visible;
+
         var childCategories = db.ChildCategories.Where(childCategory => childCategory.CategoryId == CategoryId)
             .OrderByDescending(childCategory => childCategory.CreatedDate).ToList();
 
@@ -118,7 +137,7 @@ public partial class ShopsPage : Page
 
         foreach (var childCategory in childCategories)
         {
-            var childCategoryControl = new ChildCategoryControl();
+            var childCategoryControl = new ChildCategoryControl(this);
             childCategoryControl.ChildCategoryId = childCategory.Id;
             childCategoryControl.ChildCategoryName = childCategory.Name;
             childCategoryControl.ShopId = ShopId;
@@ -132,10 +151,13 @@ public partial class ShopsPage : Page
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
-        Title.Visibility = Visibility.Visible;
-        addShopButton.Visibility = Visibility.Visible;
-        SearchText.Visibility = Visibility.Visible;
-        ShopNameTitle.Visibility = Visibility.Hidden;
+        //Title.Visibility = Visibility.Visible;
+        //addShopButton.Visibility = Visibility.Visible;
+        //SearchText.Visibility = Visibility.Visible;
+        //ShopNameTitle.Visibility = Visibility.Hidden;
+
+        
+        _readShopsButtonPressedCount = 1;
         Load();
     }
 
@@ -203,5 +225,20 @@ public partial class ShopsPage : Page
     {
         var addCategory = new AddCategory(this);
         addCategory.ShowDialog();
+    }
+
+    private void ExitButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        categoriesButton.Visibility = Visibility.Hidden;
+        ReadShopsButton.Visibility = Visibility.Visible;
+        exitButton.Visibility = Visibility.Hidden;
+        createProductButton.Visibility = Visibility.Hidden;
+        Load();
+    }
+
+    
+    private void CategoriesButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        ReadCategories();
     }
 }
