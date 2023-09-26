@@ -158,7 +158,7 @@ public partial class MainMenuPage : Page
             parol_tx.Visibility = Visibility.Visible;
             parol_txt.Visibility = Visibility.Hidden;
             eye.Source =
-                new BitmapImage(new Uri("/Pages/eye close.png", UriKind.Relative));
+                new BitmapImage(new Uri("../../IconImages/eye close.png", UriKind.Relative));
             eye_counter = 1;
         }
         else if (eye_counter == 1)
@@ -166,7 +166,7 @@ public partial class MainMenuPage : Page
             parol_tx.Visibility = Visibility.Hidden;
             parol_txt.Visibility = Visibility.Visible;
             eye.Source =
-                new BitmapImage(new Uri("/Pages/eye open.png", UriKind.Relative));
+                new BitmapImage(new Uri("../../IconImages/eye open.png", UriKind.Relative));
             eye_counter = 2;
         }
     }
