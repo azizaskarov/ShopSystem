@@ -60,4 +60,8 @@ public partial class MainWindow : Window
         }
     }
 
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        this.WindowState = WindowState.Minimized;
+    }
 }

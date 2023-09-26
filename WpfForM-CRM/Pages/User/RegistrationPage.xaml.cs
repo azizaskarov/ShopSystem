@@ -119,7 +119,7 @@ namespace WpfForM_CRM.Pages.User
                 pass2.Visibility = Visibility.Visible;
                 pass.Visibility = Visibility.Hidden;
                 pass_name.Source =
-                    new BitmapImage(new Uri("/Pages/eye close.png", UriKind.Relative));
+                    new BitmapImage(new Uri("../../IconImages/eye open.png", UriKind.Relative));
                 eye_counter = 1;
             }
             else if (eye_counter == 1)
@@ -127,7 +127,7 @@ namespace WpfForM_CRM.Pages.User
                 pass2.Visibility = Visibility.Hidden;
                 pass.Visibility = Visibility.Visible;
                 pass_name.Source =
-                    new BitmapImage(new Uri("/Pages/eye open.png", UriKind.Relative));
+                    new BitmapImage(new Uri("../../IconImages/eye open.png", UriKind.Relative));
                 eye_counter = 2;
             }
         }

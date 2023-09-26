@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.EntityFrameworkCore;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Category;
 using WpfForM_CRM.Pages.ChildCategory;
@@ -17,8 +18,8 @@ public partial class ShopsPage : Page
     private MainWindow window;
 
     public Guid? userId;
-   
-    public ShopsPage(MainWindow window, Guid? userId = null,Guid? shopId = null)
+
+    public ShopsPage(MainWindow window, Guid? userId = null, Guid? shopId = null)
     {
         this.window = window;
         this.userId = userId;
@@ -85,7 +86,7 @@ public partial class ShopsPage : Page
     {
         ShopNameTitle.Visibility = Visibility.Collapsed;
         CategoryNameTitle.Visibility = Visibility.Collapsed;
-        
+
 
         createProductButton.Visibility = Visibility.Visible;
         ReadShopsButton.Visibility = Visibility.Collapsed;
@@ -102,7 +103,7 @@ public partial class ShopsPage : Page
             .Where(category => category.ShopId == ShopId)
             .OrderByDescending(category => category.CreatedDate).ToList();
 
-        ShopNameTitle.Text = "Магазин: " +ShopName;
+        ShopNameTitle.Text = "Магазин: " + ShopName;
         ShopNameTitle.Visibility = Visibility.Visible;
 
         var categoryControls = new List<CategoryControl>();
@@ -115,7 +116,7 @@ public partial class ShopsPage : Page
             categoryControls.Add(categoryControl);
         }
 
-        
+
         shopsFrame.ItemsSource = categoryControls;
     }
 
@@ -156,14 +157,14 @@ public partial class ShopsPage : Page
         //SearchText.Visibility = Visibility.Visible;
         //ShopNameTitle.Visibility = Visibility.Hidden;
 
-        
+
         _readShopsButtonPressedCount = 1;
         Load();
     }
 
     private void Button_Add(object sender, RoutedEventArgs e)
     {
-        if (AddText =="shop")
+        if (AddText == "shop")
         {
             AddShop();
         }
@@ -206,7 +207,9 @@ public partial class ShopsPage : Page
             .Where(shop => shop.Name.Contains(searchTxt) && shop.UserId == userId)
             .ToList();
 
-        var list = new List<ShopControl>();
+
+
+        List<ShopControl> list = new List<ShopControl>();
 
         foreach (var shop in matchingShops)
         {
@@ -219,6 +222,7 @@ public partial class ShopsPage : Page
 
         shopsFrame.ItemsSource = list;
 
+        
     }
 
     private void AddCategoryName_OnClick(object sender, RoutedEventArgs e)
@@ -236,7 +240,7 @@ public partial class ShopsPage : Page
         Load();
     }
 
-    
+
     private void CategoriesButton_OnClick(object sender, RoutedEventArgs e)
     {
         ReadCategories();

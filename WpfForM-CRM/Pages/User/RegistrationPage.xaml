@@ -8,7 +8,7 @@
       Title="RegistrationPage" Width="800" KeyDown="RegistrationPage_OnKeyDown" Height="500" >
 
 
-    <Grid Background="#D8D8D8">
+    <Grid >
 
         <TextBlock  FontSize="34" Text="Регистр" FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
 
