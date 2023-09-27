@@ -47,7 +47,7 @@
                         Background="CadetBlue" 
                         Foreground="Black"
                         FontSize="20"
-                        Click="CategoriesButton_OnClick" Content="Создать продукт"/>
+                        Click="CategoriesButton_OnClick" Content="Склад"/>
                 <Button Name="exitButton"
                         BorderBrush="CadetBlue" 
                         HorizontalContentAlignment="Left"
