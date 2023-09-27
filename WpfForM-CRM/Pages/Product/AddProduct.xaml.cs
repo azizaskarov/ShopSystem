@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -16,7 +17,7 @@ public partial class AddProduct : Window
     {
         this.shopsPage = shopsPage;
         InitializeComponent(); 
-        categoryName.Text = $"Магазин: {shopsPage.ShopName} \n" + "Категория: " + shopsPage.CategoryName;
+        categoryName.Text = "Категория: " + shopsPage.CategoryName;
         childCategoryName.Text = "Под категория: " + shopsPage.ChildCategoryName;
     }
 
@@ -25,15 +26,9 @@ public partial class AddProduct : Window
     {
         var db = new AppDbContext();
 
-        if (productName.Text.Length == 0 || productPrice.Text.Length == 0 || productDescription.Text.Length == 0)
+        if (productName.Text.Length == 0 || productOriginalPrice.Text.Length == 0 || productSellingPrice.Text.Length == 0)
         {
             MessageBox.Show("Пустое поле");
-            return;
-        }
-
-        if (long.TryParse(productPrice.Text, out long price) == false)
-        {
-            MessageBox.Show("Введите число в цену");
             return;
         }
 
@@ -45,23 +40,40 @@ public partial class AddProduct : Window
         var product = new Entities.Product()
         {
             Name = name,
-            Price = long.Parse(productPrice.Text),
-            Description = productDescription.Text,
-
+            OriginalPrice = long.Parse(productOriginalPrice.Text),
+            SellingPrice = long.Parse(productSellingPrice.Text),
+            Barcode = GenerateBarcode(),
+            Count = int.Parse(productCount.Text),
             ChildCategoryId = shopsPage.ChildCategoryId,
             UserId = shopsPage.userId,
-            CategoryId = shopsPage.CategoryId
+            CategoryId = shopsPage.CategoryId,
+            ShopId = shopsPage.ShopId
         };
-
+        
         db.Products.Add(product);
 
         var childCategory = db.ChildCategories.First(p => p.Id == shopsPage.ChildCategoryId);
         childCategory.Products!.Add(product);
         db.ChildCategories.Update(childCategory);
 
-        db.SaveChanges();
+        db.SaveChanges(); 
         shopsPage.ReadProducts();
         Close();
+
+       
+    }
+
+    private string GenerateBarcode()
+    {
+        Random random = new Random();
+        const int barcodeLength = 11; // 11 ta raqamdan keyin 637 qo'shiladi
+
+        // Random raqamlardan tuzilgan barcode generatsiya qilish
+        string barcode = "637" + new string(Enumerable.Range(0, barcodeLength - 3)
+            .Select(_ => random.Next(10).ToString()[0])
+            .ToArray());
+
+        return barcode;
     }
 
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)

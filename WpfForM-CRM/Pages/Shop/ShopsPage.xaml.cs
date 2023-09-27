@@ -173,7 +173,7 @@ public partial class ShopsPage : Page
             var productControl = new ProductControl();
             productControl.ProductId = product.Id;
             productControl.ProductName = product.Name;
-            productControl.ProductPrice = (decimal)product.Price!;
+            productControl.ProductPrice = (decimal)product.SellingPrice!;
             productControls.Add(productControl);
         }
 
