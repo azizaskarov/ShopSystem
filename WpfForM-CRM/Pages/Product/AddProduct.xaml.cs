@@ -56,7 +56,7 @@ public partial class AddProduct : Window
         childCategory.Products!.Add(product);
         db.ChildCategories.Update(childCategory);
 
-        db.SaveChanges(); MessageBox.Show($"{childCategory.Products!.Count}");
+        db.SaveChanges(); 
         shopsPage.ReadProducts();
         Close();
 
