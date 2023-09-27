@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Windows.Documents;
 
 namespace WpfForM_CRM.Entities;
 
@@ -15,5 +17,7 @@ public class ChildCategory
 
     public Guid? ShopId { get; set; }
     public Shop? Shop { get; set; }
+
+    public List<Product>? Products { get; set; }
 
 }
