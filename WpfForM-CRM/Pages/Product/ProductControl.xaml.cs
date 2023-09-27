@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Controls;
 
 namespace WpfForM_CRM.Pages.Product;
@@ -29,6 +28,6 @@ public partial class ProductControl : UserControl
     public decimal ProductPrice
     {
         get => decimal.Parse(productPrice.Text);
-        set => productPrice.Text = value.ToString();
+        set => productPrice.Text = value + " Сум";
     }
 }
