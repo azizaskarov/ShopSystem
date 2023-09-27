@@ -6,9 +6,10 @@
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       VerticalAlignment="Center"    
-      Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Height="500" Width="800" >
+      Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Height="500" Width="800">
 
     <Grid >
+
         <TextBlock  FontSize="34" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
 
         <TextBox 
@@ -96,5 +97,8 @@
 
         <md:PackIcon Kind="Lock" Width="30" Height="50" Margin="193,238,0,0"/>
         <md:PackIcon Kind="User" Width="30" Height="50" Margin="193,163,0,0" RenderTransformOrigin="-1.733,0.55"/>
+
+
     </Grid>
+
 </Page>

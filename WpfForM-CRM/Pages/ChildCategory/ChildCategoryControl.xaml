@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.ChildCategory"
              Height="70" Width="200" Margin="20" MouseEnter="ChildCategoryControl_OnMouseEnter" MouseLeave="ChildCategoryControl_OnMouseLeave">
     <Grid>
-        <Border Background="SeaGreen" CornerRadius="10"/>
+        <Border Background="#8FB880" CornerRadius="10"/>
 
         <StackPanel Margin="0 0 25 0" Cursor="Hand" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
             <Label 
