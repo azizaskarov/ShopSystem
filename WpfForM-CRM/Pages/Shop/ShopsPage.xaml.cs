@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Category;
 using WpfForM_CRM.Pages.ChildCategory;
+using WpfForM_CRM.Pages.Product;
 
 namespace WpfForM_CRM.Pages.Shop;
 
@@ -37,9 +38,12 @@ public partial class ShopsPage : Page
 
     private int _readShopsButtonPressedCount = 0;
 
+    public Guid? ProductId { get; set; }
+    public string? ProductName { get; set; }
     public string CategoryName { get; set; }
     public string ShopName { get; set; }
     public Guid? ChildCategoryId { get; set; }
+    public string? ChildCategoryName { get; set; }
     public Guid? ShopId { get; set; }
     public Guid? CategoryId { get; set; }
 
@@ -148,6 +152,27 @@ public partial class ShopsPage : Page
 
         shopsFrame.ItemsSource = childCategoryControls;
 
+    }
+
+    public void ReadProducts()
+    {
+        var db = new AppDbContext();
+
+        var products = db.Products.Where(p => p.ChildCategoryId == ChildCategoryId)
+            .OrderByDescending(p => p.CreatedDate).ToList();
+
+        var productControls = new List<ProductControl>();
+
+        foreach (var product in products)
+        {
+            var productControl = new ProductControl();
+            productControl.ProductId = product.Id;
+            productControl.ProductName = product.Name;
+            productControl.ProductPrice = (decimal)product.Price!;
+            productControls.Add(productControl);
+        }
+
+        shopsFrame.ItemsSource = productControls;
     }
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)

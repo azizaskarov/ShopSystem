@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="WpfForM_CRM.Pages.Product.ProductControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfForM_CRM.Pages.Product"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Height="150" Width="130" Margin="5 0">
+    <Grid >
+        <Border CornerRadius="10" Background="#F7F7F7" />
+
+            <StackPanel Margin="0,0,0,72" >
+                <Image Source="../../IconImages/product.png" Width="130" Height="78" />
+            </StackPanel>
+
+        <StackPanel Margin="0,78,0,10"  Background="AliceBlue">
+            <Label Name="productId" Visibility="Collapsed"/>
+            <TextBlock Name="productName" Text="Product Name" TextAlignment="Center" Margin="0 10" Height="30" FontSize="14" FontFamily="Segoe UI Variable Display"  />
+            <TextBlock x:Name="productPrice" Text="150000 USZ" Height="17" Margin="5 -20" FontSize="8" TextAlignment="Center" FontWeight="DemiBold" />
+        </StackPanel>
+
+        
+    </Grid>
+</UserControl>
