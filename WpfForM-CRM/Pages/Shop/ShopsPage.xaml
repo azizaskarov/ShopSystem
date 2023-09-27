@@ -7,7 +7,7 @@
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
      Height="760" Width="1024"
-      Title="ShopsPage" Background="#F7F1F1">
+      Title="ShopsPage" Background="Linen">
 
     <Grid>
         <Grid.ColumnDefinitions>

@@ -3,10 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WpfForM_CRM.Pages.Product"
         mc:Ignorable="d"
-        Title="AddProduct" Height="450" Width="800">
+        Height="376" Width="346" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <StackPanel Margin="8,0,8,0">
+            <TextBlock TextAlignment="Center" Text="Создайте свой продукт"  Height="25" Margin="0 2" Foreground="#FF673AB7" OpacityMask="#FF2AAD86" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" />
+
+            <TextBlock Name="categoryName" Margin="5 0" FontWeight="DemiBold" FontSize="12" Text="category"/>
+            <TextBlock Name="childCategoryName" FontSize="12" Margin="5 0" FontWeight="DemiBold" Text="childcategory"/>
+
+            <TextBox Name="productName"  Margin="5 20 5 10" md:HintAssist.Hint="Product name" md:HintAssist.HintOpacity="0.4"  FontSize="16" md:HintAssist.IsFloating="True" PreviewTextInput="ProductName_OnPreviewTextInput" />
+
+            <TextBox Name="productPrice"  md:HintAssist.Hint="product price" md:HintAssist.IsFloating="True" FontSize="16" md:HintAssist.HintOpacity="0.4" PreviewTextInput="ProductPrice_OnPreviewTextInput" Margin="5  0 5 0"/>
+
+            <TextBox Name="productDescription"  md:HintAssist.Hint="product Description" PreviewTextInput="ProductName_OnPreviewTextInput" md:HintAssist.HintOpacity="0.4" FontSize="16" md:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
+
+            <Button Margin="5 25" Width="150" Content="Create"  FontSize="16" Height="30" Click="ButtonBase_OnClick" />
+        </StackPanel>
     </Grid>
 </Window>

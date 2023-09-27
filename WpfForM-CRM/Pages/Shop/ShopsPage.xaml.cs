@@ -45,6 +45,7 @@ public partial class ShopsPage : Page
     public Guid? ChildCategoryId { get; set; }
     public string? ChildCategoryName { get; set; }
     public Guid? ShopId { get; set; }
+
     public Guid? CategoryId { get; set; }
 
     public void Load()
@@ -156,6 +157,10 @@ public partial class ShopsPage : Page
 
     public void ReadProducts()
     {
+        AddText = "product";
+        CategoryNameTitle.Text = "Категория: " + CategoryName + $", {ChildCategoryName}";
+        Title.Text = "Продукты";
+
         var db = new AppDbContext();
 
         var products = db.Products.Where(p => p.ChildCategoryId == ChildCategoryId)
@@ -203,6 +208,11 @@ public partial class ShopsPage : Page
         {
             AddChildCategory();
         }
+
+        if (AddText == "product")
+        {
+            AddProduct();
+        }
     }
 
     private void AddShop()
@@ -222,6 +232,11 @@ public partial class ShopsPage : Page
         addChildCategory.ShowDialog();
     }
 
+    public void AddProduct()
+    {
+        var addProduct = new AddProduct(this);
+        addProduct.ShowDialog();
+    }
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {
         var searchTxt = SearchText.Text;
@@ -250,11 +265,11 @@ public partial class ShopsPage : Page
         
     }
 
-    private void AddCategoryName_OnClick(object sender, RoutedEventArgs e)
-    {
-        var addCategory = new AddCategory(this);
-        addCategory.ShowDialog();
-    }
+    //private void AddCategoryName_OnClick(object sender, RoutedEventArgs e)
+    //{
+    //    var addCategory = new AddCategory(this);
+    //    addCategory.ShowDialog();
+    //}
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)
     {
