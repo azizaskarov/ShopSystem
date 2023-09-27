@@ -96,5 +96,13 @@ namespace WpfForM_CRM.Pages.ChildCategory
                 new UpdateChildCategory(shopsPage, (Guid)ChildCategoryId, (string)ChildCategoryName, CategoryId);
             updateChildCategory.ShowDialog();
         }
+
+        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            shopsPage.ChildCategoryId = (Guid?)ChildCategoryId;
+            shopsPage.ChildCategoryName = (string)ChildCategoryName;
+            shopsPage.ReadProducts();
+
+        }
     }
 }

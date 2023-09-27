@@ -8,7 +8,7 @@
     <Grid>
         <Border Background="SeaGreen" CornerRadius="10"/>
 
-        <StackPanel Margin="0 0 25 0">
+        <StackPanel Margin="0 0 25 0" Cursor="Hand" MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
             <Label 
                 Name="childCategoryId" 
                 Width="0" 

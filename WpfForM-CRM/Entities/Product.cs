@@ -10,7 +10,7 @@ public class Product
     public required string Name { get; set; }
     public string? Description { get; set; }
     public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
-    public decimal? Price { get; set; }
+    public long? Price { get; set; }
 
     public Guid? ChildCategoryId { get; set; }
     public ChildCategory? ChildCategory { get; set; }
