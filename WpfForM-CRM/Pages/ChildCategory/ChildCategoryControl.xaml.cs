@@ -99,6 +99,7 @@ namespace WpfForM_CRM.Pages.ChildCategory
 
         private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            shopsPage.shopsFrame.Visibility = Visibility.Visible;
             shopsPage.ChildCategoryId = (Guid?)ChildCategoryId;
             shopsPage.ChildCategoryName = (string)ChildCategoryName;
             shopsPage.ReadProducts();

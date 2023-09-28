@@ -75,6 +75,7 @@ public partial class CategoryControl : UserControl
 
     private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+        shopsPage.shopsFrame.Visibility = Visibility.Visible;
         shopsPage.CategoryId = (Guid)CategoryId;
         shopsPage.CategoryName = (string)Name;
         shopsPage.ReadChildCategories();
