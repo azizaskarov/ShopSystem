@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WpfForM_CRM"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        x:Name="Window"  AllowsTransparency="True"
+        x:Name="Window"  AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen" WindowStyle="None"
-        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#F7F1F1"  Width="1024" Height="760">
+        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#F7F1F1"  Width="1024" Height="760" >
     <Grid >
 
 

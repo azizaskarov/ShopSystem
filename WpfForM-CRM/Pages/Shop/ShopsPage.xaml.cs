@@ -57,11 +57,11 @@ public partial class ShopsPage : Page
         ShopNameTitle.Visibility = Visibility.Hidden;
 
 
-        CategoryNameTitle.Text = "Category";
-        CategoryNameTitle.Visibility = Visibility.Hidden;
+        //CategoryNameTitle.Text = "Category";
+        //CategoryNameTitle.Visibility = Visibility.Hidden;
 
-        ShopNameTitle.Text = "Магазин: ";
-        ShopNameTitle.Visibility = Visibility.Hidden;
+        //ShopNameTitle.Text = "Магазин: ";
+        //ShopNameTitle.Visibility = Visibility.Hidden;
         ReadShopsButton.Content = "Магазины";
         AppDbContext appDbContext = new AppDbContext();
         Title.Text = "Мои магазины";
@@ -90,7 +90,7 @@ public partial class ShopsPage : Page
     public void ReadCategories()
     {
         ShopNameTitle.Visibility = Visibility.Collapsed;
-        CategoryNameTitle.Visibility = Visibility.Collapsed;
+       
 
 
         createProductButton.Visibility = Visibility.Visible;
@@ -130,14 +130,12 @@ public partial class ShopsPage : Page
         Title.Text = "Под категории ";
         AddText = "childCategory";
         var db = new AppDbContext();
-
         createProductButton.Visibility = Visibility.Visible;
 
         var childCategories = db.ChildCategories.Where(childCategory => childCategory.CategoryId == CategoryId)
             .OrderByDescending(childCategory => childCategory.CreatedDate).ToList();
 
-        CategoryNameTitle.Text = "Категория: " + CategoryName;
-        CategoryNameTitle.Visibility = Visibility.Visible;
+        ShopNameTitle.Text = "Магазин: " + ShopName + ", Категория: " + CategoryName;
 
         var childCategoryControls = new List<ChildCategoryControl>();
 
@@ -158,7 +156,7 @@ public partial class ShopsPage : Page
     public void ReadProducts()
     {
         AddText = "product";
-        CategoryNameTitle.Text = "Категория: " + CategoryName + $", {ChildCategoryName}";
+        ShopNameTitle.Text = "Магазин: " + ShopName + ", Категория: " + CategoryName + ", Под категория: " + ChildCategoryName;
         Title.Text = "Продукты";
 
         var db = new AppDbContext();
@@ -186,8 +184,6 @@ public partial class ShopsPage : Page
         //addShopButton.Visibility = Visibility.Visible;
         //SearchText.Visibility = Visibility.Visible;
         //ShopNameTitle.Visibility = Visibility.Hidden;
-
-
         _readShopsButtonPressedCount = 1;
         Load();
     }
