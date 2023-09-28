@@ -1,12 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace WpfForM_CRM.Entities
+namespace WpfForM_CRM.Entities;
+
+public class Stock
 {
-    class Stock
-    {
-    }
+    
+    //public  string? Name { get; set; }
+    public int Number { get; set; } 
+    public string? Barcode { get; set; }
+    public string? Category { get; set; }
+    public string? ChildCategory { get; set; }
+    public string? ProductName { get; set; }
+    public string? OriginalPrice { get; set; }
+    public string? SellingPrice { get; set; }
+    public int? Count { get; set; }
+    //public string? ShopName { get; set; }
 }

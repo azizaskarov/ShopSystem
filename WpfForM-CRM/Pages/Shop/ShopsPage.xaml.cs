@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
 using Microsoft.EntityFrameworkCore;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities;
 using WpfForM_CRM.Pages.Category;
+using WpfForM_CRM.Pages.Category.Stock;
 using WpfForM_CRM.Pages.ChildCategory;
 using WpfForM_CRM.Pages.Product;
 
@@ -38,6 +42,8 @@ public partial class ShopsPage : Page
 
     private int _readShopsButtonPressedCount = 0;
 
+    private string ExitButtonMenu = "";
+
     public Guid? ProductId { get; set; }
     public string? ProductName { get; set; }
     public string CategoryName { get; set; }
@@ -50,13 +56,13 @@ public partial class ShopsPage : Page
 
     public void Load()
     {
-        createProductButton.Visibility = Visibility.Hidden;
+        stockFrameButton.Visibility = Visibility.Hidden;
         Title.Visibility = Visibility.Visible;
         addShopButton.Visibility = Visibility.Visible;
         SearchText.Visibility = Visibility.Visible;
         ShopNameTitle.Visibility = Visibility.Hidden;
 
-
+        ExitButtonMenu = "shop";
         //CategoryNameTitle.Text = "Category";
         //CategoryNameTitle.Visibility = Visibility.Hidden;
 
@@ -90,10 +96,11 @@ public partial class ShopsPage : Page
     public void ReadCategories()
     {
         ShopNameTitle.Visibility = Visibility.Collapsed;
-       
+        shopsFrame.Visibility = Visibility.Visible;
 
+        ExitButtonMenu = "category";
 
-        createProductButton.Visibility = Visibility.Visible;
+        stockFrameButton.Visibility = Visibility.Visible;
         ReadShopsButton.Visibility = Visibility.Collapsed;
         categoriesButton.Visibility = Visibility.Visible;
         exitButton.Visibility = Visibility.Visible;
@@ -127,10 +134,12 @@ public partial class ShopsPage : Page
 
     public void ReadChildCategories()
     {
+        ExitButtonMenu = "childCategory";
+
         Title.Text = "Под категории ";
         AddText = "childCategory";
         var db = new AppDbContext();
-        createProductButton.Visibility = Visibility.Visible;
+        stockFrameButton.Visibility = Visibility.Visible;
 
         var childCategories = db.ChildCategories.Where(childCategory => childCategory.CategoryId == CategoryId)
             .OrderByDescending(childCategory => childCategory.CreatedDate).ToList();
@@ -155,6 +164,8 @@ public partial class ShopsPage : Page
 
     public void ReadProducts()
     {
+        ExitButtonMenu = "product";
+        shopsFrame.Visibility = Visibility.Visible;
         AddText = "product";
         ShopNameTitle.Text = "Магазин: " + ShopName + ", Категория: " + CategoryName + ", Под категория: " + ChildCategoryName;
         Title.Text = "Продукты";
@@ -180,11 +191,14 @@ public partial class ShopsPage : Page
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
+        shopsFrame.Visibility = Visibility.Visible;
+        stockFrame.Visibility = Visibility.Collapsed;
         //Title.Visibility = Visibility.Visible;
         //addShopButton.Visibility = Visibility.Visible;
         //SearchText.Visibility = Visibility.Visible;
         //ShopNameTitle.Visibility = Visibility.Hidden;
         _readShopsButtonPressedCount = 1;
+        ExitMenuImage.Visibility = Visibility.Collapsed;
         Load();
     }
 
@@ -272,13 +286,57 @@ public partial class ShopsPage : Page
         categoriesButton.Visibility = Visibility.Hidden;
         ReadShopsButton.Visibility = Visibility.Visible;
         exitButton.Visibility = Visibility.Hidden;
-        createProductButton.Visibility = Visibility.Hidden;
-        Load();
+        stockFrameButton.Visibility = Visibility.Hidden;
+        stockFrame.Visibility = Visibility.Collapsed;
+        addShopButton.Visibility = Visibility.Collapsed;
+        ExitMenuImage.Visibility = Visibility.Hidden;
+        shopsFrame.Visibility = Visibility.Collapsed;
+        ShopNameTitle.Visibility = Visibility.Collapsed;
+        Title.Visibility = Visibility.Collapsed;
     }
 
 
     private void CategoriesButton_OnClick(object sender, RoutedEventArgs e)
     {
+        ExitMenuImage.Visibility = Visibility.Visible;
+        Title.Visibility = Visibility.Visible;
+        stockFrame.Visibility = Visibility.Collapsed;
+        addShopButton.Visibility = Visibility.Visible;
         ReadCategories();
+    }
+
+    private void StockFrameButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        shopsFrame.Visibility = Visibility.Hidden;
+        Title.Visibility = Visibility.Hidden;
+        addShopButton.Visibility = Visibility.Hidden;
+        ShopNameTitle.Visibility = Visibility.Hidden;
+        ExitMenuImage.Visibility = Visibility.Collapsed;
+        stockFrame.Visibility = Visibility.Visible;
+        stockFrame.Navigate(new StockPage(this));
+    }
+
+
+    private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        //if (ExitButtonMenu == "shop")
+        //{
+        //    ExitButton_OnClick(sender,e);
+        //    ExitMenuImage.Visibility = Visibility.Collapsed;
+        //}
+        if (ExitButtonMenu == "category")
+        {
+            Load();
+            stockFrameButton.Visibility = Visibility.Visible;
+            ExitMenuImage.Visibility = Visibility.Collapsed;
+        }
+        if (ExitButtonMenu == "childCategory")
+        {
+            ReadCategories();
+        }
+        if (ExitButtonMenu == "product")
+        {
+            ReadChildCategories();
+        }
     }
 }
