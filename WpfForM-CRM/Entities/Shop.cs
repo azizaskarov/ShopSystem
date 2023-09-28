@@ -12,6 +12,5 @@ public class Shop
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     public Guid? UserId { get; set; }
     public User? User { get; set; }
-
     public List<Category>? Categories { get; set; }
 }
