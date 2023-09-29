@@ -6,8 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using System.Xml.Linq;
-using WpfForM_CRM.Pages.Shop;
 using System.Data.SqlTypes;
 
 namespace WpfForM_CRM.Pages.Stock;
@@ -109,8 +107,8 @@ public partial class AddProductStock : Window
     private void Category_name_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var db = new AppDbContext();
-        var category = db.Categories.First(c => c.Name.Equals(categoryNameComboBox.SelectedValue) && c.Id == categoryId);
-        var childCategories = db.ChildCategories.Where(ch => ch.CategoryId.Equals(category.Id)).ToList();
+        var category = db.Categories.Where(p => p.ShopId == stockPage.shopsPage.ShopId).First(p => p.Name == categoryNameComboBox.SelectedValue.ToString());
+        var childCategories = db.ChildCategories.Where(p => p.CategoryId == category.Id).ToList();
         var childCategoryComboBoxes = new List<string>();
 
         foreach (var childCategory in childCategories)  
