@@ -11,9 +11,9 @@
         <StackPanel Height="450" Margin="7,0,6,0" Width="340">
             <TextBlock TextAlignment="Center" Text="Создайте свой продукт"  Height="25" Margin="0 2" Foreground="#FF673AB7" OpacityMask="#FF2AAD86" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" />
 
-            <ComboBox materialDesign:HintAssist.Hint="Выберите категорию" x:Name="categoryNameComboBox" Height="40" Width="340" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" SelectionChanged="category_name_SelectionChanged"/>
-            <ComboBox materialDesign:HintAssist.Hint="Выберите подкатегорию" x:Name="childCategoryNameComboBox" Height="40" Width="340" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" MouseLeftButtonDown="subcategory_name_MouseLeftButtonDown"/>
-
+            <ComboBox materialDesign:HintAssist.Hint="Выберите категорию" x:Name="categoryNameComboBox" Height="40" Width="340" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" SelectionChanged="Category_name_SelectionChanged"/>
+            <ComboBox materialDesign:HintAssist.Hint="Выберите подкатегорию" x:Name="childCategoryNameComboBox" Height="40" Width="340" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Times New Roman" />
+                     
             <TextBox Name="productName"  Margin="5 20 5 10" materialDesign:HintAssist.Hint="Введите название продукта" materialDesign:HintAssist.HintOpacity="0.4"  FontSize="16" materialDesign:HintAssist.IsFloating="True" PreviewTextInput="ProductName_OnPreviewTextInput" />
 
             <TextBox Name="productOriginalPrice"  materialDesign:HintAssist.Hint="Изначальная цена" materialDesign:HintAssist.IsFloating="True" FontSize="16" materialDesign:HintAssist.HintOpacity="0.4" PreviewTextInput="ProductPrice_OnPreviewTextInput" Margin="5  0 5 0"/>

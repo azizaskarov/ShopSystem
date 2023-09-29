@@ -44,12 +44,11 @@ namespace WpfForM_CRM.Pages.Category
                 return;
             }
 
-            var categoryName = CategoryName.Text;
-            categoryName = char.ToUpper(categoryName[0]) + categoryName.Substring(1);
+            
 
             var category = new Entities.Category()
             {
-                Name = categoryName,
+                Name = Helper.Helper.ToUpperNamesOneChar(CategoryName.Text),
                 ShopId = (Guid?)shopsPage.ShopId,
             };
 

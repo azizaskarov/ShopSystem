@@ -22,7 +22,7 @@ public partial class StockPage : Page
 
     }
 
-    private ShopsPage shopsPage;
+    public ShopsPage shopsPage;
 
     public void Load()
     {
@@ -101,7 +101,7 @@ public partial class StockPage : Page
 
     private void AddProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        var addProductStock = new AddProductStock();
+        var addProductStock = new AddProductStock(this);
         addProductStock.ShowDialog();
     }
 }
