@@ -68,7 +68,7 @@ public partial class ShopsPage : Page
 
         //ShopNameTitle.Text = "Магазин: ";
         //ShopNameTitle.Visibility = Visibility.Hidden;
-        ReadShopsButton.Content = "Магазины";
+        ReadShopsButton.Content = "Мои магазины";
         AppDbContext appDbContext = new AppDbContext();
         Title.Text = "Мои магазины";
         AddText = "shop";
