@@ -101,6 +101,7 @@ public partial class StockPage : Page
 
     private void AddProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        var addProductStock = new AddProductStock();
+        addProductStock.ShowDialog();
     }
 }
