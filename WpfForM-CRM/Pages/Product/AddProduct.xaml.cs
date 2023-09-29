@@ -34,15 +34,14 @@ public partial class AddProduct : Window
 
         var products = db.Products.Where(p => p.ChildCategoryId == shopsPage.ChildCategoryId).ToList();
 
-        var name = productName.Text;
-        name = char.ToUpper(name[0]) + name.Substring(1);
+        
 
         var product = new Entities.Product()
         {
-            Name = name,
+            Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
             OriginalPrice = long.Parse(productOriginalPrice.Text),
             SellingPrice = long.Parse(productSellingPrice.Text),
-            Barcode = GenerateBarcode(),
+            Barcode = Helper.Helper.GenerateBarcode(),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = shopsPage.ChildCategoryId,
             UserId = shopsPage.userId,
@@ -63,19 +62,7 @@ public partial class AddProduct : Window
        
     }
 
-    private string GenerateBarcode()
-    {
-        Random random = new Random();
-        const int barcodeLength = 11; // 11 ta raqamdan keyin 637 qo'shiladi
-
-        // Random raqamlardan tuzilgan barcode generatsiya qilish
-        string barcode = "637" + new string(Enumerable.Range(0, barcodeLength - 3)
-            .Select(_ => random.Next(10).ToString()[0])
-            .ToArray());
-
-        return barcode;
-    }
-
+    
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
 
