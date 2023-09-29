@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Entities;
 using WpfForM_CRM.Pages.Category;
-using WpfForM_CRM.Pages.Category.Stock;
 using WpfForM_CRM.Pages.ChildCategory;
 using WpfForM_CRM.Pages.Product;
+using WpfForM_CRM.Pages.Stock;
 
 namespace WpfForM_CRM.Pages.Shop;
 

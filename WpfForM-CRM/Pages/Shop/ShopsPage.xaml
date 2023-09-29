@@ -18,7 +18,7 @@
         <Border Background="CadetBlue" Grid.Column="0" Height="760" VerticalAlignment="Center">
             <StackPanel Margin="0,0,-2,0">
                 <Button   x:Name="ReadShopsButton"
-                    Height="40" 
+                    Height="40"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
                     Content="Мои магазины"
                     HorizontalContentAlignment="Left"
                     Background="CadetBlue" 
@@ -28,7 +28,7 @@
                     BorderBrush="CadetBlue" 
                     Width="199" />
 
-                <Button Name="categoriesButton" 
+                <Button Name="categoriesButton" Style="{StaticResource MaterialDesignFlatMidBgButton}"
                         HorizontalContentAlignment="Left"
                         Visibility="Collapsed"  
                         BorderBrush="CadetBlue" 
@@ -38,7 +38,7 @@
                         FontSize="20"
                         Click="CategoriesButton_OnClick" Content="Категории"/>
 
-                <Button Name="stockFrameButton" 
+                <Button Name="stockFrameButton"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
                         HorizontalContentAlignment="Left"
                         Visibility="Collapsed"  
                         BorderBrush="CadetBlue" 
@@ -47,7 +47,7 @@
                         Foreground="Black"
                         FontSize="20"
                         Click="StockFrameButton_OnClick" Content="Склад"/>
-                <Button Name="exitButton"
+                <Button Name="exitButton"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
                         BorderBrush="CadetBlue" 
                         HorizontalContentAlignment="Left"
                         Width="199" Height="40" 

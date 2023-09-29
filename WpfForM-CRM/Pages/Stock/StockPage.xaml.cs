@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
 
-namespace WpfForM_CRM.Pages.Category.Stock;
+namespace WpfForM_CRM.Pages.Stock;
 
 /// <summary>
 /// Interaction logic for StockPage.xaml
@@ -17,7 +17,7 @@ public partial class StockPage : Page
       
         InitializeComponent();
         
-        stockName.Text = shopsPage.ShopName;
+        
         this.shopsPage = shopsPage;Load();
 
     }
@@ -97,5 +97,10 @@ public partial class StockPage : Page
         //        stockData.ItemsSource = stocks;
 
         //}
+    }
+
+    private void AddProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
     }
 }
