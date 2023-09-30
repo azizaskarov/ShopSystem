@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -16,11 +17,11 @@ public partial class FastArrivalProductStock : Window
         InitializeComponent();
         this.stockPage = stockPage;
         this.selectedStock = selectedStock;
-        categoryName.Text = selectedStock.Category;
-        childCategoryName.Text = selectedStock.ChildCategory;
+        categoryName.Text = "Категория: " + selectedStock.Category;
+        childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
         productName.Text = selectedStock.ProductName;
-        productOriginalPrice.Text = selectedStock.OriginalPrice;
-        productSellingPrice.Text = selectedStock.SellingPrice;
+        productOriginalPrice.Text = "Изначальная цена - " + selectedStock.OriginalPrice;
+        productSellingPrice.Text = "Цена продажи - " + selectedStock.SellingPrice;
         productCount.Text = selectedStock.Count;
 
     }

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -17,8 +18,8 @@ public partial class UpdateProductStock : Window
     {
             
         InitializeComponent();
-        categoryName.Text = selectedStock.Category;
-        childCategoryName.Text = selectedStock.ChildCategory;
+        categoryName.Text = "Категория: " + selectedStock.Category;
+        childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
         this.stockPage = stockPage;
         this.selectedStock = selectedStock;
         productName.Text = selectedStock.ProductName;
@@ -42,7 +43,7 @@ public partial class UpdateProductStock : Window
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
-        if (productName.Text.Length == 0 || productOriginalPrice.Text.Length == 0 || productSellingPrice.Text.Length == 0)
+        if (productName.Text.Length == 0 || productOriginalPrice.Text.Length == 0 || productSellingPrice.Text.Length == 0 || productCount.Text.Length == 0)
         {
             MessageBox.Show("Пустое поле");
             return;

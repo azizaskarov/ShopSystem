@@ -9,7 +9,7 @@
         MaxHeight="450" MaxWidth="400" WindowStartupLocation="CenterScreen"  >
     <Grid>
         <StackPanel Height="450" Margin="7,0,6,0" Width="340">
-            <TextBlock TextAlignment="Center" Text="Edit свой продукт"  Height="25" Margin="0 2" Foreground="#FF673AB7" OpacityMask="#FF2AAD86" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" />
+            <TextBlock TextAlignment="Center" Text="Редактировать продукт"  Height="25" Margin="0 2" Foreground="#FF673AB7" OpacityMask="#FF2AAD86" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" />
 
             <TextBlock Name="categoryName" Margin="5 0" FontWeight="DemiBold" FontSize="12" Text="category"/>
             <TextBlock Name="childCategoryName" FontSize="12" Margin="5 0" FontWeight="DemiBold" Text="childcategory"/>
@@ -22,7 +22,7 @@
 
             <TextBox Name="productCount"  materialDesign:HintAssist.Hint="Количество продуктов" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
 
-            <Button Margin="5 25" Width="150" Content="Создавать"  FontSize="16" Height="34" Click="ButtonBase_OnClick" />
+            <Button Margin="5 25" Width="150" Content="Редактировать"  FontSize="16" Height="34" Click="ButtonBase_OnClick" />
         </StackPanel>
     </Grid>
 </Window>
