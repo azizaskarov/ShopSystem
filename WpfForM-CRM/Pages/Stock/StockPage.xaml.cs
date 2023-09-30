@@ -119,4 +119,31 @@ public partial class StockPage : Page
         var updateProductStock = new UpdateProductStock(this, selectedStock);
         updateProductStock.ShowDialog();
     }
+
+    private void DeleteProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        var indexItem = stockData.SelectedIndex;
+        if (indexItem == -1)
+        {
+            MessageBox.Show("product tanlan");
+            return;
+        }
+
+        var stocks = (List<Entities.Stock>)stockData.ItemsSource;
+        var selectedStock = stocks[indexItem];
+        var resultQuestion = MessageBox.Show("Вы уверены, что хотите удалить товар?", "", 
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Stop);
+
+        if (resultQuestion == MessageBoxResult.Yes)
+        {
+            var db = new AppDbContext();
+            var product = db.Products.Where(p => p.ShopId.Equals(shopsPage.ShopId))
+                .First(p => p.Barcode == selectedStock.Barcode);
+
+            db.Products.Remove(product);
+            db.SaveChanges();
+            Load();
+        }
+    }
 }
