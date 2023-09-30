@@ -88,7 +88,6 @@ public partial class AddProductStock : Window
             Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
             OriginalPrice = long.Parse(productOriginalPrice.Text),
             SellingPrice = long.Parse(productSellingPrice.Text),
-            Barcode = Helper.Helper.GenerateBarcode(),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
             UserId = stockPage.shopsPage.userId,
@@ -97,6 +96,7 @@ public partial class AddProductStock : Window
         };
 
         db.Products.Add(product);
+        product.Barcode = Helper.Helper.GenerateBarcode();
         childCategory.Products!.Add(product);
         db.ChildCategories.Update(childCategory);
         db.SaveChanges();

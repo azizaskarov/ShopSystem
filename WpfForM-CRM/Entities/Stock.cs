@@ -13,6 +13,6 @@ public class Stock
     public string? ProductName { get; set; }
     public string? OriginalPrice { get; set; }
     public string? SellingPrice { get; set; }
-    public int? Count { get; set; }
+    public string Count { get; set; }
     //public string? ShopName { get; set; }
 }
