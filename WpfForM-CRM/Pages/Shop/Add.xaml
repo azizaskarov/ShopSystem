@@ -12,8 +12,8 @@
     <Grid Margin="5,2,0,2"  >
 
         <Label Name="EmptyName" FontWeight="Heavy" Content="" Foreground="Firebrick" Margin="19,155,136,92" RenderTransformOrigin="0.488,0.758"/>
-        <TextBox x:Name="shopname" md:HintAssist.Hint=" Название магазина" md:HintAssist.HintOpacity="0.4" FontSize="20" Height="35" Margin="4,80,4,86" PreviewTextInput="shopNamePreviewTextInput"  />
-        <Button Height="30" Width="150" Background="#FF4282D8" Margin="10 100 0 0" Click="Button_Click" FontFamily="Arial" FontSize="18">Добавить</Button>
+        <TextBox x:Name="shopname" md:HintAssist.Hint=" Название магазина" md:HintAssist.HintOpacity="0.4" FontSize="20" Width="390" Height="35" Margin="4,80,4,86" PreviewTextInput="shopNamePreviewTextInput"  />
+        <Button Height="30" Width="150" Background="#FF4282D8" Margin="10 100 0 0" Click="Button_Click" FontWeight="390" FontFamily="Arial" FontSize="18">Добавить</Button>
 
     </Grid>
 </Window>

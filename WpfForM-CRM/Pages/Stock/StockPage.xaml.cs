@@ -51,9 +51,9 @@ public partial class StockPage : Page
                         Barcode = product.Barcode,
                         ChildCategory = childCategory.Name,
                         Category = category!.Name,
-                        OriginalPrice = product.OriginalPrice + " USZ",
-                        SellingPrice = product.SellingPrice + " USZ",
-                        Count = product.Count ?? 1,
+                        OriginalPrice = product.OriginalPrice.ToString(),
+                        SellingPrice = product.SellingPrice.ToString(),
+                        Count = (product.Count ?? 1).ToString(),
                     };
 
                     items.Add(item);
@@ -103,5 +103,20 @@ public partial class StockPage : Page
     {
         var addProductStock = new AddProductStock(this);
         addProductStock.ShowDialog();
+    }
+
+    private void UpdateProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        var indexItem = stockData.SelectedIndex;
+        if (indexItem == -1)
+        {
+            MessageBox.Show("tanglang");
+            return;
+        }
+
+        var stocks = (List<Entities.Stock>)stockData.ItemsSource;
+        var selectedStock = stocks[indexItem];
+        var updateProductStock = new UpdateProductStock(this, selectedStock);
+        updateProductStock.ShowDialog();
     }
 }
