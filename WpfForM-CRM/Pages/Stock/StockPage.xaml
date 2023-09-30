@@ -22,7 +22,7 @@
                     <Button Name="addProductForStockBtn" Click="AddProductForStockBtn_OnClick" Grid.Column="0" HorizontalAlignment="Center" Width="140" Style="{StaticResource MaterialDesignFlatMidBgButton}" FontSize="16" Background="#ADDFAD" Foreground="Black" BorderBrush="Transparent">Добавить</Button>
                     <Button Name="updateProductForStockBtn" Click="UpdateProductForStockBtn_OnClick" Grid.Column="1" HorizontalAlignment="Center" Width="151" Style="{StaticResource MaterialDesignFlatMidBgButton}" FontSize="16" Background="#ADDFAD" Foreground="Black" BorderBrush="Transparent" Margin="0,9,0,9" >Редоктировать</Button>
                     <Button Name="deleteproductForStockBtn" Grid.Column="2" Click="DeleteProductForStockBtn_OnClick" HorizontalAlignment="Center" Width="140" Style="{StaticResource MaterialDesignFlatMidBgButton}" FontSize="16" Background="#ADDFAD" Foreground="Black" BorderBrush="Transparent">Удалить</Button>
-                    <Button Name="fastarrivalForStockBtn" Grid.Column="3" HorizontalAlignment="Center" Width="165" Style="{StaticResource MaterialDesignFlatMidBgButton}" FontSize="16" Background="#ADDFAD" Foreground="Black" BorderBrush="Transparent" Margin="0,9,0,9">Быстрая приход</Button>
+                    <Button Name="fastarrivalForStockBtn" Grid.Column="3" Click="FastArrivalForStockBtn_OnClick" HorizontalAlignment="Center" Width="165" Style="{StaticResource MaterialDesignFlatMidBgButton}" FontSize="16" Background="#ADDFAD" Foreground="Black" BorderBrush="Transparent" Margin="0,9,0,9">Быстрая приход</Button>
                 </Grid>
             </StackPanel>
 

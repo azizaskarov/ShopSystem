@@ -146,4 +146,19 @@ public partial class StockPage : Page
             Load();
         }
     }
+
+    private void FastArrivalForStockBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        var indexItem = stockData.SelectedIndex;
+        if (indexItem == -1)
+        {
+            MessageBox.Show("product tanlan");
+            return;
+        }
+
+        var stocks = (List<Entities.Stock>)stockData.ItemsSource;
+        var selectedStock = stocks[indexItem];
+        var fastArrivalProductStock  = new FastArrivalProductStock(this, selectedStock);
+        fastArrivalProductStock.ShowDialog();
+    }
 }
