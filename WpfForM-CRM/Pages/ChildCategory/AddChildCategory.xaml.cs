@@ -33,9 +33,6 @@ public partial class AddChildCategory : Window
         }
 
         var childCategories = db.ChildCategories
-            .Where(childCategory => 
-                childCategory.ShopId == shopsPage.ShopId 
-                && childCategory.CategoryId == shopsPage.CategoryId)
             .ToList();
 
         if (childCategories.Any(childCategory => childCategory.Name == childCategoryName.Text))

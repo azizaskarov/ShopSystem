@@ -36,7 +36,7 @@ namespace WpfForM_CRM.Pages.Category
 
             }
 
-            var categories = db.Categories.Where(category => category.ShopId == shopsPage.ShopId).ToList();
+            var categories = db.Categories.ToList();
 
             if (categories.Any(category => category.Name == CategoryName.Text))
             {
@@ -50,6 +50,7 @@ namespace WpfForM_CRM.Pages.Category
             {
                 Name = Helper.Helper.ToUpperNamesOneChar(CategoryName.Text),
                 ShopId = (Guid?)shopsPage.ShopId,
+                UserId = shopsPage.userId
             };
 
             db.Categories.Add(category);

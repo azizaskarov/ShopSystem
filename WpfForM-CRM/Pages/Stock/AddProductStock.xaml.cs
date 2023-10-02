@@ -29,13 +29,13 @@ public partial class AddProductStock : Window
     public void ComboBoxCategoryNames()
     {
         var db = new AppDbContext();
-        var categories = db.Categories.Where(c => c.ShopId.Equals(stockPage.shopsPage.ShopId)).ToList();
+        var categories = db.Categories.ToList();
         var comboBoxes = new List<string>();
 
         foreach (var category in categories)
         {
             comboBoxes.Add(category.Name);
-            categoryId = category.Id;
+            //categoryId = category.Id;
         }
 
         categoryNameComboBox.ItemsSource = comboBoxes;
@@ -80,8 +80,10 @@ public partial class AddProductStock : Window
             return;
         }
 
-        var childCategory = db.ChildCategories.Where(p => p.ShopId == stockPage.shopsPage.ShopId).First(p => p.Name == childCategoryNameComboBox.SelectedValue.ToString());
-        var shop = db.Shops.First(p => p.Id == stockPage.shopsPage.ShopId);
+        var category = db.Categories.First(c => c.Name == categoryNameComboBox.SelectedValue.ToString());
+
+        var childCategory = db.ChildCategories.Where(p => p.CategoryId == category.Id).First(p => p.Name == childCategoryNameComboBox.SelectedValue.ToString());
+        var shop = db.Shops.First(p => p.Id == category.ShopId);
 
         var product = new Entities.Product()
         {
@@ -91,7 +93,7 @@ public partial class AddProductStock : Window
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
             UserId = stockPage.shopsPage.userId,
-            CategoryId = childCategory.CategoryId,
+            CategoryId = category.Id,
             ShopId = shop.Id
         };
 
@@ -107,8 +109,9 @@ public partial class AddProductStock : Window
     private void Category_name_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var db = new AppDbContext();
-        var category = db.Categories.Where(p => p.ShopId == stockPage.shopsPage.ShopId).First(p => p.Name == categoryNameComboBox.SelectedValue.ToString());
-        var childCategories = db.ChildCategories.Where(p => p.CategoryId == category.Id).ToList();
+        var category = db.Categories.First(p => p.Name == categoryNameComboBox.SelectedValue.ToString());
+
+        var childCategories = db.ChildCategories.Where(ch => ch.CategoryId == category.Id);
         var childCategoryComboBoxes = new List<string>();
 
         foreach (var childCategory in childCategories)  

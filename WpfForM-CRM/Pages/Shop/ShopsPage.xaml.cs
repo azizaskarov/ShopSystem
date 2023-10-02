@@ -110,7 +110,7 @@ public partial class ShopsPage : Page
         AddText = "category";
         Title.Text = "Категории";
         var categories = appDbContext.Categories
-            .Where(category => category.ShopId == ShopId)
+            //.Where(category => category.ShopId == ShopId)
             .OrderByDescending(category => category.CreatedDate).ToList();
 
         ShopNameTitle.Text = "Магазин: " + ShopName;
