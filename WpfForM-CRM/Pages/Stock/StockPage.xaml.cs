@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
 
@@ -161,4 +162,6 @@ public partial class StockPage : Page
         var fastArrivalProductStock  = new FastArrivalProductStock(this, selectedStock);
         fastArrivalProductStock.ShowDialog();
     }
+
+    
 }
