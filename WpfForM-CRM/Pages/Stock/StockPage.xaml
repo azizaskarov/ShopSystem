@@ -27,7 +27,7 @@
             </StackPanel>
 
             <Grid >
-                <DataGrid MouseLeftButtonDown="StockData_OnMouseLeftButtonDown" ForceCursor="True" Cursor="Hand" HorizontalAlignment="Left" Width="824" RowHeight="35"  CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
+                <DataGrid ForceCursor="True" Cursor="Hand" HorizontalAlignment="Left" Width="824" RowHeight="35"  CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
                           Background="White" x:Name="stockData" AutoGenerateColumns="True" 
                           SelectionUnit="FullRow" 
                           GridLinesVisibility="All" ColumnWidth="auto" FontSize="12"
