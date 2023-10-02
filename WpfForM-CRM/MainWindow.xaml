@@ -31,7 +31,7 @@
 
         </DockPanel>
 
-        <Frame x:Name="mainframe" Margin="0,25,0,0" Width="1024" NavigationUIVisibility="Hidden" VerticalAlignment="Top"  />
+        <Frame x:Name="mainframe" Margin="0,25,0,0"  Width="1024" NavigationUIVisibility="Hidden" VerticalAlignment="Top"  />
 
         <Button x:Name="minimizeButton_Copy" Cursor="Hand" Background="CadetBlue" Foreground="Black"
                 BorderBrush="CadetBlue" Height="25" Content="-" Click="ButtonBase_OnClick"
