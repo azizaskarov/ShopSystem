@@ -21,7 +21,7 @@ public partial class MainMenuPage : Page
     public MainMenuPage(MainWindow mainWindow, bool isRegistered = false, string currentRegisterUser = "", string currentPasswordUser = "")
     {
         this._mainWindow = mainWindow;
-        mainWindow.Background = new SolidColorBrush(Colors.White);
+        mainWindow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F0F9FF"));
         InitializeComponent();
         EnterTextBox(isRegistered, currentRegisterUser, currentPasswordUser);
     }

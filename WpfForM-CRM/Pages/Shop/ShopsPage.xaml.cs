@@ -302,7 +302,7 @@ namespace WpfForM_CRM.Pages.Shop
 
         private void StockFrameButton_OnClick(object sender, RoutedEventArgs e)
         {
-            window.Background = new SolidColorBrush(Colors.White);
+           
             shopsFrame.Visibility = Visibility.Hidden;
             Title.Visibility = Visibility.Hidden;
             addShopButton.Visibility = Visibility.Hidden;

@@ -24,7 +24,7 @@ public partial class RegistrationPage : Page
     {
         this.mainWindow = mainWindow;
         InitializeComponent();
-        mainWindow.Background = new SolidColorBrush(Colors.White);
+        mainWindow.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F0F9FF"));
     }
 
 
