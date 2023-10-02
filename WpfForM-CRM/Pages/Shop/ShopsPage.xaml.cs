@@ -26,6 +26,7 @@ public partial class ShopsPage : Page
         this.window = window;
         this.userId = userId;
         InitializeComponent();
+        Load();
     }
 
     private string AddText { get; set; }
