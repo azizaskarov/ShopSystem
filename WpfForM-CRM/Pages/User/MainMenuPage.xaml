@@ -6,19 +6,28 @@
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       VerticalAlignment="Center"    
-      Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Margin="0 100"  Background="LightSteelBlue" Height="500" Width="800">
+      Title="MainMenuPage" KeyDown="MainMenuPage_OnKeyDown" Margin="0 100"  Height="450" Width="600">
 
     <Grid >
-          
 
-        <TextBlock  FontSize="34" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
+        <Border CornerRadius="6"  Background="#FFFFFF" Padding="1" >
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                                  Direction ="-90" 
+                                  RenderingBias ="Quality" 
+                                  ShadowDepth ="2" 
+                                  Color ="Gray" />
+            </Border.Effect>
+        </Border>
+
+        <TextBlock  FontSize="34" Text="Логин " FontWeight="SemiBold" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
 
         <TextBox 
             md:TextFieldAssist.TextFieldCornerRadius="5"
             x:Name="parol_tx" 
             Background="White" 
             HorizontalAlignment="Left" 
-            Height="45" Margin="228,240,0,0" 
+            Height="45" Margin="100,240,0,0" 
             VerticalAlignment="Top"  Width="400" 
             MaxLength="20" FontSize="24" 
             FontFamily="Times New Roman" 
@@ -29,7 +38,7 @@
             x:Name="parol_txt" 
             md:HintAssist.Hint=" Введите пароль" 
             Background="White" HorizontalAlignment="Left" 
-            Height="45" Margin="228,240,0,0" 
+            Height="45" Margin="100,240,0,0" 
             VerticalAlignment="Top" Width="400" 
             PasswordChar="*" MaxLength="20" FontSize="22"
             AllowDrop="True" 
@@ -41,7 +50,7 @@
             md:TextFieldAssist.TextFieldCornerRadius="5" 
             Background="White"
             HorizontalAlignment="Left" 
-            Margin="228,163,0,0" 
+            Margin="100,163,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="400" Height="45" 
@@ -51,16 +60,20 @@
 
         <Button 
             x:Name="enter_btn" 
-            Content="Входить" 
             md:ButtonAssist.CornerRadius="5" 
-            Cursor="Hand" Background="LightSkyBlue" 
-            HorizontalAlignment="Left" 
-            Height="45" Margin="300,336,0,0" 
+            Cursor="Hand" Background="CadetBlue" 
+            HorizontalAlignment="Center" 
+            Height="45" Margin="0,336,0,0" 
             VerticalAlignment="Top" Width="256"
             FontSize="24"  Click="enter_btn_Click"
             FontFamily="Arial" 
             RenderTransformOrigin="0,0" 
-            Foreground="Black"/>
+            Foreground="White">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Входит" Margin="5"/>
+                <md:PackIcon Margin="2 5 0 0 " Width="40"  Kind="LoginVariant" Height="30"/>
+            </StackPanel>
+        </Button>
 
         <Button 
             Content="Регистр" 
@@ -83,22 +96,23 @@
             Content="Запомнить меня" 
             IsChecked="True"
             HorizontalAlignment="Left" 
-            Height="25" Margin="228,290,0,0" 
+            Height="25" Margin="100,290,0,0" 
             VerticalAlignment="Top" Width="140"/>
 
         <Image 
             x:Name="eye" 
             HorizontalAlignment="Left" 
-            Height="30" Margin="594,246,0,0" 
+            Height="34" 
+            Margin="470,248,0,0"
             VerticalAlignment="Top" 
-            Width="34" 
+            Width="30" 
             Source="../../IconImages/eye open.png" 
             Stretch="Fill" 
-            MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+            MouseLeftButtonDown="Image_MouseLeftButtonDown"
+            RenderTransformOrigin="0.567,0.086"/>
 
-        <md:PackIcon Kind="Lock" Width="30" Height="50" Margin="193,238,0,0"/>
-        <md:PackIcon Kind="User" Width="30" Height="50" Margin="193,163,0,0" RenderTransformOrigin="-1.733,0.55"/>
-
+        <md:PackIcon Kind="Lock" Width="30" Height="50" Margin="65,240,0,0" RenderTransformOrigin="-3.367,0.58"/>
+        <md:PackIcon Kind="User" Width="30" Height="50" Margin="65,160,0,0" RenderTransformOrigin="-1.733,0.55"/>
 
     </Grid>
 

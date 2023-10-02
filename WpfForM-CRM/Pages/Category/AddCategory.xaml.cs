@@ -50,7 +50,7 @@ namespace WpfForM_CRM.Pages.Category
             {
                 Name = Helper.Helper.ToUpperNamesOneChar(CategoryName.Text),
                 ShopId = (Guid?)shopsPage.ShopId,
-                UserId = shopsPage.userId
+                UserId = shopsPage.UserId
             };
 
             db.Categories.Add(category);

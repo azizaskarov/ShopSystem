@@ -92,7 +92,7 @@ public partial class AddProductStock : Window
             SellingPrice = long.Parse(productSellingPrice.Text),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
-            UserId = stockPage.shopsPage.userId,
+            UserId = stockPage.shopsPage.UserId,
             CategoryId = category.Id,
             ShopId = shop.Id
         };

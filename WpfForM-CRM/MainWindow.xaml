@@ -8,11 +8,11 @@
         mc:Ignorable="d"
         x:Name="Window"  AllowsTransparency="True" 
         WindowStartupLocation="CenterScreen" WindowStyle="None"
-        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#F7F1F1"  Width="1024" Height="760" >
+        Title="MainWindow" KeyDown="MainWindow_OnKeyDown" Background="#F0F9FF"  Width="1024" Height="760" >
     <Grid >
 
 
-        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Background="CadetBlue" Height="25" Width="1024" MouseDown="DockPanel_MouseDown">
+        <DockPanel Name="DockPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Background="CadetBlue" Height="25"  Width="1024" MouseDown="DockPanel_MouseDown">
 
             <Button x:Name="exit_btn" 
                     Height="24.8" 
@@ -31,7 +31,7 @@
 
         </DockPanel>
 
-        <Frame x:Name="mainframe" Margin="0,25,0,0"  Width="1024" NavigationUIVisibility="Hidden" VerticalAlignment="Top"  />
+        <Frame x:Name="mainframe" Margin="0,25,0,0"   NavigationUIVisibility="Hidden" VerticalAlignment="Top"  />
 
         <Button x:Name="minimizeButton_Copy" Cursor="Hand" Background="CadetBlue" Foreground="Black"
                 BorderBrush="CadetBlue" Height="25" Content="-" Click="ButtonBase_OnClick"
