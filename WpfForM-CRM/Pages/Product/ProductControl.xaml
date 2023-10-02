@@ -8,18 +8,23 @@
              mc:Ignorable="d" 
              Height="150" Width="130" Margin="5 0">
     <Grid >
-        <Border CornerRadius="10" Background="#F7F7F7" />
 
-            <StackPanel Margin="0,0,0,72" >
-                <Image Source="../../IconImages/product.png" Width="130" Height="78" />
-            </StackPanel>
+        <Border CornerRadius="8" Background="#F7F7F7" >
+            <Grid>
+                <Image Name="deleteProduct" MouseLeftButtonDown="DeleteProduct_OnMouseLeftButtonDown" Cursor="Hand" Source="../../IconImages/del.png" Width="21" HorizontalAlignment="Right" Margin="0,92,2,36" RenderTransformOrigin="0.505,0.126" Height="22"/>
+                <Image Name="updateProduct" MouseLeftButtonDown="UpdateProduct_OnMouseLeftButtonDown" Cursor="Hand" Source="../../IconImages/update.png" Width="17"  HorizontalAlignment="Right" Margin="0,126,2,6" RenderTransformOrigin="0.233,0.485"/>
+            </Grid>
+        </Border>
 
-        <StackPanel Margin="0,78,0,10"  Background="AliceBlue">
-            <Label Name="productId" Visibility="Collapsed"/>
-            <TextBlock Name="productName" Text="Product Name" TextAlignment="Center" Margin="0 10" Height="30" FontSize="14" FontFamily="Segoe UI Variable Display"  />
-            <TextBlock x:Name="productPrice" Text="150000 USZ" Height="17" Margin="5 -20" FontSize="12" TextAlignment="Center" FontWeight="Bold" />
+        <StackPanel Margin="0,0,0,75" >
+            <Image Source="../../IconImages/product.png" Width="131" Margin="0 0 13 0" Height="75" />
         </StackPanel>
 
-        
+        <StackPanel Margin="0,78,25,0" >
+            <Label Name="productId" Visibility="Collapsed"/>
+            <TextBlock Name="productName" Text="Product Name" HorizontalAlignment="Left" TextAlignment="Left" Margin="1 0" Height="23"  FontSize="12" FontFamily="Segoe UI Variable Display" Width="129"  />
+            <TextBlock x:Name="productPrice" Text="150000 USZ"  Height="39" FontSize="11" FontWeight="Bold" Margin="1 10" HorizontalAlignment="Left" Width="103"  />
+        </StackPanel>
+
     </Grid>
 </UserControl>

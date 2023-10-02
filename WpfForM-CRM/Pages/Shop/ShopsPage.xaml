@@ -7,7 +7,7 @@
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       Height="760" Width="1024"
-      Title="ShopsPage" Background="Linen">
+      Title="ShopsPage" Background="White">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,9 +16,9 @@
         </Grid.ColumnDefinitions>
 
         <Border Background="CadetBlue" Grid.Column="0" Height="760" VerticalAlignment="Center">
-            <StackPanel Margin="0,0,-2,0">
+            <StackPanel Margin="-1,0,-2,0">
                 <Button   x:Name="ReadShopsButton"
-                    Height="40"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                    Height="40"  
                     Content="Мои магазины"
                     HorizontalContentAlignment="Left"
                     Background="CadetBlue" 
@@ -26,31 +26,34 @@
                     FontSize="20"
                     Click="Button_ReadShops" 
                     BorderBrush="CadetBlue" 
-                    Width="199" />
+                    Width="201" />
 
-                <Button Name="categoriesButton" Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                <Button Name="categoriesButton"
                         HorizontalContentAlignment="Left"
                         Visibility="Collapsed"  
+                        Margin="-1,0,-2,0"
                         BorderBrush="CadetBlue" 
-                        Width="199" Height="40" 
+                        Width="200" Height="40" 
                         Background="CadetBlue" 
                         Foreground="Black"
                         FontSize="20"
                         Click="CategoriesButton_OnClick" Content="Категории"/>
 
-                <Button Name="stockFrameButton"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                <Button Name="stockFrameButton" 
                         HorizontalContentAlignment="Left"
-                        Visibility="Collapsed"  
+                        Visibility="Collapsed" 
+                        Margin="-1,0,-2,0"
                         BorderBrush="CadetBlue" 
-                        Width="199" Height="40" 
+                        Width="200" Height="40" 
                         Background="CadetBlue" 
                         Foreground="Black"
                         FontSize="20"
                         Click="StockFrameButton_OnClick" Content="Склад"/>
-                <Button Name="exitButton"  Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                <Button Name="exitButton"
+                        Margin="-1,0,-2,0"
                         BorderBrush="CadetBlue" 
                         HorizontalContentAlignment="Left"
-                        Width="199" Height="40" 
+                        Width="200" Height="40" 
                         Background="CadetBlue" 
                         Foreground="Black"
                         FontSize="20"

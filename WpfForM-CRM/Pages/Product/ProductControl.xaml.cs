@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using WpfForM_CRM.Context;
+using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.Product;
 
@@ -8,11 +13,13 @@ namespace WpfForM_CRM.Pages.Product;
 /// </summary>
 public partial class ProductControl : UserControl
 {
-    public ProductControl()
+    public ProductControl(ShopsPage shopsPage)
     {
+        this.shopsPage = shopsPage;
         InitializeComponent();
     }
 
+    ShopsPage shopsPage;
     public Guid ProductId
     {
         get => (Guid)productId.Content;
@@ -25,9 +32,33 @@ public partial class ProductControl : UserControl
         set => productName.Text = value;
     }
 
-    public decimal ProductPrice
+    public long SellingProductPrice
     {
-        get => decimal.Parse(productPrice.Text);
-        set => productPrice.Text = value + " Сум";
+        get => long.Parse(productPrice.Text);
+        set => productPrice.Text = value.ToString();
+    }
+
+    public string OriginalProductPrice { get; set; }
+    public string ProductCount { get; set; }
+   
+
+    private void DeleteProduct_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var db = new AppDbContext();
+        var product = db.Products.First(p => p.Id.Equals(ProductId));
+        var questionResult = MessageBox.Show("delete?", "", MessageBoxButton.OKCancel, MessageBoxImage.Question);
+        if (questionResult == MessageBoxResult.OK)
+        {
+            db.Products.Remove(product);
+            db.SaveChanges(); 
+            shopsPage.ReadProducts();
+        }
+    }
+
+    private void UpdateProduct_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        var product = new UpdateProduct(shopsPage, ProductId, ProductName, OriginalProductPrice,
+            SellingProductPrice.ToString(), ProductCount);
+        product.ShowDialog();
     }
 }

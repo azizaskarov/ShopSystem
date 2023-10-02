@@ -177,10 +177,12 @@ public partial class ShopsPage : Page
 
         foreach (var product in products)
         {
-            var productControl = new ProductControl();
+            var productControl = new ProductControl(this);
             productControl.ProductId = product.Id;
             productControl.ProductName = product.Name;
-            productControl.ProductPrice = (decimal)product.SellingPrice!;
+            productControl.SellingProductPrice = (long)product.SellingPrice!;
+            productControl.OriginalProductPrice = product.OriginalPrice.ToString()!;
+            productControl.ProductCount = product.Count.ToString()!;
             productControls.Add(productControl);
         }
 

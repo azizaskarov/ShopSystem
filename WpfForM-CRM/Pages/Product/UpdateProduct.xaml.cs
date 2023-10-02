@@ -1,45 +1,45 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
+using WpfForM_CRM.Pages.Stock;
 
-namespace WpfForM_CRM.Pages.Stock;
+namespace WpfForM_CRM.Pages.Product;
 
 /// <summary>
-/// Interaction logic for UpdateProductStock.xaml
+/// Interaction logic for UpdateProduct.xaml
 /// </summary>
-public partial class UpdateProductStock : Window
+public partial class UpdateProduct : Window
 {
-    public UpdateProductStock(StockPage stockPage, Entities.Stock selectedStock)
-    {
-            
-        InitializeComponent();
-        categoryName.Text = "Категория: " + selectedStock.Category;
-        childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
-        this.stockPage = stockPage;
-        this.selectedStock = selectedStock;
-        productName.Text = selectedStock.ProductName;
-        productOriginalPrice.Text = selectedStock.OriginalPrice;
-        productSellingPrice.Text = selectedStock.OriginalPrice;
-        productCount.Text = selectedStock.Count;
 
+    public UpdateProduct(ShopsPage shopsPage,Guid productId, string currentProductName, string originalPrice, string sellingPrice, string currentProductCount)
+    {
+        InitializeComponent();
+        categoryName.Text = "Категория: " + shopsPage.CategoryName;
+        childCategoryName.Text = "Под категория: " + shopsPage.ChildCategoryName;
+        this.shopsPage = shopsPage;
+        this.productId = productId;
+        productName.Text = currentProductName;
+        productOriginalPrice.Text = originalPrice;
+        productSellingPrice.Text = sellingPrice;
+        productCount.Text = currentProductCount;
     }
 
+    ShopsPage shopsPage;
+    Guid productId;
     private string SubstrUzs(string productPrice)
     {
-        if (productPrice.ToLower().EndsWith("uzs"))
+        if (productPrice.ToLower().EndsWith("Сум"))
         {
             productPrice = productPrice.Substring(0, productPrice.Length - 3).Trim(); // "uzs" so'zini olib tashayapmiz va bo'shlikni olib tashayapmiz
         }
 
         return productPrice;
     }
-    StockPage  stockPage;
-    private Entities.Stock selectedStock;
+    StockPage stockPage;
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
@@ -50,7 +50,7 @@ public partial class UpdateProductStock : Window
         }
 
         var db = new AppDbContext();
-        var product = db.Products.First(p => p.Barcode == selectedStock.Barcode);
+        var product = db.Products.First(p => p.Id == productId);
         product.Name = productName.Text;
         product.OriginalPrice = (long.Parse(productOriginalPrice.Text));
         product.SellingPrice = (long.Parse(productSellingPrice.Text));
@@ -58,7 +58,7 @@ public partial class UpdateProductStock : Window
 
         db.Products.Update(product);
         db.SaveChanges();
-        stockPage.Load();
+        shopsPage.ReadProducts();
         Close();
     }
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -91,6 +91,5 @@ public partial class UpdateProductStock : Window
             e.Handled = true; // Ignore the input
         }
     }
-
 
 }
