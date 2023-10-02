@@ -46,7 +46,7 @@ public partial class Add : Window
         var shop = new Entities.Shop()
         {
             Name = shopName,
-            UserId =(Guid?)shopsPage.userId,
+            UserId =(Guid?)shopsPage.UserId,
         };
 
         //var user = db.Users.FirstOrDefault(user => user.Id == shopsPage.userId);
@@ -60,7 +60,7 @@ public partial class Add : Window
         //shopsPage.ShopId = shop.Id;
         db.Shops.Add(shop);
 
-        var user = db.Users.FirstOrDefault(u => u.Id == shopsPage.userId);
+        var user = db.Users.FirstOrDefault(u => u.Id == shopsPage.UserId);
         user.Shops.Add(shop);
         db.Users.Update(user);
 

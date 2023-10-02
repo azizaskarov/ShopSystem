@@ -44,7 +44,7 @@ public partial class AddProduct : Window
             Barcode = Helper.Helper.GenerateBarcode(),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = shopsPage.ChildCategoryId,
-            UserId = shopsPage.userId,
+            UserId = shopsPage.UserId,
             CategoryId = shopsPage.CategoryId,
             ShopId = shopsPage.ShopId
         };

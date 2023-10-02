@@ -5,10 +5,19 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
-      Title="RegistrationPage" Width="800" KeyDown="RegistrationPage_OnKeyDown" Height="500" >
+      Title="RegistrationPage" KeyDown="RegistrationPage_OnKeyDown" Margin="0 100"  Height="450" Width="600" >
 
 
     <Grid >
+        <Border CornerRadius="6"  Background="#FFFFFF">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15"
+                                  Direction ="-90" 
+                                  RenderingBias ="Quality" 
+                                  ShadowDepth ="2" 
+                                  Color ="Gray" />
+            </Border.Effect>
+        </Border>
 
         <TextBlock  FontSize="34" Text="Регистр" FontWeight="SemiBold" VerticalAlignment="Top" TextAlignment="Center" Height="45" Margin="0,80,0,0"/>
 
@@ -17,7 +26,7 @@
             x:Name="pass2" 
             Background="White" 
             HorizontalAlignment="Left" 
-            Height="45" Margin="228,240,0,0" 
+            Height="45" Margin="100,240,0,0" 
             VerticalAlignment="Top"  Width="400" 
             MaxLength="20" FontSize="24" 
             FontFamily="Times New Roman" 
@@ -29,7 +38,7 @@
             x:Name="pass" 
             md:HintAssist.Hint=" Введите пароль" 
             Background="White" HorizontalAlignment="Left" 
-            Height="45" Margin="228,240,0,0" 
+            Height="45" Margin="100,240,0,0" 
             VerticalAlignment="Top" Width="400" 
             PasswordChar="*" MaxLength="20" FontSize="22"
             AllowDrop="True" 
@@ -42,7 +51,7 @@
             md:TextFieldAssist.TextFieldCornerRadius="5" 
             Background="White"
             HorizontalAlignment="Left" 
-            Margin="226,163,0,0" 
+            Margin="100,163,0,0" 
             TextWrapping="Wrap" 
             VerticalAlignment="Top" 
             Width="400" Height="45" 
@@ -56,7 +65,7 @@
             x:Name="con_pass2" 
             Background="White" 
             HorizontalAlignment="Left" 
-            Height="45" Margin="228,311,0,0" 
+            Height="45" Margin="100,311,0,0" 
             VerticalAlignment="Top"  Width="400" 
             MaxLength="20" FontSize="24" 
             FontFamily="Times New Roman" 
@@ -68,7 +77,7 @@
             x:Name="con_pass" 
             md:HintAssist.Hint=" Введите пароль еще раз" 
             Background="White" HorizontalAlignment="Left" 
-            Height="45" Margin="228,311,0,0" 
+            Height="45" Margin="100,311,0,0" 
             VerticalAlignment="Top" Width="400" 
             PasswordChar="*" 
             MaxLength="20"
@@ -79,20 +88,23 @@
 
         <Button 
             x:Name="enter_btn" 
-            Content="Зарегистрация" 
             md:ButtonAssist.CornerRadius="5" 
             Cursor="Hand" 
-            Background="LightSkyBlue" 
-            HorizontalAlignment="Left" 
+            Background="CadetBlue" 
+            HorizontalAlignment="Center" 
             Height="45" 
-            Margin="300,390,0,0" 
+            Margin="0,390,0,0" 
             VerticalAlignment="Top" 
             Width="256"
             FontSize="24"  
             Click="reg_btn_Click" 
             FontFamily="Arial" 
             RenderTransformOrigin="0,0" 
-            Foreground="Black"/>
+            Foreground="White">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Зарегистрация" Margin="5"/>
+            </StackPanel>
+        </Button>
 
         <Button 
             Content="Назад" 
@@ -114,7 +126,7 @@
             x:Name="pass_name"  
             HorizontalAlignment="Left" 
             Height="35" 
-            Margin="598,250,0,0" 
+            Margin="470,250,0,0" 
             VerticalAlignment="Top" 
             Width="30"
             Source="/IconImages/eye open.png" 
@@ -124,15 +136,15 @@
         <Image 
             x:Name="conpassname" 
             HorizontalAlignment="Left" 
-            Height="36" Margin="598,318,0,0" 
+            Height="36" Margin="470,318,0,0" 
             VerticalAlignment="Top" 
             Width="30" 
             Source="/IconImages/eye open.png" 
             MouseLeftButtonDown="conpassname_MouseLeftButtonDown" 
             RenderTransformOrigin="0.567,0.086"/>
 
-        <md:PackIcon Kind="LockAdd" Width="30" Height="50" Margin="193,240,0,0"/>
-        <md:PackIcon Kind="UserAdd" Width="30" Height="50" Margin="191,163,0,0"/>
-        <md:PackIcon Kind="LockAdd" Width="30" Height="50" Margin="193,311,0,0"/>
+        <md:PackIcon Kind="LockAdd" Width="30" Height="50" Margin="65,240,0,0"/>
+        <md:PackIcon Kind="UserAdd" Width="30" Height="50" Margin="65,163,0,0"/>
+        <md:PackIcon Kind="LockAdd" Width="30" Height="50" Margin="65,308,0,0"/>
     </Grid>
 </Page>

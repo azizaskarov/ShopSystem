@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
@@ -14,58 +15,17 @@ namespace WpfForM_CRM.Pages.User;
 /// </summary>
 public partial class MainMenuPage : Page
 {
-    private int eye_counter = 0;
-    private string password_change = string.Empty;
-    private MainWindow mainWindow;
-    public MainMenuPage(MainWindow mainWindow, bool isRegistered = false, string currentRegisterUser = "" , string currentPasswordUser = "")
+    private int _eyeCounter = 0;
+    private string _passwordChange = string.Empty;
+    private readonly MainWindow _mainWindow;
+    public MainMenuPage(MainWindow mainWindow, bool isRegistered = false, string currentRegisterUser = "", string currentPasswordUser = "")
     {
-        this.mainWindow = mainWindow;
+        this._mainWindow = mainWindow;
+        mainWindow.Background = new SolidColorBrush(Colors.White);
         InitializeComponent();
         EnterTextBox(isRegistered, currentRegisterUser, currentPasswordUser);
-       
     }
 
-    //public void AddCategory()
-    //{
-    //    var db = new AppDbContext();
-
-    //    var password = "2003azizC";
-    //    var hasher = new SHA256Managed();
-    //    var unhashed = System.Text.Encoding.Unicode.GetBytes(password);
-    //    var hashed = hasher.ComputeHash(unhashed);
-    //    var hashedPassword = Convert.ToBase64String(hashed);
-
-    //    var user = new User()
-    //    {
-    //        UserName = "azizaskarow",
-    //        RememberMe = false,
-    //        Password = hashedPassword
-    //    };
-
-    //    db.Users.Add(user);
-
-    //    var shop = new Shop()
-    //    {
-    //        Name = "MyShop",
-    //        UserId = user.Id,
-    //    };
-    //    db.Shops.Add(shop);
-
-    //    user.Shops.Add(shop);
-    //    db.Users.Update(user);
-
-    //    var category = new Category()
-    //    {
-    //        Name = "Kiyim",
-    //        ShopId = shop.Id,
-    //    };
-
-    //    db.Categories.Add(category);
-    //    shop.Categories.Add(category);
-    //    db.Shops.Update(shop);
-
-    //    db.SaveChanges();
-    //}
 
     private void EnterTextBox(bool isRegistered = false, string currentRegisterUser = "", string currentPasswordUser = "")
     {
@@ -86,7 +46,7 @@ public partial class MainMenuPage : Page
 
     private void Button_Click(object sender, RoutedEventArgs e)
     {
-        MainPage.NavigationService.Navigate(new RegistrationPage(mainWindow));
+        MainPage.NavigationService!.Navigate(new RegistrationPage(_mainWindow));
     }
 
     private void enter_btn_Click(object sender, RoutedEventArgs e)
@@ -108,7 +68,7 @@ public partial class MainMenuPage : Page
             try
             {
                 var user = dbContext.Users.FirstOrDefault(u => u.UserName == username);
-                var page = new RegistrationPage(mainWindow);
+                var page = new RegistrationPage(_mainWindow);
                 var hash = page.GenerateHash(password);
                 var invisibleHash = page.GenerateHash(invisiblePassword);
 
@@ -129,11 +89,13 @@ public partial class MainMenuPage : Page
                         Properties.Settings.Default.Save();
                     }
 
-                    MainPage.NavigationService.Navigate(new ShopsPage(mainWindow, user.Id));
+                    
+
+                    MainPage.NavigationService!.Navigate(new ShopsPage(_mainWindow, user.Id));
                 }
                 else
                 {
-                    MessageBox.Show("Неправильный пароль", "Ошибка" , MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неправильный пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
@@ -143,31 +105,31 @@ public partial class MainMenuPage : Page
         }
         else
         {
-            MessageBox.Show("Пользователь не найден","Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show("Пользователь не найден", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
     private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        if (eye_counter == 2)
+        if (_eyeCounter == 2)
         {
-            eye_counter = 0;
+            _eyeCounter = 0;
         }
-        if (eye_counter == 0)
+        if (_eyeCounter == 0)
         {
             parol_tx.Visibility = Visibility.Visible;
             parol_txt.Visibility = Visibility.Hidden;
             eye.Source =
                 new BitmapImage(new Uri("../../IconImages/eye close.png", UriKind.Relative));
-            eye_counter = 1;
+            _eyeCounter = 1;
         }
-        else if (eye_counter == 1)
+        else if (_eyeCounter == 1)
         {
             parol_tx.Visibility = Visibility.Hidden;
             parol_txt.Visibility = Visibility.Visible;
             eye.Source =
                 new BitmapImage(new Uri("../../IconImages/eye open.png", UriKind.Relative));
-            eye_counter = 2;
+            _eyeCounter = 2;
         }
     }
 
@@ -188,7 +150,7 @@ public partial class MainMenuPage : Page
     {
         if (e.Key == Key.Enter)
         {
-            enter_btn_Click(sender,e);
+            enter_btn_Click(sender, e);
         }
         else if (e.Key == Key.Escape)
         {
@@ -196,5 +158,5 @@ public partial class MainMenuPage : Page
         }
     }
 
-    
+
 }
