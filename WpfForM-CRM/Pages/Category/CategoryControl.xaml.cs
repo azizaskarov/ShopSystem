@@ -46,7 +46,7 @@ public partial class CategoryControl : UserControl
 
         if (deleteResultButton == MessageBoxResult.Yes)
         {
-            
+
             appDbContext.Categories.Remove(category);
             appDbContext.SaveChanges();
             shopsPage.ReadCategories();
@@ -58,7 +58,6 @@ public partial class CategoryControl : UserControl
     {
         var categoryUpdate = new CategoryUpdate(shopsPage, (Guid)CategoryId, (string)Name, ShopId);
         categoryUpdate.ShowDialog();
-
     }
 
     private void ShopControl_OnMouseEnter(object sender, MouseEventArgs e)

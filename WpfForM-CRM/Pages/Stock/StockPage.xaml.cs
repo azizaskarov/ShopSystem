@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
 
@@ -31,7 +30,7 @@ public partial class StockPage : Page
 
 
         var items = new List<Entities.Stock>();
-        var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId).OrderByDescending(p => p.CreatedDate).ToList();
+        var products = db.Products.Where(p => p.UserId == shopsPage.userId).OrderByDescending(p => p.CreatedDate).ToList();
         int i = 1;
 
         if (products.Count > 0)
