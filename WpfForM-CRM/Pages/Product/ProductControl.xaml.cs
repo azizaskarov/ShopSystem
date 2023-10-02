@@ -34,13 +34,13 @@ public partial class ProductControl : UserControl
 
     public long SellingProductPrice
     {
-        get => long.Parse(productPrice.Text);
-        set => productPrice.Text = value.ToString();
+        get => long.Parse(productPrice.Text.Replace("UZS", "").Trim());
+        set => productPrice.Text = value + " UZS";
     }
 
     public string OriginalProductPrice { get; set; }
     public string ProductCount { get; set; }
-   
+
 
     private void DeleteProduct_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
@@ -50,15 +50,16 @@ public partial class ProductControl : UserControl
         if (questionResult == MessageBoxResult.OK)
         {
             db.Products.Remove(product);
-            db.SaveChanges(); 
+            db.SaveChanges();
             shopsPage.ReadProducts();
         }
     }
 
     private void UpdateProduct_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+
         var product = new UpdateProduct(shopsPage, ProductId, ProductName, OriginalProductPrice,
-            SellingProductPrice.ToString(), ProductCount);
+                    SellingProductPrice.ToString(), ProductCount);
         product.ShowDialog();
     }
 }

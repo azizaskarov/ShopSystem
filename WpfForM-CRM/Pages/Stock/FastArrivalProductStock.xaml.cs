@@ -3,7 +3,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -28,7 +27,7 @@ public partial class FastArrivalProductStock : Window
 
     StockPage stockPage;
     Entities.Stock selectedStock;
-        
+    
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
         var db = new AppDbContext();
@@ -40,7 +39,7 @@ public partial class FastArrivalProductStock : Window
         }
 
         var product = db.Products.First(p => p.Barcode == selectedStock.Barcode);
-        product.Count += product.Count;
+        product.Count += int.Parse(productCount.Text);
         db.Products.Update(product);
         db.SaveChanges();
         stockPage.Load();

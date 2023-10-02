@@ -51,8 +51,8 @@ public partial class StockPage : Page
                         Barcode = product.Barcode,
                         ChildCategory = childCategory.Name,
                         Category = category!.Name,
-                        OriginalPrice = product.OriginalPrice.ToString(),
-                        SellingPrice = product.SellingPrice.ToString(),
+                        OriginalPrice = product.OriginalPrice + " UZS",
+                        SellingPrice = product.SellingPrice + " UZS",
                         Count = (product.Count ?? 1).ToString(),
                     };
 

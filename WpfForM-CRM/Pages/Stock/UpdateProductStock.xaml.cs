@@ -22,9 +22,9 @@ public partial class UpdateProductStock : Window
         childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
         this.stockPage = stockPage;
         this.selectedStock = selectedStock;
-        productName.Text = selectedStock.ProductName;
-        productOriginalPrice.Text = selectedStock.OriginalPrice;
-        productSellingPrice.Text = selectedStock.OriginalPrice;
+        productName.Text = selectedStock.ProductName; // productPrice.Text.Replace("UZS", "").Trim()
+        productOriginalPrice.Text = selectedStock.OriginalPrice!.Replace("UZS", "");
+        productSellingPrice.Text = selectedStock.OriginalPrice!.Replace("UZS", ""); ;
         productCount.Text = selectedStock.Count;
 
     }
