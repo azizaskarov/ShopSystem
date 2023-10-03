@@ -21,7 +21,7 @@ public partial class FastArrivalProductStock : Window
         productName.Text = selectedStock.ProductName;
         productOriginalPrice.Text = "Изначальная цена - " + selectedStock.OriginalPrice;
         productSellingPrice.Text = "Цена продажи - " + selectedStock.SellingPrice;
-        productCount.Text = selectedStock.Count;
+        count.Content += selectedStock.Count;
 
     }
 
@@ -32,7 +32,7 @@ public partial class FastArrivalProductStock : Window
     {
         var db = new AppDbContext();
 
-        if (productCount.Text.Length == 0)
+        if (productCount.Text.Length == 0 || productCount.Text == 0.ToString())
         {
             MessageBox.Show("Пустое поле");
             return;

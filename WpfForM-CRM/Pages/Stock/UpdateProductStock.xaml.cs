@@ -48,6 +48,11 @@ public partial class UpdateProductStock : Window
             MessageBox.Show("Пустое поле");
             return;
         }
+        if (productName.Text == 0.ToString() || productOriginalPrice.Text == 0.ToString() || productSellingPrice.Text == 0.ToString() || productCount.Text == 0.ToString())
+        {
+            MessageBox.Show("not variable");
+            return;
+        }
 
         var db = new AppDbContext();
         var product = db.Products.First(p => p.Barcode == selectedStock.Barcode);

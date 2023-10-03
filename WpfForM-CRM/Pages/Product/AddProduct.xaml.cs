@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -16,7 +15,7 @@ public partial class AddProduct : Window
     public AddProduct(ShopsPage shopsPage)
     {
         this.shopsPage = shopsPage;
-        InitializeComponent(); 
+        InitializeComponent();
         categoryName.Text = "Категория: " + shopsPage.CategoryName;
         childCategoryName.Text = "Под категория: " + shopsPage.ChildCategoryName;
     }
@@ -31,10 +30,15 @@ public partial class AddProduct : Window
             MessageBox.Show("Пустое поле");
             return;
         }
+        if (productName.Text == 0.ToString() || productOriginalPrice.Text == 0.ToString() || productSellingPrice.Text == 0.ToString() || productCount.Text == 0.ToString())
+        {
+            MessageBox.Show("not variable");
+            return;
+        }
 
         var products = db.Products.Where(p => p.ChildCategoryId == shopsPage.ChildCategoryId).ToList();
 
-        
+
 
         var product = new Entities.Product()
         {
@@ -48,21 +52,21 @@ public partial class AddProduct : Window
             CategoryId = shopsPage.CategoryId,
             ShopId = shopsPage.ShopId
         };
-        
+
         db.Products.Add(product);
 
         var childCategory = db.ChildCategories.First(p => p.Id == shopsPage.ChildCategoryId);
         childCategory.Products!.Add(product);
         db.ChildCategories.Update(childCategory);
 
-        db.SaveChanges(); 
+        db.SaveChanges();
         shopsPage.ReadProducts();
         Close();
 
-       
+
     }
 
-    
+
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
 
