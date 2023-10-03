@@ -1,11 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace WpfForM_CRM.Entities;
 
 public class Stock
 {
-    
+    [DisplayName("Номер")]
     public int Number { get; set; } 
     public string? Barcode { get; set; }
     public string? Category { get; set; }
@@ -14,5 +13,6 @@ public class Stock
     public string? OriginalPrice { get; set; }
     public string? SellingPrice { get; set; }
     public string Count { get; set; }
+   
     //public string? ShopName { get; set; }
 }

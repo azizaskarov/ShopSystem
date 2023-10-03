@@ -12,40 +12,66 @@
     <Grid >
 
 
-        <DockPanel Name="DockPanel" HorizontalAlignment="Left" VerticalAlignment="Top" Background="CadetBlue" Height="25"  Width="1024" MouseDown="DockPanel_MouseDown">
-
-            <Button x:Name="exit_btn" 
-                    Height="24.8" 
-                    Background="CadetBlue"  
-                    BorderBrush="CadetBlue" 
-                    Foreground="Black"
-                    md:ButtonAssist.CornerRadius="0"
-                    FontSize="14" Click="Page1_Click" 
-                    HorizontalAlignment="Right"
-                    Content="x"     VerticalAlignment="Center"  HorizontalContentAlignment="Left"
-                    FontWeight="Bold" 
-                    Width="40" 
-                    Cursor="Hand" 
-                    MouseEnter="exit_btn_MouseEnter" 
-                    MouseLeave="exit_btn_MouseLeave" />
-
-        </DockPanel>
+        <DockPanel Name="DockPanel" HorizontalAlignment="Center" VerticalAlignment="Top" Background="CadetBlue" Height="25" OverridesDefaultStyle="True" Width="3840" MouseDown="DockPanel_MouseDown"/>
 
         <Frame x:Name="mainframe" Margin="0,25,0,0"   NavigationUIVisibility="Hidden" VerticalAlignment="Top"  />
 
+
+
+
+
         <Button x:Name="minimizeButton_Copy" Cursor="Hand" Background="CadetBlue" Foreground="Black"
-                BorderBrush="CadetBlue" Height="25" Content="-" Click="ButtonBase_OnClick"
-                FontSize="20" FontFamily="Times New Roman" FontWeight="Bold"
-                Margin="0,0,39,0" Width="40">
+                    BorderBrush="CadetBlue" Height="25" Content="0" Click="ButtonBase_OnClick"
+                    FontSize="20" FontFamily="webdings" FontWeight="Bold" 
+                    Margin="0,0,60,0" Width="30">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Width" Value="24" />
-                    <Setter Property="Height" Value="24" />
                     <Setter Property="HorizontalAlignment" Value="Right" />
                     <Setter Property="VerticalAlignment" Value="Top" />
                 </Style>
             </Button.Style>
         </Button>
 
+        <Button x:Name="restoreBtn" 
+                Height="25"  FontFamily="webdings"   
+                Background="CadetBlue"  
+                BorderBrush="CadetBlue" 
+                Foreground="Black"
+                md:ButtonAssist.CornerRadius="0"
+                FontSize="13" Click="RestoreBtn_OnClick"
+                Content="1" 
+                FontWeight="Bold" 
+                Width="30"
+                Cursor="Hand" HorizontalContentAlignment="Center" 
+                Margin="0,0,30,0" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="exit_btn" 
+                Height="25"     
+                Background="CadetBlue"  
+                BorderBrush="CadetBlue" 
+                Foreground="Black"
+                md:ButtonAssist.CornerRadius="0"
+                FontSize="16" Click="Page1_Click"
+                Content="x" 
+                FontWeight="Bold" 
+                Width="30"
+                Cursor="Hand" HorizontalContentAlignment="Center" 
+                MouseEnter="exit_btn_MouseEnter" 
+                MouseLeave="exit_btn_MouseLeave" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

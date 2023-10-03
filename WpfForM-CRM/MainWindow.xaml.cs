@@ -10,14 +10,14 @@ namespace WpfForM_CRM;
 /// </summary>
 public partial class MainWindow : Window
 {
-    
+
     public MainWindow()
     {
-        
+
         InitializeComponent();
         mainframe.Navigate(new MainMenuPage(this));
-        
-        
+
+
     }
 
 
@@ -51,12 +51,36 @@ public partial class MainWindow : Window
     {
         if (e.Key == Key.Escape)
         {
-            Page1_Click(sender,e);
+            Page1_Click(sender, e);
         }
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
         this.WindowState = WindowState.Minimized;
+    }
+
+    private void RestoreBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (restoreBtn.Content.ToString() == "1")
+        {
+            DockPanel.Height = 30;
+            exit_btn.Height = 30;
+            restoreBtn.Height = 30;
+            minimizeButton_Copy.Height = 30;
+            Window.WindowState = WindowState.Maximized;
+            restoreBtn.Content = 2;
+            return;
+        }
+
+        if (restoreBtn.Content.ToString() == "2")
+        {
+            DockPanel.Height = 25;
+            exit_btn.Height = 25;
+            restoreBtn.Height = 25;
+            minimizeButton_Copy.Height = 25;
+            Window.WindowState = WindowState.Normal;
+            restoreBtn.Content = 1;
+        }
     }
 }
