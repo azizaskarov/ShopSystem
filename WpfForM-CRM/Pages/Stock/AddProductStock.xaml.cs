@@ -78,6 +78,11 @@ public partial class AddProductStock : Window
             MessageBox.Show("not variable");
             return;
         }
+        if (productName.Text == 0.ToString() || productOriginalPrice.Text == 0.ToString() || productSellingPrice.Text == 0.ToString() || productCount.Text == 0.ToString() || categoryNameComboBox.SelectedValue == null || childCategoryNameComboBox.SelectedValue == null)
+        {
+            MessageBox.Show("not variable");
+            return;
+        }
 
         var category = db.Categories.First(c => c.Name == categoryNameComboBox.SelectedValue.ToString());
 
@@ -87,7 +92,7 @@ public partial class AddProductStock : Window
         var product = new Entities.Product()
         {
             Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
-            OriginalPrice = long.Parse(productOriginalPrice.Text),
+            OriginalPrice = long.Parse(productOriginalPrice.Text.Replace(",","")),
             SellingPrice = long.Parse(productSellingPrice.Text),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
@@ -113,7 +118,7 @@ public partial class AddProductStock : Window
         var childCategories = db.ChildCategories.Where(ch => ch.CategoryId == category.Id);
         var childCategoryComboBoxes = new List<string>();
 
-        foreach (var childCategory in childCategories)  
+        foreach (var childCategory in childCategories)
         {
             childCategoryComboBoxes.Add(childCategory.Name);
         }
@@ -121,6 +126,12 @@ public partial class AddProductStock : Window
         childCategoryNameComboBox.ItemsSource = childCategoryComboBoxes;
     }
 
+    private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
+        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
+        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+    }
 }
 
 

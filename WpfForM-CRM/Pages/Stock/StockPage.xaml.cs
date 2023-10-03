@@ -65,38 +65,6 @@ public partial class StockPage : Page
             stockData.ItemsSource = items;
         }
 
-
-        //var dbContext = new AppDbContext();
-        //var stocks = new List<Entities.Stock>();
-        //int numberStock = 1;
-        //if (dbContext.Shops.Any(sh => sh.Id == shopsPage.ShopId))
-        //{
-        //    var shop = dbContext.Shops.First(sh => sh.Id == shopsPage.ShopId);
-        //    var products = dbContext.Products.Where(p => p.ShopId == shop.Id).ToList().OrderByDescending(p => p.CreatedDate);
-
-
-
-        //        foreach (var product in products)
-        //        {
-        //            var stock = new Entities.Stock()
-        //            {
-        //                Number = numberStock,
-        //                ProductName = product.Name,
-        //                Barcode = product.Barcode,
-        //                Category = dbContext.Categories.First(c => c.Id == product.CategoryId).Name,
-        //                ChildCategory = dbContext.ChildCategories.First(c => c.Id == product.ChildCategoryId).Name,
-        //                OriginalPrice = product.OriginalPrice + " USZ",
-        //                Count = product.Count ?? 1,
-        //                SellingPrice = product.SellingPrice + " USZ"
-        //            };
-
-        //            stocks.Add(stock);
-        //            numberStock++;
-        //        }
-
-        //        stockData.ItemsSource = stocks;
-
-        //}
     }
 
     private void AddProductForStockBtn_OnClick(object sender, RoutedEventArgs e)
@@ -138,7 +106,7 @@ public partial class StockPage : Page
         if (resultQuestion == MessageBoxResult.Yes)
         {
             var db = new AppDbContext();
-            var product = db.Products.Where(p => p.ShopId.Equals(shopsPage.ShopId))
+            var product = db.Products
                 .First(p => p.Barcode == selectedStock.Barcode);
 
             db.Products.Remove(product);

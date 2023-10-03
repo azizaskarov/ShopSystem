@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:WpfForM_CRM.Pages.Stock"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        MaxHeight="380" MaxWidth="400" WindowStartupLocation="CenterScreen"  >
+        MaxHeight="420" MaxWidth="400" WindowStartupLocation="CenterScreen"  >
     <Grid>
-        <StackPanel Height="450" Margin="7,0,6,0" Width="340">
+        <StackPanel Margin="7,0,6,0" Height="410" Width="340">
             <TextBlock TextAlignment="Center" Text="Быстрая приход продукт"  Height="25" Margin="0 2" Foreground="#FF673AB7" OpacityMask="#FF2AAD86" FontFamily="Segoe UI Emoji" FontWeight="Bold" FontSize="16" />
 
             <TextBlock Name="categoryName" Margin="5 0" FontWeight="DemiBold" FontSize="12" Text="category"/>
@@ -20,7 +20,9 @@
 
             <TextBlock Name="productSellingPrice"  Text="Цена продажи" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
 
-            <TextBox Name="productCount"  materialDesign:HintAssist.Hint="Количество продуктов" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
+            <Label x:Name="count" Content="Количество на складе " FontStyle="Normal" Foreground="Black" FontSize="13.5" FontFamily="Baskerville" FontWeight="DemiBold"  Margin="0 20 0 0"/>
+
+            <TextBox Name="productCount"  materialDesign:HintAssist.Hint="Количество продуктов" PreviewTextInput="ProductPrice_OnPreviewTextInput"  materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 0 5 0" Height="47"/>
 
             <Button Margin="5 30" Width="150" Content="Добавить"  FontSize="16" Height="34" Click="ButtonBase_OnClick" />
         </StackPanel>
