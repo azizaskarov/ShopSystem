@@ -24,7 +24,7 @@ public partial class UpdateProductStock : Window
         this.selectedStock = selectedStock;
         productName.Text = selectedStock.ProductName; // productPrice.Text.Replace("UZS", "").Trim()
         productOriginalPrice.Text = selectedStock.OriginalPrice!.Replace("UZS", "");
-        productSellingPrice.Text = selectedStock.OriginalPrice!.Replace("UZS", ""); ;
+        productSellingPrice.Text = selectedStock.SellingPrice!.Replace("UZS", ""); ;
         productCount.Text = selectedStock.Count;
 
     }

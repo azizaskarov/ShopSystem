@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using System.Data.SqlTypes;
 
 namespace WpfForM_CRM.Pages.Stock;
 
