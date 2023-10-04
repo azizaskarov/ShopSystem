@@ -100,6 +100,7 @@ public partial class ShopControl : UserControl
     //}
     private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+        shopsPage.checkoutBtn.Visibility = Visibility.Visible;
         shopsPage.ExitMenuImage.Visibility = Visibility.Visible;
         shopsPage.shopsFrame.Visibility = Visibility.Visible;
         shopsPage.ShopId = (Guid?)ShopId;
