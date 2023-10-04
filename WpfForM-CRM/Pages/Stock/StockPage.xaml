@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="760" d:DesignWidth="824"  Background="AliceBlue"
+      d:DesignHeight="760" d:DesignWidth="824" 
+      Background="AliceBlue" 
       Title="StockPage">
 
     <Grid>
@@ -27,22 +28,45 @@
             </StackPanel>
 
             <Grid >
-                <Grid.ColumnDefinitions>
+                <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="734*"/>
                     <ColumnDefinition Width="90*"/>
-                </Grid.ColumnDefinitions>
-                <DataGrid Cursor="Hand" HorizontalAlignment="Left" Width="824" RowHeight="35"  CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
-                          Background="White" x:Name="stockData" AutoGenerateColumns="True" 
-                          SelectionUnit="FullRow"  RowHeaderWidth="10"
-                          GridLinesVisibility="All" ColumnWidth="auto" FontSize="12" 
-                          CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" BorderThickness="3" 
-                          CanUserAddRows="False" CanUserDeleteRows="False" VerticalGridLinesBrush="#ADDFAD" VerticalScrollBarVisibility="Auto"  KeyboardNavigation.TabNavigation="Once" VirtualizingPanel.VirtualizationMode="Recycling"
-                          HorizontalGridLinesBrush="#ADDFAD" Style="{StaticResource MaterialDesignDataGrid}"  FontFamily="Verdana"  IsHitTestVisible="True"
-                          FontWeight="Bold" VerticalContentAlignment="Center" AreRowDetailsFrozen="True" IsReadOnly="True" AutomationProperties.IsRowHeader="True"  SelectionMode="Extended" HorizontalContentAlignment="Center" Grid.ColumnSpan="2">
+                </Grid.ColumnDefinitions>-->
+                <DataGrid 
+                    HorizontalAlignment="Left" 
+                    Width="824" RowHeight="35"  
+                    CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
+                    Background="White"
+                    x:Name="stockData"
+                    AutoGenerateColumns="True" 
+                    SelectionUnit="FullRow" 
+                    GridLinesVisibility="All"
+                    ColumnWidth="auto" FontSize="12" 
+                    CanUserReorderColumns="False" 
+                    CanUserResizeColumns="False" 
+                    CanUserSortColumns="False" 
+                    BorderThickness="3" 
+                    CanUserAddRows="False" 
+                    CanUserDeleteRows="False" 
+                    VerticalGridLinesBrush="#ADDFAD" 
+                    VerticalScrollBarVisibility="Auto" 
+                    KeyboardNavigation.TabNavigation="Once"
+                    VirtualizingPanel.VirtualizationMode="Recycling"
+                    HorizontalGridLinesBrush="#ADDFAD" 
+                    Style="{StaticResource MaterialDesignDataGrid}" 
+                    FontFamily="Verdana" 
+                    FontWeight="Bold" 
+                    VerticalContentAlignment="Center" 
+                    AreRowDetailsFrozen="True" 
+                    IsReadOnly="True" 
+                    AutomationProperties.IsRowHeader="True"  
+                    SelectionMode="Single"
+                    HorizontalContentAlignment="Center" 
+                    >
 
                     <DataGrid.RowStyle >
                         <Style TargetType="{x:Type DataGridRow}">
-                            <Style.Triggers>   
+                            <Style.Triggers>
                                 <Trigger   Property="IsSelected" Value="True" >
                                     <Setter  Property="Background" Value="SkyBlue"/>
                                     <Setter Property="Foreground" Value="Blue"/>

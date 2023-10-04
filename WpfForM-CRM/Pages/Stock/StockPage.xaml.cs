@@ -14,12 +14,9 @@ public partial class StockPage : Page
 {
     public StockPage(ShopsPage shopsPage)
     {
-      
         InitializeComponent();
-        
-        
-        this.shopsPage = shopsPage;Load();
-
+        this.shopsPage = shopsPage;
+        Load();
     }
 
     public ShopsPage shopsPage;
@@ -78,7 +75,7 @@ public partial class StockPage : Page
         var indexItem = stockData.SelectedIndex;
         if (indexItem == -1)
         {
-            MessageBox.Show("tanglang");
+            MessageBox.Show("Выберите продукт");
             return;
         }
 
@@ -93,7 +90,7 @@ public partial class StockPage : Page
         var indexItem = stockData.SelectedIndex;
         if (indexItem == -1)
         {
-            MessageBox.Show("product tanlan");
+            MessageBox.Show("Выберите продукт");
             return;
         }
 
@@ -120,7 +117,7 @@ public partial class StockPage : Page
         var indexItem = stockData.SelectedIndex;
         if (indexItem == -1)
         {
-            MessageBox.Show("product tanlan");
+            MessageBox.Show("Выберите продукт");
             return;
         }
 
