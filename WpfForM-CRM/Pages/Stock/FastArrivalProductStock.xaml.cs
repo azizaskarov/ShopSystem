@@ -16,12 +16,12 @@ public partial class FastArrivalProductStock : Window
         InitializeComponent();
         this.stockPage = stockPage;
         this.selectedStock = selectedStock;
-        categoryName.Text = "Категория: " + selectedStock.Category;
-        childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
-        productName.Text = selectedStock.ProductName;
-        productOriginalPrice.Text = "Изначальная цена - " + selectedStock.OriginalPrice;
-        productSellingPrice.Text = "Цена продажи - " + selectedStock.SellingPrice;
-        count.Content += selectedStock.Count;
+        categoryName.Text = "Категория: " + selectedStock.Категория;
+        childCategoryName.Text = "Под категория: " + selectedStock.Подкатегория;
+        productName.Text = selectedStock.Продукт;
+        productOriginalPrice.Text = "Изначальная цена - " + selectedStock.Текущая;
+        productSellingPrice.Text = "Цена продажи - " + selectedStock.Прибывшая;
+        count.Content += selectedStock.Количство;
 
     }
 
@@ -38,7 +38,7 @@ public partial class FastArrivalProductStock : Window
             return;
         }
 
-        var product = db.Products.First(p => p.Barcode == selectedStock.Barcode);
+        var product = db.Products.First(p => p.Barcode == selectedStock.Штрихкод);
         product.Count += int.Parse(productCount.Text);
         db.Products.Update(product);
         db.SaveChanges();

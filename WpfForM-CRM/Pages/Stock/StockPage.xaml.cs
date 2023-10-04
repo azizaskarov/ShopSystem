@@ -46,14 +46,14 @@ public partial class StockPage : Page
                     var item = new Entities.Stock
                     {
 
-                        Number = i,
-                        ProductName = product.Name, 
-                        Barcode = product.Barcode,
-                        ChildCategory = childCategory.Name,
-                        Category = category!.Name,
-                        OriginalPrice = product.OriginalPrice + " UZS",
-                        SellingPrice = product.SellingPrice + " UZS",
-                        Count = (product.Count ?? 1).ToString(),
+                        Номер = i,
+                        Продукт = product.Name,
+                        Штрихкод = product.Barcode,
+                        Подкатегория = childCategory.Name,
+                        Категория = category!.Name,
+                        Текущая = product.OriginalPrice + " UZS",
+                        Прибывшая = product.SellingPrice + " UZS",
+                        Количство = (product.Count ?? 1).ToString(),
                     };
 
                     items.Add(item);
@@ -107,7 +107,7 @@ public partial class StockPage : Page
         {
             var db = new AppDbContext();
             var product = db.Products
-                .First(p => p.Barcode == selectedStock.Barcode);
+                .First(p => p.Barcode == selectedStock.Штрихкод);
 
             db.Products.Remove(product);
             db.SaveChanges();

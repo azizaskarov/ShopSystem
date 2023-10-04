@@ -26,18 +26,18 @@ public partial class Add : Window
 
         var db = new AppDbContext();
 
-        if ((db.Shops.Any(sh => sh.Name == shopname.Text)))
-        {
-            MessageBox.Show("Название магазина уже существует");
-            return;
-        }
-
         if (shopname.Text.Length == 0)
         {
 
             MessageBox.Show("Значение не указано", "", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
 
+        }
+
+        if ((db.Shops.Where(sh => sh.UserId == shopsPage.UserId).Any(sh => sh.Name == shopname.Text)))
+        {
+            MessageBox.Show("Название магазина уже существует");
+            return;
         }
 
         var shopName = shopname.Text;

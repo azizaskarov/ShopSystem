@@ -92,8 +92,8 @@ public partial class AddProductStock : Window
         var product = new Entities.Product()
         {
             Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
-            OriginalPrice = long.Parse(productOriginalPrice.Text.Replace(",","")),
-            SellingPrice = long.Parse(productSellingPrice.Text),
+            OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(",","")),
+            SellingPrice = double.Parse(productSellingPrice.Text.Replace(",", "")),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
             UserId = stockPage.shopsPage.UserId,
@@ -131,6 +131,13 @@ public partial class AddProductStock : Window
         var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
         productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
         productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+    }
+
+    private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productSellingPrice.Text)));
+        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
+        productSellingPrice.Select(productOriginalPrice.Text.Length, 0);
     }
 }
 

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
@@ -43,8 +45,8 @@ public partial class AddProduct : Window
         var product = new Entities.Product()
         {
             Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
-            OriginalPrice = long.Parse(productOriginalPrice.Text),
-            SellingPrice = long.Parse(productSellingPrice.Text),
+            OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(",", "")),
+            SellingPrice = double.Parse(productSellingPrice.Text.Replace(",", "")),
             Barcode = Helper.Helper.GenerateBarcode(),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = shopsPage.ChildCategoryId,
@@ -96,5 +98,19 @@ public partial class AddProduct : Window
         {
             e.Handled = true; // Ignore the input
         }
+    }
+
+    private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (string.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
+        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
+        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+    }
+
+    private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (string.Format("{0:N}", double.Parse(productSellingPrice.Text)));
+        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
+        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
     }
 }

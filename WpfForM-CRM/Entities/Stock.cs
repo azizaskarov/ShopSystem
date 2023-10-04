@@ -1,18 +1,20 @@
 ﻿using System.ComponentModel;
+using System.Security.Cryptography;
 
 namespace WpfForM_CRM.Entities;
 
 public class Stock
 {
     [DisplayName("Номер")]
-    public int Number { get; set; } 
-    public string? Barcode { get; set; }
-    public string? Category { get; set; }
-    public string? ChildCategory { get; set; }
-    public string? ProductName { get; set; }
-    public string? OriginalPrice { get; set; }
-    public string? SellingPrice { get; set; }
-    public string Count { get; set; }
-   
+    public int? Номер { get; set; }
+    public string? Штрихкод { get; set; }
+    public string? Категория { get; set; }
+    public string? Подкатегория { get; set; }
+    public string? Продукт { get; set; }
+    public string? Прибывшая { get; set; }
+    public string? Текущая { get; set; }
+    public string? Количство { get; set; }
+    //public string Магазин { get; set; }
+
     //public string? ShopName { get; set; }
 }

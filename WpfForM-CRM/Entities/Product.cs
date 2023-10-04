@@ -9,8 +9,8 @@ public class Product
     public Guid Id { get; set; }
     public required string Name { get; set; }
     public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
-    public long? OriginalPrice { get; set; }
-    public long? SellingPrice { get; set; }
+    public double? OriginalPrice { get; set; }
+    public double? SellingPrice { get; set; }
     public int? Count { get; set; }
     public string? Barcode { get; set; }
 
