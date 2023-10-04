@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
@@ -15,7 +16,8 @@ namespace WpfForM_CRM.Pages.Product;
 public partial class UpdateProduct : Window
 {
 
-    public UpdateProduct(ShopsPage shopsPage,Guid productId, string currentProductName, string originalPrice, string sellingPrice, string currentProductCount)
+    public UpdateProduct(ShopsPage shopsPage, Guid productId, string currentProductName, string originalPrice,
+        string sellingPrice, string currentProductCount)
     {
         InitializeComponent();
         categoryName.Text = "Категория: " + shopsPage.CategoryName;
@@ -30,20 +32,25 @@ public partial class UpdateProduct : Window
 
     ShopsPage shopsPage;
     Guid productId;
+
     private string SubstrUzs(string productPrice)
     {
         if (productPrice.ToLower().EndsWith("Сум"))
         {
-            productPrice = productPrice.Substring(0, productPrice.Length - 3).Trim(); // "uzs" so'zini olib tashayapmiz va bo'shlikni olib tashayapmiz
+            productPrice =
+                productPrice.Substring(0, productPrice.Length - 3)
+                    .Trim(); // "uzs" so'zini olib tashayapmiz va bo'shlikni olib tashayapmiz
         }
 
         return productPrice;
     }
+
     StockPage stockPage;
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
-        if (productName.Text.Length == 0 || productOriginalPrice.Text.Length == 0 || productSellingPrice.Text.Length == 0 || productCount.Text.Length == 0)
+        if (productName.Text.Length == 0 || productOriginalPrice.Text.Length == 0 ||
+            productSellingPrice.Text.Length == 0 || productCount.Text.Length == 0)
         {
             MessageBox.Show("Пустое поле");
             return;
@@ -52,8 +59,8 @@ public partial class UpdateProduct : Window
         var db = new AppDbContext();
         var product = db.Products.First(p => p.Id == productId);
         product.Name = productName.Text;
-        product.OriginalPrice = (long.Parse(productOriginalPrice.Text));
-        product.SellingPrice = (long.Parse(productSellingPrice.Text));
+        product.OriginalPrice = (double.Parse(productOriginalPrice.Text.Replace(",","")));
+        product.SellingPrice = (double.Parse(productSellingPrice.Text.Replace(",","")));
         product.Count = int.Parse(productCount.Text);
 
         db.Products.Update(product);
@@ -61,6 +68,7 @@ public partial class UpdateProduct : Window
         shopsPage.ReadProducts();
         Close();
     }
+
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
 
@@ -92,4 +100,17 @@ public partial class UpdateProduct : Window
         }
     }
 
+    private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
+        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
+        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+    }
+
+    private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productSellingPrice.Text)));
+        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
+        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+    }
 }

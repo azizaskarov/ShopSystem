@@ -50,7 +50,7 @@ namespace WpfForM_CRM.Context
                     .HasForeignKey(shop => shop.ShopId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasIndex(shop => shop.Name).IsUnique();
+                ////entity.HasIndex(shop => shop.Name).IsUnique();
             });
 
             modelBuilder.Entity<Category>(category =>

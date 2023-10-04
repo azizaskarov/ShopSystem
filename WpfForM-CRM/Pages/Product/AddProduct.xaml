@@ -16,9 +16,9 @@
 
             <TextBox Name="productName"  Margin="5 20 5 10" md:HintAssist.Hint="Введите название продукта" md:HintAssist.HintOpacity="0.4"  FontSize="16" md:HintAssist.IsFloating="True" PreviewTextInput="ProductName_OnPreviewTextInput" />
 
-            <TextBox Name="productOriginalPrice"  md:HintAssist.Hint="Изначальная цена" md:HintAssist.IsFloating="True" FontSize="16" md:HintAssist.HintOpacity="0.4" PreviewTextInput="ProductPrice_OnPreviewTextInput" Margin="5  0 5 0"/>
+            <TextBox Name="productOriginalPrice"  md:HintAssist.Hint="Изначальная цена" md:HintAssist.IsFloating="True" FontSize="16" md:HintAssist.HintOpacity="0.4" TextChanged="ProductOriginalPrice_OnTextChanged" PreviewTextInput="ProductPrice_OnPreviewTextInput" Margin="5  0 5 0"/>
 
-            <TextBox Name="productSellingPrice"  md:HintAssist.Hint="Цена продажи" PreviewTextInput="ProductPrice_OnPreviewTextInput" md:HintAssist.HintOpacity="0.4" FontSize="16" md:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
+            <TextBox Name="productSellingPrice"  md:HintAssist.Hint="Цена продажи" PreviewTextInput="ProductPrice_OnPreviewTextInput" md:HintAssist.HintOpacity="0.4" FontSize="16" TextChanged="ProductSellingPrice_OnTextChanged" md:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
 
             <TextBox Name="productCount"  md:HintAssist.Hint="Количество продуктов" PreviewTextInput="ProductPrice_OnPreviewTextInput" md:HintAssist.HintOpacity="0.4" FontSize="16" md:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
 

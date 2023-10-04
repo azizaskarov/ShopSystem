@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -18,14 +17,14 @@ public partial class UpdateProductStock : Window
     {
             
         InitializeComponent();
-        categoryName.Text = "Категория: " + selectedStock.Category;
-        childCategoryName.Text = "Под категория: " + selectedStock.ChildCategory;
+        categoryName.Text = "Категория: " + selectedStock.Категория;
+        childCategoryName.Text = "Под категория: " + selectedStock.Подкатегория;
         this.stockPage = stockPage;
         this.selectedStock = selectedStock;
-        productName.Text = selectedStock.ProductName; // productPrice.Text.Replace("UZS", "").Trim()
-        productOriginalPrice.Text = selectedStock.OriginalPrice!.Replace("UZS", "");
-        productSellingPrice.Text = selectedStock.SellingPrice!.Replace("UZS", ""); ;
-        productCount.Text = selectedStock.Count;
+        productName.Text = selectedStock.Продукт; // productPrice.Text.Replace("UZS", "").Trim()
+        productOriginalPrice.Text = selectedStock.Текущая!.Replace("UZS", "");
+        productSellingPrice.Text = selectedStock.Прибывшая!.Replace("UZS", ""); ;
+        productCount.Text = selectedStock.Количство;
 
     }
 
@@ -55,10 +54,10 @@ public partial class UpdateProductStock : Window
         }
 
         var db = new AppDbContext();
-        var product = db.Products.First(p => p.Barcode == selectedStock.Barcode);
+        var product = db.Products.First(p => p.Barcode == selectedStock.Штрихкод);
         product.Name = productName.Text;
-        product.OriginalPrice = (long.Parse(productOriginalPrice.Text));
-        product.SellingPrice = (long.Parse(productSellingPrice.Text));
+        product.OriginalPrice = (double.Parse(productOriginalPrice.Text.Replace(",","")));
+        product.SellingPrice = (double.Parse(productSellingPrice.Text.Replace(",", "")));
         product.Count = int.Parse(productCount.Text);
 
         db.Products.Update(product);
@@ -98,4 +97,17 @@ public partial class UpdateProductStock : Window
     }
 
 
+    private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
+        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
+        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+    }
+
+    private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        var formatted = (String.Format("{0:N}", double.Parse(productSellingPrice.Text)));
+        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
+        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+    }
 }

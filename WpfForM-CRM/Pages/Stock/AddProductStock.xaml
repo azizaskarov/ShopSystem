@@ -19,7 +19,7 @@
 
             <TextBox Name="productOriginalPrice"  materialDesign:HintAssist.Hint="Изначальная цена" materialDesign:HintAssist.IsFloating="True" FontSize="16" materialDesign:HintAssist.HintOpacity="0.4" TextChanged="ProductOriginalPrice_OnTextChanged" PreviewTextInput="ProductPrice_OnPreviewTextInput" Margin="5  0 5 0"/>
 
-            <TextBox Name="productSellingPrice"  materialDesign:HintAssist.Hint="Цена продажи" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
+            <TextBox Name="productSellingPrice"  materialDesign:HintAssist.Hint="Цена продажи" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" TextChanged="ProductSellingPrice_OnTextChanged" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
 
             <TextBox Name="productCount"  materialDesign:HintAssist.Hint="Количество продуктов" PreviewTextInput="ProductPrice_OnPreviewTextInput" materialDesign:HintAssist.HintOpacity="0.4" FontSize="16" materialDesign:HintAssist.IsFloating="True" Margin="5 10 5 0"/>
                                        
