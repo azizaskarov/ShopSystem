@@ -15,7 +15,7 @@ namespace WpfForM_CRM.Pages.Stock;
 public partial class AddProductStock : Window
 {
 
-    public AddProductStock(StockPage stockPage)
+    public AddProductStock(StockPage data)
     {
         this.stockPage = stockPage;
         InitializeComponent();

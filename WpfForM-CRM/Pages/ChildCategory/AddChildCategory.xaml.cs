@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
@@ -18,6 +17,7 @@ public partial class AddChildCategory : Window
     {
         this.shopsPage = shopsPage;
         InitializeComponent();
+        childCategoryName.Focus();
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

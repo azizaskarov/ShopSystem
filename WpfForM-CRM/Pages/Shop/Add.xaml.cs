@@ -17,6 +17,7 @@ public partial class Add : Window
     {
         this.shopsPage = shopsPage;
         InitializeComponent();
+        shopname.Focus();
     }
 
 
@@ -87,4 +88,6 @@ public partial class Add : Window
             Button_Click(sender, e);
         }
     }
+
+  
 }
