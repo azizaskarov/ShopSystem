@@ -88,4 +88,6 @@ public partial class Add : Window
             Button_Click(sender, e);
         }
     }
+
+  
 }
