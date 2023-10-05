@@ -20,6 +20,7 @@ public partial class AddProduct : Window
         InitializeComponent();
         categoryName.Text = "Категория: " + shopsPage.CategoryName;
         childCategoryName.Text = "Под категория: " + shopsPage.ChildCategoryName;
+        productName.Focus();
     }
 
     private ShopsPage shopsPage;

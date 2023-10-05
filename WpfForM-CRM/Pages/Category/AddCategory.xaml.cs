@@ -18,6 +18,7 @@ namespace WpfForM_CRM.Pages.Category
             InitializeComponent();
             this.db = new AppDbContext();
             this.shopsPage = shopsPage;
+            CategoryName.Focus();
         }
 
         private ShopsPage shopsPage;

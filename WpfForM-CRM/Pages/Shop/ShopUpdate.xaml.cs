@@ -20,6 +20,7 @@ namespace WpfForM_CRM.Pages.Shop
             this.shopId = shopId;
             shopname.Text = currentShopName;
             this.shopsPage = shopsPage;
+            shopname.Focus();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

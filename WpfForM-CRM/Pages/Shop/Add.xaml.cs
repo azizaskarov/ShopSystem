@@ -17,6 +17,7 @@ public partial class Add : Window
     {
         this.shopsPage = shopsPage;
         InitializeComponent();
+        shopname.Focus();
     }
 
 
