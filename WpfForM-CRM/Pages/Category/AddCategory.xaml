@@ -7,13 +7,14 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="Добавить категория" KeyDown="AddCategory_OnKeyDown" VerticalAlignment="Center" Height="300" Width="400">
+        Title="Добавить категория" KeyDown="AddCategory_OnKeyDown" VerticalAlignment="Center"
+        MinHeight="300" MinWidth="400" MaxHeight="300" MaxWidth="400">
 
-    <Grid Margin="5,2,0,2"  >
-
-        <Label Name="EmptyName" FontWeight="Heavy" Content="" Foreground="Firebrick" Margin="19,155,136,92" RenderTransformOrigin="0.488,0.758"/>
-        <TextBox x:Name="CategoryName" materialDesign:HintAssist.Hint=" Название категория" materialDesign:HintAssist.HintOpacity="0.4" Padding="0.5" FontSize="20" Height="35" Margin="4,80,4,86" PreviewTextInput="CategoryName_OnPreviewTextInput"  />
-        <Button Height="30" Width="150" Background="#FF4282D8" Margin="10 100 0 0" Click="ButtonBase_OnClick"  FontFamily="Arial" FontSize="18">Добавить</Button>
+    <Grid Margin="5,2,0,2" Height="290" Width="390">
+        <StackPanel>
+            <TextBox x:Name="CategoryName" Margin="1 100 0 30" Width="387" materialDesign:HintAssist.FloatingHintHorizontalAlignment="Left" HorizontalAlignment="Left" materialDesign:HintAssist.Hint=" Название категория"  materialDesign:HintAssist.IsFloating="True"  materialDesign:HintAssist.HintOpacity="0.4" Padding="0.1" FontSize="20" TextChanged="CategoryName_OnTextChanged" PreviewTextInput="CategoryName_OnPreviewTextInput" Height="52"  />
+            <Button Height="30" Width="150"  Background="#FF4282D8" Click="ButtonBase_OnClick"  FontFamily="Arial" FontSize="18">Добавить</Button>
+        </StackPanel>
 
     </Grid>
 </Window>

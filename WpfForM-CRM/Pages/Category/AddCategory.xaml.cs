@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
@@ -86,6 +87,14 @@ namespace WpfForM_CRM.Pages.Category
             if (e.Key == Key.Escape)
             {
                 this.Close();
+            }
+        }
+
+        private void CategoryName_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (CategoryName.Text.Length >= 40)
+            {
+                MessageBox.Show("Category name should not exceed 40 characters.", "Warning" , MessageBoxButton.OK);
             }
         }
     }
