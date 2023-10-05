@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Pages.CashRegister;
 using WpfForM_CRM.Pages.Category;
 using WpfForM_CRM.Pages.ChildCategory;
 using WpfForM_CRM.Pages.Product;
@@ -189,6 +190,7 @@ public partial class ShopsPage : Page
         shopsFrame.ItemsSource = productControls;
     }
 
+
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
            
@@ -290,11 +292,13 @@ public partial class ShopsPage : Page
         ShopNameTitle.Visibility = Visibility.Collapsed;
         Title.Visibility = Visibility.Collapsed;
         checkoutBtn.Visibility = Visibility.Collapsed;
+        cashregisterFrame.Visibility = Visibility.Collapsed;
     }
 
 
     private void CategoriesButton_OnClick(object sender, RoutedEventArgs e)
     {
+        cashregisterFrame.Visibility = Visibility.Collapsed;
         ExitMenuImage.Visibility = Visibility.Visible;
         Title.Visibility = Visibility.Visible;
         stockFrame.Visibility = Visibility.Collapsed;
@@ -306,6 +310,7 @@ public partial class ShopsPage : Page
     {
            
         shopsFrame.Visibility = Visibility.Hidden;
+        cashregisterFrame.Visibility = Visibility.Collapsed;
         Title.Visibility = Visibility.Hidden;
         addShopButton.Visibility = Visibility.Hidden;
         ShopNameTitle.Visibility = Visibility.Hidden;
@@ -317,11 +322,7 @@ public partial class ShopsPage : Page
 
     private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        //if (ExitButtonMenu == "shop")
-        //{
-        //    ExitButton_OnClick(sender,e);
-        //    ExitMenuImage.Visibility = Visibility.Collapsed;
-        //}
+        
         if (_exitButtonMenu == "category")
         {
             Load();
@@ -336,5 +337,17 @@ public partial class ShopsPage : Page
         {
             ReadChildCategories();
         }
+    }
+
+    private void CheckoutBtn_OnClick(object sender, RoutedEventArgs e)
+    {
+        shopsFrame.Visibility = Visibility.Hidden;
+        cashregisterFrame.Visibility = Visibility.Collapsed;
+        Title.Visibility = Visibility.Hidden;
+        addShopButton.Visibility = Visibility.Hidden;
+        ShopNameTitle.Visibility = Visibility.Hidden;
+        ExitMenuImage.Visibility = Visibility.Collapsed;
+        cashregisterFrame.Visibility = Visibility.Visible;
+        cashregisterFrame.Navigate(new CashRegisterPage(this));
     }
 }

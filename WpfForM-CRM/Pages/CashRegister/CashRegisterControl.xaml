@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="WpfForM_CRM.Pages.CashRegister.CashRegisterControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
+             mc:Ignorable="d" 
+             Width="200" Margin="20" Height="70" MouseEnter="CashRegisterControl_OnMouseEnter"  MouseLeave="CashRegisterControl_OnMouseLeave">
+    <Grid>
+        <Border Background="#55A594" CornerRadius="10">
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="170" ></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Label Name="cashRegisterId" Visibility="Collapsed"/>
+                    <TextBlock Name="cashRegisterName" FontSize="18"  Width="166" Height="34" TextWrapping="Wrap" Margin="0 20" TextAlignment="Center">
+                        Kassa name
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <Image  
+                        Margin="0 8 5 2"
+                        x:Name="CategoryDeleteImage" 
+                        Visibility="Collapsed"
+                        Source="/IconImages/del.png" 
+                        Width="21" 
+                        Cursor="Hand"
+                        MouseLeftButtonDown="CategoryNameDelete_OnMouseLeftButtonDown" RenderTransformOrigin="0.542,0.55"   />
+
+                    <Image 
+                        x:Name="CategoryNameUpdateImage" 
+                        Visibility="Collapsed"
+                        MouseLeftButtonDown="CategoryNameUpdateImage_OnMouseLeftButtonDown"
+                        Source="/IconImages/update.png"
+                        Width="20" 
+                        Margin="0 10" 
+                        Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
