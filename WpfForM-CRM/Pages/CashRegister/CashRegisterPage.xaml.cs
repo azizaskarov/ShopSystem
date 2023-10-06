@@ -25,20 +25,17 @@ namespace WpfForM_CRM.Pages.CashRegister
         public void ReadCashRegisterControls()
         {
             var db = new AppDbContext();
-            var names = new List<string>()
-            {
-                "Kassa1",
-                "Kassa2",
-                "Kassa3"
-            };
+
+            var cashRegisters = db.CashRegisters;
 
             var cashRegisterControls = new List<CashRegisterControl>();
 
-            foreach (var name in names)
+            foreach (var cashRegister in cashRegisters)
             {
                 var cashRegisterControl = new CashRegisterControl
                 {
-                    CashRegisterName = name
+                    CashRegisterName = cashRegister.Name,
+                    CashRegisterId = cashRegister.Id
                 };
                 cashRegisterControls.Add(cashRegisterControl);
             }
@@ -48,6 +45,8 @@ namespace WpfForM_CRM.Pages.CashRegister
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
+            var addCashRegister = new AddCashRegister(shopsPage,this);
+            addCashRegister.ShowDialog();
         }
     }
 }
