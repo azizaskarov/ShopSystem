@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfForM_CRM.Context;
+using WpfForM_CRM.Migrations;
+using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.CashRegister
 {
@@ -20,42 +14,63 @@ namespace WpfForM_CRM.Pages.CashRegister
     /// </summary>
     public partial class CashRegisterControl : UserControl
     {
-        public CashRegisterControl()
+        public CashRegisterControl(ShopsPage shopsPage)
         {
+            this.shopsPage = shopsPage;
+
             InitializeComponent();
         }
 
-        public string CashRegisterName
+        ShopsPage shopsPage;
+        public object CashRegisterName
         {
             get => cashRegisterName.Text;
-            set => cashRegisterName.Text = value;
+            set => cashRegisterName.Text = (string)value;
         }
-        public Guid CashRegisterId
+        public object CashRegisterId
         {
-            get => (Guid)cashRegisterId.Content;
+            get => cashRegisterId.Content;
             set => cashRegisterId.Content = value;
-        }
-
-        private void CategoryNameDelete_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void CategoryNameUpdateImage_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void CashRegisterControl_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            CategoryDeleteImage.Visibility = Visibility.Visible;
-            CategoryNameUpdateImage.Visibility = Visibility.Visible;
+            DeleteImageIcon.Visibility = Visibility.Visible;
+            UpdateImageIcon.Visibility = Visibility.Visible;
         }
 
         private void CashRegisterControl_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            CategoryDeleteImage.Visibility = Visibility.Collapsed;
-            CategoryNameUpdateImage.Visibility = Visibility.Collapsed;
+            DeleteImageIcon.Visibility = Visibility.Hidden;
+            UpdateImageIcon.Visibility = Visibility.Hidden;
+        }
+
+
+        private void DeleteImageIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var appDbContext = new AppDbContext();
+            var cashRegister = appDbContext.CashRegisters.FirstOrDefault(c => c.Id == (Guid)CashRegisterId);
+
+            var deleteResultButton = MessageBox.Show("Вы уверены, что хотите удалить kassa?",
+                "Удалит",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (deleteResultButton == MessageBoxResult.Yes)
+            {
+                if (cashRegister != null)
+                {
+                    appDbContext.CashRegisters.Remove(cashRegister);
+                    appDbContext.SaveChanges();
+                    shopsPage.ReadCashRegisters();
+                }
+            }
+        }
+
+        private void UpdateImageIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var cashRegisterUpdate = new UpdateCashRegister(shopsPage,(string)CashRegisterName, (Guid)CashRegisterId);
+            cashRegisterUpdate.ShowDialog();
         }
     }
 }

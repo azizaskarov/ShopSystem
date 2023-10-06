@@ -34,10 +34,10 @@ public partial class ShopControl : UserControl
 
     private void Button_Delete(object sender, RoutedEventArgs e)
     {
-        var shopNameContent = this.shopName.Content;
+        var shopNameContent = this.shopId.Content;
 
 
-        var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Name == shopNameContent);
+        var shop = appDbContext.Shops.FirstOrDefault(sh => sh.Id == (Guid)ShopId);
 
         var deleteResultButton = MessageBox.Show("Вы уверены, что хотите удалить магазин?",
             "Удалит",
@@ -93,13 +93,10 @@ public partial class ShopControl : UserControl
         UpdateImageIcon.Visibility = Visibility.Hidden;
     }
 
-    //private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    //{
-    //    shopsPage.ShopId = (Guid)ShopId;
-    //    shopsPage.ReadCategories();
-    //}
+   
     private void ShopControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
+
         shopsPage.checkoutBtn.Visibility = Visibility.Visible;
         shopsPage.ExitMenuImage.Visibility = Visibility.Visible;
         shopsPage.shopsFrame.Visibility = Visibility.Visible;

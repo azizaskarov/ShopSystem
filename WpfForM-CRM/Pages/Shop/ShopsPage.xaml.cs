@@ -190,6 +190,29 @@ public partial class ShopsPage : Page
         shopsFrame.ItemsSource = productControls;
     }
 
+    public void ReadCashRegisters()
+    {
+
+        var db = new AppDbContext();
+
+        var cashRegisters = db.CashRegisters.Where(c => c.ShopId == ShopId).ToList()
+            .OrderByDescending(c => c.CreatedDate);
+
+
+        var cashRegisterControls = new List<CashRegisterControl>();
+
+        foreach (var cashRegister in cashRegisters)
+        {
+            var cashRegisterControl = new CashRegisterControl(this)
+            {
+                CashRegisterName = cashRegister.Name,
+                CashRegisterId = cashRegister.Id
+            };
+            cashRegisterControls.Add(cashRegisterControl);
+        }
+
+        shopsFrame.ItemsSource = cashRegisterControls;
+    }
 
     private void Button_ReadShops(object sender, RoutedEventArgs e)
     {
@@ -221,6 +244,11 @@ public partial class ShopsPage : Page
         {
             AddProduct();
         }
+
+        if (AddText == "cashRegister")
+        {
+            AddCashRegister();
+        }
     }
 
     private void AddShop()
@@ -244,6 +272,12 @@ public partial class ShopsPage : Page
     {
         var addProduct = new AddProduct(this);
         addProduct.ShowDialog();
+    }
+
+    public void AddCashRegister()
+    {
+        var addCashRegister = new AddCashRegister(this);
+        addCashRegister.ShowDialog();
     }
     private void search_txt_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -273,11 +307,7 @@ public partial class ShopsPage : Page
         
     }
 
-    //private void AddCategoryName_OnClick(object sender, RoutedEventArgs e)
-    //{
-    //    var addCategory = new AddCategory(this);
-    //    addCategory.ShowDialog();
-    //}
+    
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)
     {
@@ -292,13 +322,12 @@ public partial class ShopsPage : Page
         ShopNameTitle.Visibility = Visibility.Collapsed;
         Title.Visibility = Visibility.Collapsed;
         checkoutBtn.Visibility = Visibility.Collapsed;
-        cashregisterFrame.Visibility = Visibility.Collapsed;
+        Button_ReadShops(sender, e);
     }
 
 
     private void CategoriesButton_OnClick(object sender, RoutedEventArgs e)
     {
-        cashregisterFrame.Visibility = Visibility.Collapsed;
         ExitMenuImage.Visibility = Visibility.Visible;
         Title.Visibility = Visibility.Visible;
         stockFrame.Visibility = Visibility.Collapsed;
@@ -310,7 +339,6 @@ public partial class ShopsPage : Page
     {
            
         shopsFrame.Visibility = Visibility.Hidden;
-        cashregisterFrame.Visibility = Visibility.Collapsed;
         Title.Visibility = Visibility.Hidden;
         addShopButton.Visibility = Visibility.Hidden;
         ShopNameTitle.Visibility = Visibility.Hidden;
@@ -339,15 +367,21 @@ public partial class ShopsPage : Page
         }
     }
 
-    private void CheckoutBtn_OnClick(object sender, RoutedEventArgs e)
+    private void CashRegisterBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        shopsFrame.Visibility = Visibility.Hidden;
-        cashregisterFrame.Visibility = Visibility.Collapsed;
-        Title.Visibility = Visibility.Hidden;
-        addShopButton.Visibility = Visibility.Hidden;
-        ShopNameTitle.Visibility = Visibility.Hidden;
+        AddText = "cashRegister";
+        Title.Visibility = Visibility.Visible;
+        addShopButton.Visibility = Visibility.Visible;
+        ShopNameTitle.Visibility = Visibility.Visible;
         ExitMenuImage.Visibility = Visibility.Collapsed;
-        cashregisterFrame.Visibility = Visibility.Visible;
-        cashregisterFrame.Navigate(new CashRegisterPage(this));
+        Title.Text = "Kassa";
+        stockFrame.Visibility = Visibility.Collapsed;
+        addShopButton.Visibility = Visibility.Visible;
+        ShopNameTitle.Text = "Магазин: " + ShopName;
+        shopsFrame.Visibility = Visibility.Visible;
+
+        ReadCashRegisters();
     }
+
+   
 }
