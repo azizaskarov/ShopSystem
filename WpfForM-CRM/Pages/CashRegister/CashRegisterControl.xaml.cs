@@ -30,6 +30,11 @@ namespace WpfForM_CRM.Pages.CashRegister
             get => cashRegisterName.Text;
             set => cashRegisterName.Text = value;
         }
+        public Guid CashRegisterId
+        {
+            get => (Guid)cashRegisterId.Content;
+            set => cashRegisterId.Content = value;
+        }
 
         private void CategoryNameDelete_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
