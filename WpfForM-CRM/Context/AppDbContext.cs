@@ -11,6 +11,7 @@ namespace WpfForM_CRM.Context
         public DbSet<Category> Categories => Set<Category>();
         public DbSet<ChildCategory> ChildCategories => Set<ChildCategory>();
         public DbSet<Product> Products => Set<Product>();
+        public DbSet<CashRegister> CashRegisters => Set<CashRegister>();
         
         //public DbSet<Stock> Stocks => Set<Stock>();
 
@@ -76,6 +77,8 @@ namespace WpfForM_CRM.Context
             modelBuilder.Entity<Product>()
                 .HasKey(p => p.Id);
 
+            modelBuilder.Entity<CashRegister>()
+                .HasKey(p => p.Id);
 
             //modelBuilder.Entity<Category>(entity =>
             //{
