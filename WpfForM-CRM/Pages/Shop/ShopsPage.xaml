@@ -44,7 +44,7 @@
                         Click="CategoriesButton_OnClick">
 
                     <StackPanel Orientation="Horizontal" Width="184" >
-                        <md:PackIcon Foreground="White" Kind="ListBoxOutline" Margin="0 -1" Height="28" Width="25"/>
+                        <md:PackIcon Name="categoryIcon" Foreground="White" Kind="ListBoxOutline" Margin="0 -1" Height="28" Width="25"/>
                         <TextBlock HorizontalAlignment="Right" Margin="5 0 0 0">Категории</TextBlock>
                     </StackPanel>
                 </Button>
