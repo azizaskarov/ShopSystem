@@ -11,16 +11,14 @@ namespace WpfForM_CRM.Pages.CashRegister
     /// </summary>
     public partial class AddCashRegister : Window
     {
-        public AddCashRegister(ShopsPage shopsPage, CashRegisterPage cashRegisterPage)
+        public AddCashRegister(ShopsPage shopsPage)
         {
             this.shopsPage = shopsPage;
-            this.cashRegisterPage = cashRegisterPage;
             InitializeComponent();
             cashRegisterName.Focus();
         }
 
         private ShopsPage shopsPage;
-        CashRegisterPage cashRegisterPage;
         private void AddTxt_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var pattern = @"^[а-яА-Яa-zA-Z0-9]+$";
@@ -51,7 +49,7 @@ namespace WpfForM_CRM.Pages.CashRegister
 
             db.CashRegisters.Add(cashRegister);
             db.SaveChanges();
-            cashRegisterPage.ReadCashRegisterControls();
+            shopsPage.ReadCashRegisters();
             Close();
         }
     }
