@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
+using System.Globalization;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -128,16 +129,24 @@ public partial class AddProductStock : Window
 
     private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
+        var formatted = (string.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
         productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
         productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
     }
 
     private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (String.Format("{0:N}", double.Parse(productSellingPrice.Text)));
+        var formatted = (string.Format("{0:N}", double.Parse(productSellingPrice.Text)));
         productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
-        productSellingPrice.Select(productOriginalPrice.Text.Length, 0);
+        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+    }
+
+    private void ProductOriginalPrice_OnPreviewKeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Space)
+        {
+            e.Handled = true;
+        }
     }
 }
 
