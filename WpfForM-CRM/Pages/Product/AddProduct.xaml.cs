@@ -42,31 +42,39 @@ public partial class AddProduct : Window
         var products = db.Products.Where(p => p.ChildCategoryId == shopsPage.ChildCategoryId).ToList();
 
 
-
-        var product = new Entities.Product()
+        try
         {
-            Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
-            OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(",", "")),
-            SellingPrice = double.Parse(productSellingPrice.Text.Replace(",", "")),
-            Barcode = Helper.Helper.GenerateBarcode(),
-            Count = int.Parse(productCount.Text),
-            ChildCategoryId = shopsPage.ChildCategoryId,
-            UserId = shopsPage.UserId,
-            CategoryId = shopsPage.CategoryId,
-            ShopId = shopsPage.ShopId
-        };
 
-        db.Products.Add(product);
+            var product = new Entities.Product()
+            {
+                Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
+                OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(" ", "")),
+                SellingPrice = double.Parse(productSellingPrice.Text.Replace(" ", "")),
+                Barcode = Helper.Helper.GenerateBarcode(),
+                Count = int.Parse(productCount.Text),
+                ChildCategoryId = shopsPage.ChildCategoryId,
+                UserId = shopsPage.UserId,
+                CategoryId = shopsPage.CategoryId,
+                ShopId = shopsPage.ShopId
+            };
 
-        var childCategory = db.ChildCategories.First(p => p.Id == shopsPage.ChildCategoryId);
-        childCategory.Products!.Add(product);
-        db.ChildCategories.Update(childCategory);
+            db.Products.Add(product);
 
-        db.SaveChanges();
-        shopsPage.ReadProducts();
-        Close();
+            var childCategory = db.ChildCategories.First(p => p.Id == shopsPage.ChildCategoryId);
+            childCategory.Products!.Add(product);
+            db.ChildCategories.Update(childCategory);
 
+            db.SaveChanges();
+            shopsPage.ReadProducts();
+            Close();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show($"{exception.Message}");
+            throw;
+        }
 
+        
     }
 
 
@@ -103,15 +111,41 @@ public partial class AddProduct : Window
 
     private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (string.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
-        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
-        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+        PriceSpace(productOriginalPrice);
     }
 
     private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (string.Format("{0:N}", double.Parse(productSellingPrice.Text)));
-        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
-        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+        PriceSpace(productSellingPrice);
+    }
+
+    public void PriceSpace(TextBox textBox)
+    {
+        // Kiritilgan matni olish
+        string inputText = textBox.Text;
+
+        // Probellarni olib tashlash va sonlarni ajratib olish
+        string cleanedText = string.Join("", inputText.Split(' '));
+
+        // Formatlangan natijani tuzish
+        string formattedText = "";
+
+        int length = cleanedText.Length;
+        int groupSize = 3; // Gruplar o'lchami
+
+        for (int i = 0; i < length; i++)
+        {
+            formattedText += cleanedText[i];
+            if ((length - i - 1) % groupSize == 0 && i != length - 1)
+            {
+                formattedText += " ";
+            }
+        }
+
+        // Formatlangan natijani matnga qaytaramiz
+        textBox.Text = formattedText;
+
+        // Kursorning pozitsiyasini oxiriga qo'yamiz
+        textBox.SelectionStart = textBox.Text.Length;
     }
 }
