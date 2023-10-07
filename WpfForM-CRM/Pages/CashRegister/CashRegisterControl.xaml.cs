@@ -72,5 +72,10 @@ namespace WpfForM_CRM.Pages.CashRegister
             var cashRegisterUpdate = new UpdateCashRegister(shopsPage,(string)CashRegisterName, (Guid)CashRegisterId);
             cashRegisterUpdate.ShowDialog();
         }
+
+        private void CashRegisterControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            shopsPage.Window.mainframe.Navigate(new KassaPage());
+        }
     }
 }
