@@ -15,7 +15,7 @@ public partial class UpdateProductStock : Window
 {
     public UpdateProductStock(StockPage stockPage, Entities.Stock selectedStock)
     {
-            
+
         InitializeComponent();
         categoryName.Text = "Категория: " + selectedStock.Категория;
         childCategoryName.Text = "Под категория: " + selectedStock.Подкатегория;
@@ -25,6 +25,9 @@ public partial class UpdateProductStock : Window
         productOriginalPrice.Text = selectedStock.Текущая!.Replace("UZS", "");
         productSellingPrice.Text = selectedStock.Прибывшая!.Replace("UZS", ""); ;
         productCount.Text = selectedStock.Количство;
+
+        PriceSpace(productOriginalPrice);
+        PriceSpace(productSellingPrice);
 
     }
 
@@ -37,7 +40,7 @@ public partial class UpdateProductStock : Window
 
         return productPrice;
     }
-    StockPage  stockPage;
+    StockPage stockPage;
     private Entities.Stock selectedStock;
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -53,17 +56,25 @@ public partial class UpdateProductStock : Window
             return;
         }
 
-        var db = new AppDbContext();
-        var product = db.Products.First(p => p.Barcode == selectedStock.Штрихкод);
-        product.Name = productName.Text;
-        product.OriginalPrice = (double.Parse(productOriginalPrice.Text.Replace(",","")));
-        product.SellingPrice = (double.Parse(productSellingPrice.Text.Replace(",", "")));
-        product.Count = int.Parse(productCount.Text);
+        try
+        {
+            var db = new AppDbContext();
+            var product = db.Products.First(p => p.Barcode == selectedStock.Штрихкод);
+            product.Name = productName.Text;
+            product.OriginalPrice = (double.Parse(productOriginalPrice.Text.Replace(" ", "")));
+            product.SellingPrice = (double.Parse(productSellingPrice.Text.Replace(" ", "")));
+            product.Count = int.Parse(productCount.Text);
 
-        db.Products.Update(product);
-        db.SaveChanges();
-        stockPage.Load();
-        Close();
+            db.Products.Update(product); db.SaveChanges();
+            stockPage.Load();
+            Close();
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show($"{exception.Message}");
+            throw;
+        }
+
     }
     private void ProductName_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
     {
@@ -99,15 +110,45 @@ public partial class UpdateProductStock : Window
 
     private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (String.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
-        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
-        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+        PriceSpace(productOriginalPrice);
     }
+
+
 
     private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (String.Format("{0:N}", double.Parse(productSellingPrice.Text)));
-        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
-        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+        PriceSpace(productSellingPrice);
+    }
+
+
+
+    public void PriceSpace(TextBox textBox)
+    {
+        // Kiritilgan matni olish
+        string inputText = textBox.Text;
+
+        // Probellarni olib tashlash va sonlarni ajratib olish
+        string cleanedText = string.Join("", inputText.Split(' '));
+
+        // Formatlangan natijani tuzish
+        string formattedText = "";
+
+        int length = cleanedText.Length;
+        int groupSize = 3; // Gruplar o'lchami
+
+        for (int i = 0; i < length; i++)
+        {
+            formattedText += cleanedText[i];
+            if ((length - i - 1) % groupSize == 0 && i != length - 1)
+            {
+                formattedText += " ";
+            }
+        }
+
+        // Formatlangan natijani matnga qaytaramiz
+        textBox.Text = formattedText;
+
+        // Kursorning pozitsiyasini oxiriga qo'yamiz
+        textBox.SelectionStart = textBox.Text.Length;
     }
 }
