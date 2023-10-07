@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using System.Globalization;
 
 namespace WpfForM_CRM.Pages.Stock;
 
@@ -16,7 +15,7 @@ namespace WpfForM_CRM.Pages.Stock;
 public partial class AddProductStock : Window
 {
 
-    public AddProductStock(StockPage data)
+    public AddProductStock(StockPage stockPage)
     {
         this.stockPage = stockPage;
         InitializeComponent();
@@ -93,8 +92,8 @@ public partial class AddProductStock : Window
         var product = new Entities.Product()
         {
             Name = Helper.Helper.ToUpperNamesOneChar(productName.Text),
-            OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(",","")),
-            SellingPrice = double.Parse(productSellingPrice.Text.Replace(",", "")),
+            OriginalPrice = double.Parse(productOriginalPrice.Text.Replace(" ", "")),
+            SellingPrice = double.Parse(productSellingPrice.Text.Replace(" ", "")),
             Count = int.Parse(productCount.Text),
             ChildCategoryId = childCategory.Id,
             UserId = stockPage.shopsPage.UserId,
@@ -129,16 +128,14 @@ public partial class AddProductStock : Window
 
     private void ProductOriginalPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (string.Format("{0:N}", double.Parse(productOriginalPrice.Text)));
-        productOriginalPrice.Text = formatted.Remove(formatted.Length - 3);
-        productOriginalPrice.Select(productOriginalPrice.Text.Length, 0);
+        PriceSpace(productOriginalPrice);
     }
+
+   
 
     private void ProductSellingPrice_OnTextChanged(object sender, TextChangedEventArgs e)
     {
-        var formatted = (string.Format("{0:N}", double.Parse(productSellingPrice.Text)));
-        productSellingPrice.Text = formatted.Remove(formatted.Length - 3);
-        productSellingPrice.Select(productSellingPrice.Text.Length, 0);
+        PriceSpace(productSellingPrice);
     }
 
     private void ProductOriginalPrice_OnPreviewKeyDown(object sender, KeyEventArgs e)
@@ -147,6 +144,36 @@ public partial class AddProductStock : Window
         {
             e.Handled = true;
         }
+    }
+    
+    public void PriceSpace(TextBox textBox)
+    {
+        // Kiritilgan matni olish
+        string inputText = textBox.Text;
+
+        // Probellarni olib tashlash va sonlarni ajratib olish
+        string cleanedText = string.Join("", inputText.Split(' '));
+
+        // Formatlangan natijani tuzish
+        string formattedText = "";
+
+        int length = cleanedText.Length;
+        int groupSize = 3; // Gruplar o'lchami
+
+        for (int i = 0; i < length; i++)
+        {
+            formattedText += cleanedText[i];
+            if ((length - i - 1) % groupSize == 0 && i != length - 1)
+            {
+                formattedText += " ";
+            }
+        }
+
+        // Formatlangan natijani matnga qaytaramiz
+        textBox.Text = formattedText;
+
+        // Kursorning pozitsiyasini oxiriga qo'yamiz
+        textBox.SelectionStart = textBox.Text.Length;
     }
 }
 
