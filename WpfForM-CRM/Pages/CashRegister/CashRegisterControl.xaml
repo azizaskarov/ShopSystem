@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Width="200" Margin="20" Height="70" MouseEnter="CashRegisterControl_OnMouseEnter" MouseLeave="CashRegisterControl_OnMouseLeave" >
+             Width="200" Margin="20" Height="70" MouseEnter="CashRegisterControl_OnMouseEnter" MouseLeftButtonDown="CashRegisterControl_OnMouseLeftButtonDown" MouseLeave="CashRegisterControl_OnMouseLeave" >
     <Grid>
         <Border Background="#55A594" CornerRadius="10"/>
 

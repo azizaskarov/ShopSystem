@@ -127,5 +127,4 @@ public partial class StockPage : Page
         fastArrivalProductStock.ShowDialog();
     }
 
-    
 }

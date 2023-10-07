@@ -24,12 +24,13 @@ public partial class ShopsPage : Page
 
     public ShopsPage(MainWindow window, Guid? userId = null, Guid? shopId = null)
     {
-        this.window = window;
+        Window = window;
         this.UserId = userId;
         InitializeComponent();
         Load();
     }
 
+    public MainWindow Window;
     private string AddText { get; set; }
 
     public void UserShopsCount(Guid userId)
