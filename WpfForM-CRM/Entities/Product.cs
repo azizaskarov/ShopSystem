@@ -13,6 +13,7 @@ public class Product
     public double? SellingPrice { get; set; }
     public int? Count { get; set; }
     public string? Barcode { get; set; }
+    public string? TabName { get; set; }
 
     public Guid? ChildCategoryId { get; set; }
     public ChildCategory? ChildCategory { get; set; }
