@@ -33,7 +33,7 @@ public partial class KassaPage : Page
         var plusBtn = new PlusButton(mainWindow, shopsPage, this, tab1.Header.ToString()!);
         tabFood.Items.Add(plusBtn);
         var db = new AppDbContext();
-        var products = db.Products.Where(p => p.TabName == tab1.Header.ToString() && p.ShopId == shopsPage.ShopId).ToList();
+        var products = db.Products/*.Where(p => p.TabName == tab1.Header.ToString() && p.ShopId == shopsPage.ShopId)*/.ToList();
 
         foreach (var product in products)
         {

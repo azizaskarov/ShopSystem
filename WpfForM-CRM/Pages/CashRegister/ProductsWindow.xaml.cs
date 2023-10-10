@@ -23,11 +23,12 @@ namespace WpfForM_CRM.Pages.CashRegister
     {
         public ProductsWindow(MainWindow mainWindow, ShopsPage shopsPage, KassaPage kassaPage, string header)
         {
+            InitializeComponent();
             this.shopsPage = shopsPage;
             this.kassaPage = kassaPage;
             Header = header;
             this.mainWindow = mainWindow;
-            InitializeComponent();
+            
             Load();
         }
 
@@ -40,7 +41,7 @@ namespace WpfForM_CRM.Pages.CashRegister
         { 
             var db = new AppDbContext();
             var items = new List<Entities.Stock>();
-            var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == null).ToList();
+            var products = db.Products/*.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == null)*/.ToList();
             int i = 1;
             if (products.Count > 0)
             {
