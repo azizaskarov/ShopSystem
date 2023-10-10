@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,7 +34,7 @@ public partial class KassaPage : Page
         var plusBtn = new PlusButton(mainWindow, shopsPage, this, tab1.Header.ToString()!);
         tabFood.Items.Add(plusBtn);
         var db = new AppDbContext();
-        var products = db.Products/*.Where(p => p.TabName == tab1.Header.ToString() && p.ShopId == shopsPage.ShopId)*/.ToList();
+        var products = db.Products.Where(p => p.TabName == tab1.Header.ToString()).ToList();
 
         foreach (var product in products)
         {
@@ -42,6 +43,23 @@ public partial class KassaPage : Page
             tab.ProductId = product.Id;
             tab.ProductName = product.Name;
             tabFood.Items.Add(tab);
+        }
+    }
+
+    public void LoadCashedProducts()
+    {
+        cashed_products.Items.Clear();
+        var db = new AppDbContext();
+        var tabs = new List<CashedProductControl>();
+        var products = db.CashedProducts.OrderBy(p => p.CashedTime).ToList();
+        foreach (var product in products)
+        {
+            var cashed = new CashedProductControl(); 
+            cashed.ProductCount = product.TotalCount!;
+            cashed.Price = product.SellingPrice!;
+            cashed.ProductName = product.Name!;
+            cashed.TotalPrice = product.TotalCount! * product.SellingPrice!;
+            cashed_products.Items.Add(cashed);
         }
     }
 

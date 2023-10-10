@@ -1,28 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
-namespace WpfForM_CRM.Pages.CashRegister
+namespace WpfForM_CRM.Pages.CashRegister;
+
+/// <summary>
+/// Interaction logic for CashedProductcontrol.xaml
+/// </summary>
+public partial class CashedProductControl : UserControl
 {
-    /// <summary>
-    /// Interaction logic for CashedProductcontrol.xaml
-    /// </summary>
-    public partial class CashedProductcontrol : UserControl
+    public CashedProductControl()
     {
-        public CashedProductcontrol()
+        InitializeComponent();
+    }
+
+    public object ProductCount
+    {
+        get
         {
-            InitializeComponent();
+            return count_product.Content;
+        }
+        set
+        {
+            count_product.Content = value;
+        }
+    }
+
+    public object ProductName
+    {
+        get
+        {
+            return product_name.Text;
+        }
+        set
+        {
+            product_name.Text = value.ToString();
+        }
+    }
+
+    public object Price
+    {
+        get
+        {
+            return price_product.Text;
+        }
+        set
+        {
+            price_product.Text = value.ToString();
+        }
+    }
+
+    public object TotalPrice
+    {
+        get
+        {
+            return total_price_product.Text;
+        }
+        set
+        {
+            total_price_product.Text = value.ToString();
         }
     }
 }
