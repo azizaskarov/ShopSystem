@@ -1,12 +1,26 @@
-﻿<UserControl x:Class="WpfForM_CRM.Pages.CashRegister.CashedProductcontrol"
+﻿<UserControl x:Class="WpfForM_CRM.Pages.CashRegister.CashedProductControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             Height="50" Width="290" Margin="1 5 0 0">
+    <Grid >
+        <Border CornerRadius="1" Background="Lavender"/>
+        <StackPanel>
+            <TextBlock x:Name="product_name" TextAlignment="Justify" Height="30" Margin="5 0 0 0" Text="Product name" FontSize="18" FontWeight="DemiBold"/>
+            <StackPanel Height="20" Orientation="Horizontal">
+                <md:PackIcon Kind="Counter" VerticalAlignment="Center" Height="10" Width="16"/>
+                <Label x:Name="count_product" Content="1000" Margin="5 0 15 0" Padding="0" VerticalContentAlignment="Center" FontSize="12" FontWeight="Bold" FontFamily="times new roman" Foreground="Black" Width="25"/>
+                <md:PackIcon Kind="Money100" VerticalAlignment="Center" Width="13"/>
+                <Label Content="Цена: " Padding="0 0 0 2" VerticalContentAlignment="Center"/>
+                <TextBlock x:Name="price_product" Text="5000" VerticalAlignment="Center" Width="69" Foreground="Black" Margin="0 0 0 0" FontWeight="Bold"/>
+                <md:PackIcon Width="13" Kind="Money" VerticalAlignment="Center"/>
+                <Label Content="Итого: " Padding="0 0 0 2" VerticalContentAlignment="Center"/>
+                <TextBlock x:Name="total_price_product" Text="5000" VerticalAlignment="Center" Foreground="DarkBlue" FontWeight="Bold" Width="55"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Entities;
@@ -14,10 +16,11 @@ public partial class TabProductControl : UserControl
 {
     public TabProductControl(KassaPage kassaPage)
     {
-        this.kassaPage = kassaPage;
         InitializeComponent();
+        this.kassaPage = kassaPage;
     }
 
+    public static List<CashedProduct> CashedProducts = new List<CashedProduct>();
     public object ProductId
     {
         get => productId.Content;
@@ -36,7 +39,8 @@ public partial class TabProductControl : UserControl
     }
 
     KassaPage kassaPage;
-    private void AddProductIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+   
+    private void TabProductControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         var db = new AppDbContext();
         var product = db.Products.First(p => p.Id == (Guid)ProductId);
@@ -59,7 +63,7 @@ public partial class TabProductControl : UserControl
         {
             db.CashedProducts.Add(cashedProduct);
             db.SaveChanges();
-            //kassaPage.LoadCashedProducts();
+            kassaPage.LoadCashedProducts();
         }
         else
         {
@@ -67,7 +71,7 @@ public partial class TabProductControl : UserControl
             cashedproductThan.TotalCount += 1;
             db.CashedProducts.Update(cashedproductThan);
             db.SaveChanges();
-            //kassaPage.LoadCashedProducts();
+            kassaPage.LoadCashedProducts();
         }
     }
 }

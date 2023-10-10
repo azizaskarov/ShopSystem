@@ -4,17 +4,18 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       Height="760" Width="1024"  Background="White"
       Title="KassaPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="724*"/>
-            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="720*"/>
+            <ColumnDefinition Width="304*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0"  Height="30" VerticalAlignment="Top">
+        <Border Margin="5 0 0 0" Grid.Column="0"  Height="30" VerticalAlignment="Top">
             <TextBlock Name="shopTitle" FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
         </Border>
 
@@ -55,5 +56,24 @@
                 </TabItem>
             </TabControl>
         </ScrollViewer>
+
+        <ScrollViewer x:Name="scrol" Grid.Column="1" Grid.Row="0" Margin="0,50,0,75" Background="WhiteSmoke" VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="cashed_products" Width="300" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="655">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                        <!--<UniformGrid Columns="3" />-->
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button VerticalAlignment="Top" Margin="30,708,29,0" Grid.Column="1" >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Payment"/>
+                <materialDesign:PackIcon Kind="Payment" />
+            </StackPanel>
+
+        </Button>
     </Grid>
 </Page>

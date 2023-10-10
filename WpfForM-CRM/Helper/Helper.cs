@@ -10,7 +10,7 @@ public static class Helper
     {
         var db = new AppDbContext();
         Random random = new Random();
-        const int barcodeLength = 11; // 11 ta raqamdan keyin 637 qo'shiladi
+        const int barcodeLength = 8; // 11 ta raqamdan keyin 637 qo'shiladi
 
         // Random raqamlardan tuzilgan barcode generatsiya qilish
         string barcode;

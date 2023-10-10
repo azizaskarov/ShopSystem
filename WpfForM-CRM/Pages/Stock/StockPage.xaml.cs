@@ -44,6 +44,7 @@ public partial class StockPage : Page
                     {
 
                         Номер = i,
+                        Магазин = shopsPage.ShopName,
                         Продукт = product.Name,
                         Штрихкод = product.Barcode,
                         Подкатегория = childCategory.Name,

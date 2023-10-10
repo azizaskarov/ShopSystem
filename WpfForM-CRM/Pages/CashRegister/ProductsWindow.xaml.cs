@@ -41,7 +41,7 @@ namespace WpfForM_CRM.Pages.CashRegister
         { 
             var db = new AppDbContext();
             var items = new List<Entities.Stock>();
-            var products = db.Products/*.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == null)*/.ToList();
+            var products = db.Products.Where(p => p.TabName == null).ToList();
             int i = 1;
             if (products.Count > 0)
             {
@@ -56,6 +56,7 @@ namespace WpfForM_CRM.Pages.CashRegister
                         var item = new Entities.Stock
                         {
                             Номер = i,
+                            Магазин = shopsPage.ShopName,
                             Продукт = product.Name,
                             Штрихкод = product.Barcode,
                             Подкатегория = childCategory.Name,

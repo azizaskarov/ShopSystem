@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" MouseLeftButtonDown="PlusButton_OnMouseLeftButtonDown" 
-             d:DesignHeight="100" d:DesignWidth="100" Margin="10" Cursor="Hand">
+             Height="85" Width="100" Margin="10" Cursor="Hand">
     <Border CornerRadius="10" Background="SeaShell">
         <materialDesign:PackIcon Width="100" Height="100" Kind="Plus" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Border>
