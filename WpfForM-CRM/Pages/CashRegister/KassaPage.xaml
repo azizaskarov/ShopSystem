@@ -15,14 +15,14 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"  Height="30" VerticalAlignment="Top">
-            <TextBlock FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
+            <TextBlock Name="shopTitle" FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
         </Border>
 
         <ScrollViewer Margin="30" Grid.Column="0" HorizontalScrollBarVisibility="Visible" >
             <TabControl x:Name="tab_control" Margin="10"  >
-                <TabItem x:Name="tab1"  Header="Oziq ovqatlar" IsSelected="True" Width="125" HorizontalAlignment="Left">
+                <TabItem x:Name="tab1" MouseLeftButtonDown="Tab1_OnMouseLeftButtonDown"  Header="Oziq ovqatlar" IsSelected="True" Width="125" HorizontalAlignment="Left">
                     <ScrollViewer x:Name="tabscrol1" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products1"  Width="635">
+                        <ItemsControl x:Name="tabFood"  Width="635">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>

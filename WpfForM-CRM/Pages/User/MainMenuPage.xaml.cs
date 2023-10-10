@@ -91,7 +91,7 @@ public partial class MainMenuPage : Page
 
                     
 
-                    MainPage.NavigationService!.Navigate(new ShopsPage(_mainWindow, user.Id));
+                    MainPage.NavigationService!.Navigate(new ShopsPage(_mainWindow, user.Id, user.UserName));
                 }
                 else
                 {

@@ -21,10 +21,12 @@ public partial class ShopsPage : Page
     private MainWindow window;
 
     public Guid? UserId;
+    public string? UserName;
 
-    public ShopsPage(MainWindow window, Guid? userId = null, Guid? shopId = null)
+    public ShopsPage(MainWindow window, Guid? userId = null, string? userName = null, Guid? shopId = null)
     {
         Window = window;
+        UserName = userName;
         this.UserId = userId;
         InitializeComponent();
         Load();
@@ -43,6 +45,7 @@ public partial class ShopsPage : Page
 
     private string _exitButtonMenu = "";
 
+    public string? KassName { get; set; }
     public Guid? ProductId { get; set; }
     public string? ProductName { get; set; }
     public string CategoryName { get; set; }
@@ -167,7 +170,7 @@ public partial class ShopsPage : Page
         _exitButtonMenu = "product";
         shopsFrame.Visibility = Visibility.Visible;
         AddText = "product";
-        ShopNameTitle.Text = "Магазин: " + ShopName + ", Категория: " + CategoryName + ", Под категория: " + ChildCategoryName;
+        ShopNameTitle.Text = "МагазинМагазин: " + ShopName + ", Категория: " + CategoryName + ", Под категория: " + ChildCategoryName;
         Title.Text = "Продукты";
 
         var db = new AppDbContext();

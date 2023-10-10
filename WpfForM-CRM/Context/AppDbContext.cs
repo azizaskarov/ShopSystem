@@ -12,6 +12,7 @@ namespace WpfForM_CRM.Context
         public DbSet<ChildCategory> ChildCategories => Set<ChildCategory>();
         public DbSet<Product> Products => Set<Product>();
         public DbSet<CashRegister> CashRegisters => Set<CashRegister>();
+        public DbSet<CashedProduct> CashedProducts => Set<CashedProduct>();
         
         //public DbSet<Stock> Stocks => Set<Stock>();
 

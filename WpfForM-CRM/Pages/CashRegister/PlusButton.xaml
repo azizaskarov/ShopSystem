@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="WpfForM_CRM.Pages.CashRegister.PlusButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" MouseLeftButtonDown="PlusButton_OnMouseLeftButtonDown" 
+             d:DesignHeight="100" d:DesignWidth="100" Margin="10" Cursor="Hand">
+    <Border CornerRadius="10" Background="SeaShell">
+        <materialDesign:PackIcon Width="100" Height="100" Kind="Plus" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Border>
+</UserControl>

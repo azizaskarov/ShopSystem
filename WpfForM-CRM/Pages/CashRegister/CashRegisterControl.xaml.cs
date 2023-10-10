@@ -6,6 +6,7 @@ using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Migrations;
 using WpfForM_CRM.Pages.Shop;
+using WpfForM_CRM.Pages.Stock;
 
 namespace WpfForM_CRM.Pages.CashRegister
 {
@@ -14,7 +15,7 @@ namespace WpfForM_CRM.Pages.CashRegister
     /// </summary>
     public partial class CashRegisterControl : UserControl
     {
-        public CashRegisterControl(MainWindow mainWindow, ShopsPage shopsPage)
+        public CashRegisterControl( MainWindow mainWindow, ShopsPage shopsPage)
         {
             this.mainWindow = mainWindow;
             this.shopsPage = shopsPage;
@@ -24,6 +25,7 @@ namespace WpfForM_CRM.Pages.CashRegister
 
         private MainWindow mainWindow;
         ShopsPage shopsPage;
+        
         public object CashRegisterName
         {
             get => cashRegisterName.Text;
@@ -77,7 +79,8 @@ namespace WpfForM_CRM.Pages.CashRegister
 
         private void CashRegisterControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow,shopsPage));
+            shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow, shopsPage));
+            shopsPage.KassName = (string)CashRegisterName;
         }
     }
 }
