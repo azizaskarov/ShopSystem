@@ -14,13 +14,15 @@ namespace WpfForM_CRM.Pages.CashRegister
     /// </summary>
     public partial class CashRegisterControl : UserControl
     {
-        public CashRegisterControl(ShopsPage shopsPage)
+        public CashRegisterControl(MainWindow mainWindow, ShopsPage shopsPage)
         {
+            this.mainWindow = mainWindow;
             this.shopsPage = shopsPage;
 
             InitializeComponent();
         }
 
+        private MainWindow mainWindow;
         ShopsPage shopsPage;
         public object CashRegisterName
         {
@@ -75,7 +77,7 @@ namespace WpfForM_CRM.Pages.CashRegister
 
         private void CashRegisterControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            shopsPage.Window.mainframe.Navigate(new KassaPage());
+            shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow,shopsPage));
         }
     }
 }

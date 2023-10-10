@@ -9,20 +9,20 @@
       Title="KassaPage">
 
     <Grid>
-        <Border Grid.Column="0"  Height="30" VerticalAlignment="Top">
-            <TextBlock FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
-        </Border>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="724*"/>
             <ColumnDefinition Width="300*"/>
         </Grid.ColumnDefinitions>
 
+        <Border Grid.Column="0"  Height="30" VerticalAlignment="Top">
+            <TextBlock FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
+        </Border>
+
         <ScrollViewer Margin="30" Grid.Column="0" HorizontalScrollBarVisibility="Visible" >
             <TabControl x:Name="tab_control" Margin="10"  >
                 <TabItem x:Name="tab1"  Header="Oziq ovqatlar" IsSelected="True" Width="125" HorizontalAlignment="Left">
-                    <ScrollViewer x:Name="tabscrol1" Margin="5 10 5 5" Background="CadetBlue" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products1">
+                    <ScrollViewer x:Name="tabscrol1" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="tabcashed_products1"  Width="635">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -32,7 +32,7 @@
                     </ScrollViewer>
                 </TabItem>
                 <TabItem x:Name="tab_kiyimlar" Header="Kiyimlar" Width="20" HorizontalAlignment="Left" Margin="0" >
-                    <ScrollViewer x:Name="tabscrol2" Margin="5 10 5 5" Background="CadetBlue" VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer x:Name="tabscrol2" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
                         <ItemsControl x:Name="tabcashed_products2">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -42,8 +42,8 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tab_texnika" Header="Texnika" Width="20" HorizontalAlignment="Left" >
-                    <ScrollViewer x:Name="tabscrol3" Margin="5 10 5 5" Background="CadetBlue" VerticalScrollBarVisibility="Auto">
+                <TabItem x:Name="tab_texnika" Header="Texnikalar" Width="102" HorizontalAlignment="Left" >
+                    <ScrollViewer x:Name="tabscrol3" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
                         <ItemsControl x:Name="tabcashed_products3">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
@@ -53,40 +53,6 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tab_animal" Header="Hayvonlar" Width="20" HorizontalAlignment="Left" >
-                    <ScrollViewer x:Name="tabscrol4" Margin="5 10 5 5" Background="CadetBlue" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products4">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Name="tab_ichimlik" Header="Ichimliklar" Width="20" HorizontalAlignment="Left" >
-                    <ScrollViewer x:Name="tabscrol5" Margin="5 10 5 5" Background="CadetBlue" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products5">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Name="tab_maishiy" Header="Maishiy" Width="20" HorizontalAlignment="Left" >
-                    <ScrollViewer x:Name="tabscrol6" Margin="5 10 5 5" Background="CadetBlue"  VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products6">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                    </ScrollViewer>
-                </TabItem>
-
             </TabControl>
         </ScrollViewer>
     </Grid>

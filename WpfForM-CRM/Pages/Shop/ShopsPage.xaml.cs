@@ -204,7 +204,7 @@ public partial class ShopsPage : Page
 
         foreach (var cashRegister in cashRegisters)
         {
-            var cashRegisterControl = new CashRegisterControl(this)
+            var cashRegisterControl = new CashRegisterControl(mainWindow: Window, this)
             {
                 CashRegisterName = cashRegister.Name,
                 CashRegisterId = cashRegister.Id
