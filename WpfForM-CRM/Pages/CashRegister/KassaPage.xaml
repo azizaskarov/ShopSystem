@@ -68,10 +68,9 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <Button VerticalAlignment="Top" Margin="30,698,30,0" Grid.Column="1" >
+        <Button VerticalAlignment="Top" Margin="30,698,30,0" Grid.Column="1" Click="ButtonBase_OnClick" >
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Payment"/>
-                <materialDesign:PackIcon Kind="Payment" />
             </StackPanel>
 
         </Button>
