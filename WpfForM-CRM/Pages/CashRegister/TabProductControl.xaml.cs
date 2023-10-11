@@ -47,6 +47,7 @@ public partial class TabProductControl : UserControl
         var cashedProduct = new CashedProduct()
         {
             Id = product.Id,
+            KassaId = kassaPage.shopsPage.KassaId,
             Count = product.Count,
             CategoryId = product.CategoryId,
             Barcode = product.Barcode,

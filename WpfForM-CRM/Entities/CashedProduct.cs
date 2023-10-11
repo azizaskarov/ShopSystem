@@ -9,7 +9,7 @@ public class CashedProduct
     public Guid Id { get; set; }
 
     public Guid? CategoryId { get; set; }
-
+    public Guid? KassaId { get; set; }
     public string? Name { get; set; }
     public string? Barcode { get; set; }
     public double? OriginalPrice { get; set; }

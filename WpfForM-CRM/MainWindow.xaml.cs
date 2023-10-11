@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.User;
 
 namespace WpfForM_CRM;
@@ -21,11 +22,18 @@ public partial class MainWindow : Window
     }
 
 
-    private void Page1_Click(object sender, RoutedEventArgs e)
+    public void Page1_Click(object sender, RoutedEventArgs e)
     {
         var xButton = MessageBox.Show("Вы хотите выйти из приложения?", "Выйти", MessageBoxButton.YesNo, MessageBoxImage.Question);
         if (xButton == MessageBoxResult.Yes)
         {
+            var db = new AppDbContext();
+
+            foreach (var item in db.CashedProducts)
+            {
+                db.CashedProducts.Remove(item);
+            }
+            db.SaveChanges();
             Application.Current.Shutdown();
         }
 

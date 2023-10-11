@@ -6,25 +6,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WpfForM_CRM.Migrations
 {
     /// <inheritdoc />
-    public partial class CashRegisterUpdate : Migration
+    public partial class Init1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<DateTime>(
-                name: "CreatedDate",
-                table: "CashRegisters",
-                type: "datetime(6)",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+            migrationBuilder.AddColumn<Guid>(
+                name: "KassaId",
+                table: "CashedProducts",
+                type: "char(36)",
+                nullable: true,
+                collation: "ascii_general_ci");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CreatedDate",
-                table: "CashRegisters");
+                name: "KassaId",
+                table: "CashedProducts");
         }
     }
 }

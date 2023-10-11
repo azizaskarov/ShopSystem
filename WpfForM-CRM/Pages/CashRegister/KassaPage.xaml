@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d" KeyDown="KassaPage_OnKeyDown"   
+      mc:Ignorable="d" MouseDown="KassaPage_OnMouseDown"   
       Height="760" Width="1024"  Background="White"
       Title="KassaPage">
 
@@ -32,9 +32,9 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tab_kiyimlar" Header="Kiyimlar" Width="20" HorizontalAlignment="Left" Margin="0" >
+                <TabItem x:Name="tab2" Header="Kiyimlar" Width="20" MouseLeftButtonDown="Tab2_OnMouseLeftButtonDown" HorizontalAlignment="Left" Margin="0" >
                     <ScrollViewer x:Name="tabscrol2" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products2">
+                        <ItemsControl x:Name="tabClothes">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>
@@ -43,9 +43,9 @@
                         </ItemsControl>
                     </ScrollViewer>
                 </TabItem>
-                <TabItem x:Name="tab_texnika" Header="Texnikalar" Width="102" HorizontalAlignment="Left" >
+                <TabItem x:Name="tab3" Header="Texnikalar" Width="102" MouseLeftButtonDown="Tab3_OnMouseLeftButtonDown" HorizontalAlignment="Left" >
                     <ScrollViewer x:Name="tabscrol3" Margin="5 10 5 5" Background="GhostWhite" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="tabcashed_products3">
+                        <ItemsControl x:Name="tabTexnika">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel/>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="50" Width="290" Margin="1 5 0 0">
+             Height="50" Width="290" Margin="1 0 0 0">
     <Grid >
         <Border CornerRadius="1" Background="Lavender"/>
         <StackPanel>

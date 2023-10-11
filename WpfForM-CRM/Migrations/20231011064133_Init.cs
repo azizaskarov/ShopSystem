@@ -6,12 +6,52 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WpfForM_CRM.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CashedProducts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    CategoryId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Barcode = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    OriginalPrice = table.Column<double>(type: "double", nullable: true),
+                    SellingPrice = table.Column<double>(type: "double", nullable: true),
+                    CreatedTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    CashedTime = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    ShopId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    Count = table.Column<int>(type: "int", nullable: true),
+                    TotalCount = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CashedProducts", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "CashRegisters",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    ShopId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CashRegisters", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -36,7 +76,7 @@ namespace WpfForM_CRM.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Name = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
@@ -61,6 +101,7 @@ namespace WpfForM_CRM.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     ShopId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
                 },
                 constraints: table =>
@@ -103,6 +144,38 @@ namespace WpfForM_CRM.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    OriginalPrice = table.Column<double>(type: "double", nullable: true),
+                    SellingPrice = table.Column<double>(type: "double", nullable: true),
+                    Count = table.Column<int>(type: "int", nullable: true),
+                    Barcode = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TabName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ChildCategoryId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    ShopId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    CategoryId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    UserId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_ChildCategories_ChildCategoryId",
+                        column: x => x.ChildCategoryId,
+                        principalTable: "ChildCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_ShopId",
                 table: "Categories",
@@ -119,10 +192,9 @@ namespace WpfForM_CRM.Migrations
                 column: "ShopId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Shops_Name",
-                table: "Shops",
-                column: "Name",
-                unique: true);
+                name: "IX_Products_ChildCategoryId",
+                table: "Products",
+                column: "ChildCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Shops_UserId",
@@ -139,6 +211,15 @@ namespace WpfForM_CRM.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CashedProducts");
+
+            migrationBuilder.DropTable(
+                name: "CashRegisters");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+
             migrationBuilder.DropTable(
                 name: "ChildCategories");
 

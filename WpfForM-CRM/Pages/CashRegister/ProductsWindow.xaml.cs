@@ -88,6 +88,7 @@ namespace WpfForM_CRM.Pages.CashRegister
             var selectedData = items![index];
             var product2 = db.Products.First(p => p.Barcode == selectedData.Штрихкод);
             product2.TabName = Header;
+            db.Products.Update(product2);
             db.SaveChanges();
             if (Header == kassaPage.tab1.Header.ToString()) kassaPage.TabFoodLoad();
             //if (Header == kassaPage.tab_kiyimlar.Header.ToString()) kassaPage.LoadTabKiyim();
@@ -95,7 +96,7 @@ namespace WpfForM_CRM.Pages.CashRegister
             //if (Header == kassaPage.tab_animal.Header.ToString()) kassaPage.LoadTabAnimal();
             //if (Header == kassaPage.tab_ichimlik.Header.ToString()) kassaPage.LoadTabIchimlik();
             //if (Header == kassaPage.tab_maishiy.Header.ToString()) kassaPage.LoadTabMaishiy();
-
+            
             Close();
         }
     }
