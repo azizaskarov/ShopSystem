@@ -22,7 +22,7 @@ public partial class KassaPage : Page
         this.shopsPage = shopsPage;
         //"Shop: Havas | Kassa: AliKassa | Kassir: Alijon"
         shopTitle.Text = $"Магазин: {shopsPage.ShopName},  Касса: {shopsPage.KassName},  Кассир: {shopsPage.UserName}";
-        TabFoodLoad(); LoadCashedProducts();
+        TabFoodLoad(); 
     }
 
     ShopsPage shopsPage;

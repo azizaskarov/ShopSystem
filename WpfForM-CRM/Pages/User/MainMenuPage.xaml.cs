@@ -159,5 +159,4 @@ public partial class MainMenuPage : Page
         }
     }
 
-
 }

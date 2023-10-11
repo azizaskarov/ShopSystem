@@ -84,7 +84,7 @@ namespace WpfForM_CRM.Pages.CashRegister
             }
             var db = new AppDbContext();
 
-            var items = storage_data.ItemsSource as List<Entities.Stock>;
+            var items = (List<Entities.Stock>)storage_data.ItemsSource;
             var selectedData = items![index];
             var product2 = db.Products.First(p => p.Barcode == selectedData.Штрихкод);
             product2.TabName = Header;
