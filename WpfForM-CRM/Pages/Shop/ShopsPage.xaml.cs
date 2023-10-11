@@ -53,7 +53,7 @@ public partial class ShopsPage : Page
     public Guid? ChildCategoryId { get; set; }
     public string? ChildCategoryName { get; set; }
     public Guid? ShopId { get; set; }
-
+    public Guid? KassaId { get; set; }
     public Guid? CategoryId { get; set; }
 
     public void Load()
@@ -387,5 +387,4 @@ public partial class ShopsPage : Page
         ReadCashRegisters();
     }
 
-   
 }

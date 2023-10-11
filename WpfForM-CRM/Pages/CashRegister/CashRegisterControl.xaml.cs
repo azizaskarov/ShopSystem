@@ -19,7 +19,6 @@ namespace WpfForM_CRM.Pages.CashRegister
         {
             this.mainWindow = mainWindow;
             this.shopsPage = shopsPage;
-
             InitializeComponent();
         }
 
@@ -81,6 +80,7 @@ namespace WpfForM_CRM.Pages.CashRegister
         {
             shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow, shopsPage));
             shopsPage.KassName = (string)CashRegisterName;
+            shopsPage.KassaId = (Guid)CashRegisterId;
         }
     }
 }

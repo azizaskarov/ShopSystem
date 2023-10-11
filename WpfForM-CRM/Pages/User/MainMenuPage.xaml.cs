@@ -148,6 +148,7 @@ public partial class MainMenuPage : Page
 
     private void MainMenuPage_OnKeyDown(object sender, KeyEventArgs e)
     {
+
         if (e.Key == Key.Enter)
         {
             enter_btn_Click(sender, e);

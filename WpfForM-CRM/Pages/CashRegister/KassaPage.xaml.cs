@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
 using WpfForM_CRM.Pages.Shop;
-using WpfForM_CRM.Pages.Stock;
 
 namespace WpfForM_CRM.Pages.CashRegister;
 
@@ -22,12 +22,12 @@ public partial class KassaPage : Page
         this.shopsPage = shopsPage;
         //"Shop: Havas | Kassa: AliKassa | Kassir: Alijon"
         shopTitle.Text = $"Магазин: {shopsPage.ShopName},  Касса: {shopsPage.KassName},  Кассир: {shopsPage.UserName}";
-        TabFoodLoad();
+        TabFoodLoad(); LoadCashedProducts();
     }
 
     ShopsPage shopsPage;
     MainWindow mainWindow;
-
+    public Guid? KassaId { get; set; }
     public void TabFoodLoad()
     {
         tabFood.Items.Clear();
@@ -36,13 +36,16 @@ public partial class KassaPage : Page
         var db = new AppDbContext();
         var products = db.Products.Where(p => p.TabName == tab1.Header.ToString()).ToList();
 
-        foreach (var product in products)
+        if (db.CashRegisters.Any(c => c.Id.Equals(shopsPage.KassaId)))
         {
-            var tab = new TabProductControl(this);
-            tab.ProductSellingPrice = product.SellingPrice!;
-            tab.ProductId = product.Id;
-            tab.ProductName = product.Name;
-            tabFood.Items.Add(tab);
+            foreach (var product in products)
+            {
+                var tab = new TabProductControl(this);
+                tab.ProductSellingPrice = product.SellingPrice!;
+                tab.ProductId = product.Id;
+                tab.ProductName = product.Name;
+                tabFood.Items.Add(tab);
+            }
         }
     }
 
@@ -54,7 +57,7 @@ public partial class KassaPage : Page
         var products = db.CashedProducts.OrderBy(p => p.CashedTime).ToList();
         foreach (var product in products)
         {
-            var cashed = new CashedProductControl(); 
+            var cashed = new CashedProductControl();
             cashed.ProductCount = product.TotalCount!;
             cashed.Price = product.SellingPrice!;
             cashed.ProductName = product.Name!;
@@ -66,6 +69,15 @@ public partial class KassaPage : Page
     private void Tab1_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         TabFoodLoad();
+    }
+
+    private void KassaPage_OnKeyDown(object sender, KeyEventArgs e)
+    {
+        var db = new AppDbContext();
+        if (e.Key == Key.Back)
+        {
+            MessageBox.Show("asdfdf");
+        }
     }
 }
 
