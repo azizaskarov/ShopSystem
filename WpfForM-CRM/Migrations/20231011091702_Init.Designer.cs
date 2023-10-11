@@ -11,7 +11,7 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231011064133_Init")]
+    [Migration("20231011091702_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -63,6 +63,9 @@ namespace WpfForM_CRM.Migrations
 
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("KassaId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");

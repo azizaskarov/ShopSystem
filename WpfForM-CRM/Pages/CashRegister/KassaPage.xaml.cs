@@ -36,7 +36,7 @@ public partial class KassaPage : Page
         tabFood.Items.Add(plusBtn);
         var db = new AppDbContext();
         var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab1.Header.ToString()).ToList();
-        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
+        //var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
 
         foreach (var product in products)
         {
@@ -55,7 +55,7 @@ public partial class KassaPage : Page
         tabClothes.Items.Add(plusBtn);
         var db = new AppDbContext();
         var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab2.Header.ToString()).ToList();
-        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
+        
 
         foreach (var product in products)
         {
@@ -73,7 +73,6 @@ public partial class KassaPage : Page
         tabTexnika.Items.Add(plusBtn);
         var db = new AppDbContext();
         var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab3.Header.ToString()).ToList();
-        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
 
         foreach (var product in products)
         {

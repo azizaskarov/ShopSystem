@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfForM_CRM.Context;
+using WpfForM_CRM.Entities.Cashed;
 using WpfForM_CRM.Pages.Shop;
 
 namespace WpfForM_CRM.Pages.CashRegister
@@ -87,16 +88,28 @@ namespace WpfForM_CRM.Pages.CashRegister
             var items = (List<Entities.Stock>)storage_data.ItemsSource;
             var selectedData = items![index];
             var product2 = db.Products.First(p => p.Barcode == selectedData.Штрихкод);
+
+            //var cashedFood = new CashedFood()
+            //{
+            //    Name = product2.Name,
+            //    Price = product2.SellingPrice,
+            //    TabName = Header
+            //};
+
+            //db.CashedFoods.Add(cashedFood);
+            //db.SaveChanges();
+            //kassaPage
             product2.TabName = Header;
             db.Products.Update(product2);
             db.SaveChanges();
-            if (Header == kassaPage.tab1.Header.ToString()) kassaPage.TabFoodLoad();
-            //if (Header == kassaPage.tab_kiyimlar.Header.ToString()) kassaPage.LoadTabKiyim();
-            //if (Header == kassaPage.tab_texnika.Header.ToString()) kassaPage.LoadTabTexnika();
-            //if (Header == kassaPage.tab_animal.Header.ToString()) kassaPage.LoadTabAnimal();
-            //if (Header == kassaPage.tab_ichimlik.Header.ToString()) kassaPage.LoadTabIchimlik();
-            //if (Header == kassaPage.tab_maishiy.Header.ToString()) kassaPage.LoadTabMaishiy();
-            
+            if (Header == kassaPage.tab1.Header.ToString())
+                kassaPage.TabFoodLoad();
+            if (Header == kassaPage.tab2.Header.ToString())
+                kassaPage.TabClothesLoad();
+            if (Header == kassaPage.tab3.Header.ToString()) 
+                kassaPage.TabTechLoad();
+           
+
             Close();
         }
     }

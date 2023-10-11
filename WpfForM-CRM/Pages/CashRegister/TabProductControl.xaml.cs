@@ -68,9 +68,9 @@ public partial class TabProductControl : UserControl
         }
         else
         {
-            var cashedproductThan = db.CashedProducts.First(p => p.Id == (Guid)ProductId);
-            cashedproductThan.TotalCount += 1;
-            db.CashedProducts.Update(cashedproductThan);
+            var cashedProductThan = db.CashedProducts.First(p => p.Id == (Guid)ProductId);
+            cashedProductThan.TotalCount += 1;
+            db.CashedProducts.Update(cashedProductThan);
             db.SaveChanges();
             kassaPage.LoadCashedProducts();
         }
