@@ -61,6 +61,9 @@ namespace WpfForM_CRM.Migrations
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<Guid?>("KassaId")
+                        .HasColumnType("char(36)");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 

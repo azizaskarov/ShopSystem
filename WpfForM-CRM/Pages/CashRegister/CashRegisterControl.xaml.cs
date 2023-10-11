@@ -4,9 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfForM_CRM.Context;
-using WpfForM_CRM.Migrations;
 using WpfForM_CRM.Pages.Shop;
-using WpfForM_CRM.Pages.Stock;
 
 namespace WpfForM_CRM.Pages.CashRegister
 {
@@ -78,9 +76,10 @@ namespace WpfForM_CRM.Pages.CashRegister
 
         private void CashRegisterControl_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow, shopsPage));
             shopsPage.KassName = (string)CashRegisterName;
             shopsPage.KassaId = (Guid)CashRegisterId;
+            shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow, shopsPage));
+            
         }
     }
 }

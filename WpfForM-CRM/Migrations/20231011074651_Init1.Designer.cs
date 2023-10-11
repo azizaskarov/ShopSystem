@@ -11,8 +11,8 @@ using WpfForM_CRM.Context;
 namespace WpfForM_CRM.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230927115433_AddproductEntityUpdate2")]
-    partial class AddproductEntityUpdate2
+    [Migration("20231011074651_Init1")]
+    partial class Init1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,71 @@ namespace WpfForM_CRM.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.CashRegister", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CashRegisters");
+                });
+
+            modelBuilder.Entity("WpfForM_CRM.Entities.CashedProduct", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Barcode")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("CashedTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int?>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("KassaId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<double?>("OriginalPrice")
+                        .HasColumnType("double");
+
+                    b.Property<double?>("SellingPrice")
+                        .HasColumnType("double");
+
+                    b.Property<Guid?>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int?>("TotalCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CashedProducts");
+                });
 
             modelBuilder.Entity("WpfForM_CRM.Entities.Category", b =>
                 {
@@ -36,6 +101,9 @@ namespace WpfForM_CRM.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<Guid?>("ShopId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
@@ -98,14 +166,17 @@ namespace WpfForM_CRM.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long?>("OriginalPrice")
-                        .HasColumnType("bigint");
+                    b.Property<double?>("OriginalPrice")
+                        .HasColumnType("double");
 
-                    b.Property<long?>("SellingPrice")
-                        .HasColumnType("bigint");
+                    b.Property<double?>("SellingPrice")
+                        .HasColumnType("double");
 
                     b.Property<Guid?>("ShopId")
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("TabName")
+                        .HasColumnType("longtext");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
@@ -128,15 +199,12 @@ namespace WpfForM_CRM.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
                     b.Property<Guid?>("UserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.HasIndex("UserId");
 

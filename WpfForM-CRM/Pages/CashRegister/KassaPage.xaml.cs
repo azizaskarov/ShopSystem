@@ -22,33 +22,68 @@ public partial class KassaPage : Page
         this.shopsPage = shopsPage;
         //"Shop: Havas | Kassa: AliKassa | Kassir: Alijon"
         shopTitle.Text = $"Магазин: {shopsPage.ShopName},  Касса: {shopsPage.KassName},  Кассир: {shopsPage.UserName}";
-        TabFoodLoad(); 
+        TabFoodLoad();
+        TabTechLoad();
+        TabClothesLoad();
     }
 
-    ShopsPage shopsPage;
+    public ShopsPage shopsPage;
     MainWindow mainWindow;
-    public Guid? KassaId { get; set; }
     public void TabFoodLoad()
     {
         tabFood.Items.Clear();
         var plusBtn = new PlusButton(mainWindow, shopsPage, this, tab1.Header.ToString()!);
         tabFood.Items.Add(plusBtn);
         var db = new AppDbContext();
-        var products = db.Products.Where(p => p.TabName == tab1.Header.ToString()).ToList();
+        var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab1.Header.ToString()).ToList();
+        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
 
-        if (db.CashRegisters.Any(c => c.Id.Equals(shopsPage.KassaId)))
+        foreach (var product in products)
         {
-            foreach (var product in products)
-            {
-                var tab = new TabProductControl(this);
-                tab.ProductSellingPrice = product.SellingPrice!;
-                tab.ProductId = product.Id;
-                tab.ProductName = product.Name;
-                tabFood.Items.Add(tab);
-            }
+            var tab = new TabProductControl(this);
+            tab.ProductSellingPrice = product.SellingPrice!;
+            tab.ProductId = product.Id;
+            tab.ProductName = product.Name;
+            tabFood.Items.Add(tab);
         }
     }
 
+    public void TabClothesLoad()
+    {
+        tabClothes.Items.Clear();
+        var plusBtn = new PlusButton(mainWindow, shopsPage, this, tab2.Header.ToString()!);
+        tabClothes.Items.Add(plusBtn);
+        var db = new AppDbContext();
+        var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab2.Header.ToString()).ToList();
+        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
+
+        foreach (var product in products)
+        {
+            var tab = new TabProductControl(this);
+            tab.ProductSellingPrice = product.SellingPrice!;
+            tab.ProductId = product.Id;
+            tab.ProductName = product.Name;
+            tabClothes.Items.Add(tab);
+        }
+    }
+    public void TabTechLoad()
+    {
+        tabTexnika.Items.Clear();
+        var plusBtn = new PlusButton(mainWindow, shopsPage, this, tab3.Header.ToString()!);
+        tabTexnika.Items.Add(plusBtn);
+        var db = new AppDbContext();
+        var products = db.Products.Where(p => p.ShopId == shopsPage.ShopId && p.TabName == tab3.Header.ToString()).ToList();
+        var cashRegister = db.CashRegisters.First(c => c.Id == shopsPage.KassaId);
+
+        foreach (var product in products)
+        {
+            var tab = new TabProductControl(this);
+            tab.ProductSellingPrice = product.SellingPrice!;
+            tab.ProductId = product.Id;
+            tab.ProductName = product.Name;
+            tabTexnika.Items.Add(tab);
+        }
+    }
     public void LoadCashedProducts()
     {
         cashed_products.Items.Clear();
@@ -71,13 +106,28 @@ public partial class KassaPage : Page
         TabFoodLoad();
     }
 
-    private void KassaPage_OnKeyDown(object sender, KeyEventArgs e)
+
+    private void KassaPage_OnMouseDown(object sender, MouseButtonEventArgs e)
     {
         var db = new AppDbContext();
-        if (e.Key == Key.Back)
+        if (e.XButton1 == MouseButtonState.Pressed )
         {
-            MessageBox.Show("asdfdf");
+            foreach (var item in db.CashedProducts)
+            {
+                db.CashedProducts.Remove(item);
+            }
+            db.SaveChanges();
         }
+    }
+
+    private void Tab2_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        TabClothesLoad();
+    }
+
+    private void Tab3_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        TabTechLoad();
     }
 }
 
