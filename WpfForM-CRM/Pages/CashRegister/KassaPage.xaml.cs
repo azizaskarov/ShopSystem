@@ -128,5 +128,11 @@ public partial class KassaPage : Page
     {
         TabTechLoad();
     }
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        var checkWindow = new CheckWindow(mainWindow,this);
+        checkWindow.ShowDialog();
+    }
 }
 
