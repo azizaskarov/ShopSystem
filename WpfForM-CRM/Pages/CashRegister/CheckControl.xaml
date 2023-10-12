@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
              mc:Ignorable="d" Background="White" 
              Height="60" Width="300">
-    <Grid>
-        <StackPanel>
+    <Grid MaxHeight="60">
+        <StackPanel MaxHeight="60">
             <StackPanel Orientation="Horizontal" Height="15">
                 <TextBlock FontSize="10" Name="nomer" Text="1"/>
                 <TextBlock FontSize="12" Margin="20 -5 0 0" Name="productName" FontWeight="DemiBold" Text="Product name" Height="17"/>
@@ -45,8 +45,6 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-
-
         </StackPanel>
     </Grid>
 </UserControl>

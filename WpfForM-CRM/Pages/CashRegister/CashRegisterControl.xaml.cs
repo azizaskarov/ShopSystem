@@ -79,7 +79,11 @@ namespace WpfForM_CRM.Pages.CashRegister
             shopsPage.KassName = (string)CashRegisterName;
             shopsPage.KassaId = (Guid)CashRegisterId;
             shopsPage.Window.mainframe.Navigate(new KassaPage(mainWindow:mainWindow, shopsPage));
-            
+            shopsPage.Window.DockPanel.Visibility = Visibility.Collapsed;
+            shopsPage.Window.exit_btn.Visibility = Visibility.Collapsed;
+            shopsPage.Window.minimizeButton_Copy.Visibility = Visibility.Collapsed;
+            shopsPage.Window.restoreBtn.Visibility = Visibility.Collapsed;
+            shopsPage.Window.mainframe.Margin = new Thickness(0,0,0,0);
         }
     }
 }

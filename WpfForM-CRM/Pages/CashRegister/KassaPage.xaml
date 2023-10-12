@@ -18,7 +18,7 @@
         <Border Margin="5 0 0 0" Grid.Column="0"  Height="30" VerticalAlignment="Top">
             <TextBlock Name="shopTitle" FontSize="16" Text="Shop: Havas | Kassa: AliKassa | Kassir: Alijon"/>
         </Border>
-
+        <Button Name="backBtn" Click="BackBtn_OnClick" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Right" Height="25" Background="White" BorderBrush="White" Foreground="Black" Width="39" HorizontalContentAlignment="Right" Content="x" VerticalContentAlignment="Top" Grid.Column="1" VerticalAlignment="Top"/>
         <ScrollViewer Margin="30" Grid.Column="0" HorizontalScrollBarVisibility="Visible" >
             <TabControl x:Name="tab_control" Margin="10"  >
                 <TabItem x:Name="tab1" MouseLeftButtonDown="Tab1_OnMouseLeftButtonDown"  Header="Oziq ovqatlar" IsSelected="True" Width="125" HorizontalAlignment="Left">
@@ -70,7 +70,7 @@
 
         <Button VerticalAlignment="Top" Margin="30,698,30,0" Grid.Column="1" Click="ButtonBase_OnClick" >
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Payment"/>
+                <TextBlock Text="Oплатить "/>
             </StackPanel>
 
         </Button>

@@ -42,7 +42,7 @@ namespace WpfForM_CRM.Pages.CashRegister
         { 
             var db = new AppDbContext();
             var items = new List<Entities.Stock>();
-            var products = db.Products.Where(p =>  p.ShopId.Equals(shopsPage.ShopId)).ToList();
+            var products = db.Products.Where(p =>  p.ShopId.Equals(shopsPage.ShopId)).OrderByDescending(p => p.CreatedDate).ToList();
             int i = 1;
             if (products.Count > 0)
             {

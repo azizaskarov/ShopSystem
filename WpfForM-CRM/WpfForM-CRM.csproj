@@ -16,6 +16,8 @@
     <None Remove="IconImages\nazad.jpg" />
     <None Remove="IconImages\nazad1.png" />
     <None Remove="IconImages\product.png" />
+    <None Remove="IconImages\qrcode.png" />
+    <None Remove="IconImages\QR_Code.png" />
     <None Remove="IconImages\update.png" />
     <None Remove="Pages\eye close.png" />
     <None Remove="Pages\eye open.png" />
@@ -46,6 +48,7 @@
     <Resource Include="IconImages\nazad.jpg" />
     <Resource Include="IconImages\nazad1.png" />
     <Resource Include="IconImages\product.png" />
+    <Resource Include="IconImages\QR_Code.png" />
     <Resource Include="IconImages\update.png" />
     <Resource Include="IconImages\eye close.png" />
     <Resource Include="IconImages\eye open.png" />

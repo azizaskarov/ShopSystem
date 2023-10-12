@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfForM_CRM.Pages.CashRegister"
         mc:Ignorable="d" 
-        Title="ProductsWindow" Height="520" Width="800" WindowStartupLocation="CenterScreen">
+        Title="ProductsWindow" MaxHeight="520" MaxWidth="850" MinHeight="520" MinWidth="850" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="add" Content="Добавить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="40" Margin="0 0 2 2" Click="add_Click"/>
-        <DataGrid HorizontalAlignment="Left" Width="800" Height="440" VerticalAlignment="Top" RowHeight="35"  CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
+        <DataGrid HorizontalAlignment="Center"  Height="440" VerticalAlignment="Top" RowHeight="35"  CellStyle="{DynamicResource MaterialDesignDataGridCell}" 
                   Background="White" x:Name="storage_data" AutoGenerateColumns="True" 
                   SelectionUnit="FullRow" 
                   GridLinesVisibility="All" ColumnWidth="auto" FontSize="12"
                   CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" BorderThickness="3" 
                   CanUserAddRows="False" CanUserDeleteRows="False" VerticalGridLinesBrush="Aqua" VerticalScrollBarVisibility="Auto"  KeyboardNavigation.TabNavigation="Once" VirtualizingPanel.VirtualizationMode="Recycling"
                   HorizontalGridLinesBrush="Aquamarine" Style="{StaticResource MaterialDesignDataGrid}" Cursor="Hand" FontFamily="Verdana" 
-                  FontWeight="Bold" VerticalContentAlignment="Center" AreRowDetailsFrozen="True" IsReadOnly="True" AutomationProperties.IsRowHeader="True" SelectionMode="Single" HorizontalContentAlignment="Center" >
+                  FontWeight="Bold" VerticalContentAlignment="Center" AreRowDetailsFrozen="True" IsReadOnly="True" AutomationProperties.IsRowHeader="True" SelectionMode="Single" HorizontalContentAlignment="Center" Width="848" >
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Style.Triggers>
