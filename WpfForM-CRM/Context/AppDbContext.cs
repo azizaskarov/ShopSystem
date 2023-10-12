@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WpfForM_CRM.Entities;
-using WpfForM_CRM.Entities.Cashed;
 
 namespace WpfForM_CRM.Context
 {
@@ -16,14 +15,12 @@ namespace WpfForM_CRM.Context
         public DbSet<CashedProduct> CashedProducts => Set<CashedProduct>();
         
         //public DbSet<Stock> Stocks => Set<Stock>();
-        public DbSet<CashedFood> CashedFoods => Set<CashedFood>();
-        public DbSet<CashedClothes> CashedClothes => Set<CashedClothes>();
-        public DbSet<CashedTech> CashedTeches => Set<CashedTech>();
+       
         //public AppDbContext(DbContextOptions<AppDbContext>  options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;database=mcrmshopdb;user=root;",
+            optionsBuilder.UseMySql("server=localhost;database=shopdb; password=5432;user=root;",
                 ServerVersion.Parse("8.0.24-mysql"));
         }
 
